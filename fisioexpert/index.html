@@ -2,511 +2,700 @@
 <html lang="pt-BR">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<title>Fisioexpert · Gunther Löffler</title>
-<meta name="description" content="Formação completa em dor irradiada e neurodinâmica, com o método CSC do Gunther Löffler: aulas gravadas, fluxograma de condução, checklist, biblioteca de casos e comunidade.">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>FisioExpert, domine os casos de dor irradiada com neurodinâmica | Gunther Löffler</title>
+<meta name="description" content="Curso completo de tratamento neural para dores irradiadas. O Método CSC do Gunther Löffler organiza seu raciocínio clínico: investigar, classificar e conduzir casos complexos com segurança.">
+<meta property="og:title" content="FisioExpert, dor irradiada sem tentativa e erro">
+<meta property="og:description" content="O Método CSC organiza seu raciocínio clínico em casos de dor irradiada. Formação completa do Gunther Löffler para fisioterapeutas.">
 <meta name="theme-color" content="#3A1020">
-<meta property="og:title" content="Fisioexpert · Gunther Löffler">
-<meta property="og:description" content="Formação completa em dor irradiada e neurodinâmica. Investigue, interprete e trate com segurança.">
-<meta property="og:image" content="https://edu.guntherloffler.com.br/assets/site6.jpg">
 <meta property="og:type" content="website">
+<meta property="og:image" content="https://edu.guntherloffler.com.br/img/gunther-hero.jpg">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="../favicon.svg" type="image/svg+xml">
 <link rel="icon" href="../favicon.ico" sizes="48x48">
 <link rel="apple-touch-icon" href="../apple-touch-icon.png">
 <style>
-/* Identidade FisioExpert v1.0 (kit FisioExpert-Identidade-Visual). Nomes antigos das variáveis mantidos. */
 @font-face{font-family:"Anybody";src:url("../fonts/Anybody.ttf") format("truetype");font-weight:100 900;font-stretch:50% 150%;font-display:swap}
 @font-face{font-family:"Newsreader";src:url("../fonts/Newsreader.ttf") format("truetype");font-weight:200 800;font-style:normal;font-display:swap}
 @font-face{font-family:"Newsreader";src:url("../fonts/Newsreader-Italic.ttf") format("truetype");font-weight:200 800;font-style:italic;font-display:swap}
 :root{
-  --navy:#3A1020;          /* Músculo */
-  --navy-2:#240912;        /* Músculo fundo */
-  --navy-3:#4A1A2D;        /* painel sobre vinho */
-  --yellow:#EBCB5A;        /* Mielina */
-  --yellow-ink:#3A1020;
-  --dor:#EC5C32;
-  --dor-p:#B93A18;
-  --paper:#DFE6E8;         /* Radiografia */
-  --ink:#3A1020;
-  --muted:#6E5560;
-  --muted-d:#B9A89B;       /* Tendão */
-  --line:#BFCACD;
-  --line-d:#5C2D3F;
-  --font-display:'Anybody','Arial Narrow',Arial,sans-serif;
-  --font-body:'Newsreader',Georgia,'Times New Roman',serif;
-  --gl:max(20px,env(safe-area-inset-left,0px));--gr:max(20px,env(safe-area-inset-right,0px));
+  --musculo:#3A1020;--fundo:#240912;--mielina:#EBCB5A;--radio:#DFE6E8;--dor:#EC5C32;--dor-p:#B93A18;--tendao:#B9A89B;--suave:#6E5560;
+  --rail:48px;--f-d:"Anybody","Arial Narrow",Arial,sans-serif;--f-t:"Newsreader",Georgia,serif;
 }
 *{box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{margin:0;background:var(--navy);color:#DFE6E8;font-family:var(--font-body);font-size:19px;line-height:1.6;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+html{scroll-behavior:smooth;scroll-padding-top:70px}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{margin:0;background:var(--musculo);color:var(--radio);font-family:var(--f-t);font-size:1.15rem;line-height:1.65;-webkit-font-smoothing:antialiased}
+h1,h2,h3,p,ul,ol,dl,dd,figure,blockquote{margin:0}
 img{max-width:100%;display:block}
-a{color:inherit;text-decoration:none}
-a:focus-visible,summary:focus-visible,button:focus-visible{outline:3px solid var(--yellow);outline-offset:3px}
-.wrap{max-width:1000px;margin-inline:auto;padding-left:var(--gl);padding-right:var(--gr)}
-section{padding-block:64px}
-.paper{background:var(--paper);color:var(--ink)}
-.dark2{background:var(--navy-2)}
-h1,h2,h3{font-family:var(--font-display);margin:0;letter-spacing:-.02em;text-wrap:balance}
-h2{font-weight:800;font-size:clamp(30px,7.4vw,46px);line-height:1.04;letter-spacing:-.015em}
-h3{font-weight:700;font-size:20px;line-height:1.15;letter-spacing:-.02em}
-.lede{font-size:20px;color:var(--muted);max-width:56ch;margin:16px 0 0}
-.dark .lede,.dark2 .lede,.hero .lede{color:var(--muted-d)}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--mielina);outline-offset:3px}
+.claro :focus-visible{outline-color:var(--musculo)}
+main{margin-left:var(--rail)}
+.rail{position:fixed;inset:0 auto 0 0;width:var(--rail);background:var(--fundo);z-index:30}
+.rail i,.rail b{position:absolute;left:50%;top:0;width:4px;margin-left:-2px;border-radius:2px}
+.rail i{bottom:0;background:rgba(235,203,90,.14)}
+.rail b{height:calc(var(--p,0)*100%);background:linear-gradient(to bottom,var(--mielina),var(--dor));background-size:100% 100vh;background-repeat:no-repeat}
+.rail u{position:absolute;left:50%;top:calc(var(--p,0)*100%);width:14px;height:14px;margin:-7px 0 0 -7px;border-radius:50%;background:var(--dor);box-shadow:0 0 0 5px rgba(236,92,50,.25);transform:translateY(calc(var(--p,0)*-14px + 7px))}
 
-.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;background:var(--yellow);color:var(--yellow-ink);font-weight:800;font-size:17px;padding:17px 30px;border-radius:6px;border:0;cursor:pointer;position:relative;overflow:hidden;box-shadow:0 14px 30px -14px rgba(235,203,90,.65);transition:transform .25s}
-.btn:hover{transform:translateY(-2px)}
-.btn::after{content:"";position:absolute;inset:0;background:linear-gradient(100deg,transparent 30%,rgba(255,255,255,.6) 50%,transparent 70%);transform:translateX(-120%);animation:sheen 4s 2s ease-in-out infinite}
-@keyframes sheen{0%,60%{transform:translateX(-120%)}100%{transform:translateX(120%)}}
-.btn svg{width:18px;height:18px;stroke:currentColor;fill:none;stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round}
-.btn.ghost{background:transparent;color:inherit;border:1.5px solid currentColor;box-shadow:none}
-.btn.ghost::after{display:none}
+.sec{padding:clamp(4rem,9vw,7.5rem) clamp(1.25rem,5vw,4.5rem)}
+.wrap{max-width:70rem;margin:0 auto}
+.escuro{background:var(--musculo);color:var(--radio)}
+.fundo{background:var(--fundo);color:var(--radio)}
+.claro{background:var(--radio);color:var(--musculo)}
+.h2{font:800 clamp(2rem,4.8vw,3.6rem)/1.02 var(--f-d);letter-spacing:-.015em;font-variation-settings:"wdth" 100;max-width:22ch}
+.h2.largo{max-width:30ch}
+.lead{font-size:clamp(1.15rem,2vw,1.4rem);line-height:1.55;max-width:38rem;margin-top:1.2rem}
+.txt{max-width:36rem}.txt p+p{margin-top:1em}
+.sub{font:700 1.2rem/1.25 var(--f-d)}
+.mut{color:var(--tendao)}.claro .mut{color:var(--suave)}
 
-/* Abertura */
-.hero{position:relative;padding:0;overflow:hidden;background:var(--navy)}
-.hero .ph{position:relative;aspect-ratio:4/3.5;max-height:560px}
-.hero .ph img{width:100%;height:100%;object-fit:cover;object-position:42% 0%;transform-origin:50% 0%;animation:settle 2.4s cubic-bezier(.2,.7,.2,1) both}
-@keyframes settle{from{transform:scale(1.1)}to{transform:scale(1)}}
-.hero .ph::after{content:"";position:absolute;inset:0;background:linear-gradient(to top,var(--navy) 2%,rgba(58,16,32,.78) 22%,rgba(58,16,32,0) 62%),linear-gradient(to bottom,rgba(36,9,18,.55),transparent 26%)}
-.brand{position:absolute;z-index:2;left:var(--gl);top:max(18px,env(safe-area-inset-top,0px));display:flex;align-items:center;gap:10px;font-family:var(--font-display);font-weight:700;font-size:15px;letter-spacing:-.01em}
-.brand i{width:10px;height:10px;border-radius:50%;background:var(--yellow);display:inline-block}
-.hero .txt{position:relative;z-index:2;margin-top:-92px;padding-bottom:56px;animation:rise .9s .3s cubic-bezier(.2,.7,.2,1) both}
-@keyframes rise{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
-.tag{display:inline-flex;align-items:center;gap:8px;border:1.5px solid var(--yellow);color:var(--yellow);border-radius:6px;padding:5px 14px;font-weight:600;font-size:14px;margin:0 0 16px}
-.hero h1{font-weight:800;font-size:clamp(38px,10.4vw,64px);line-height:1;letter-spacing:-.015em}
-.hero .lede{max-width:46ch;font-size:21px}
-.hero .cta-row{margin-top:26px;display:flex;flex-wrap:wrap;gap:14px;align-items:center}
-.hero .mini{font-size:14px;color:var(--muted-d)}
+/* botões */
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:56px;padding:.9rem 1.8rem;border-radius:4px;font:700 1.08rem/1.2 var(--f-d);text-decoration:none;text-align:center;border:0;cursor:pointer;transition:background-color .2s}
+.btn-y{background:var(--mielina);color:var(--musculo)}.btn-y::after{content:"";flex:none;width:.5em;height:.5em;margin-left:.75rem;border-top:3px solid currentColor;border-right:3px solid currentColor;transform:rotate(45deg)}.btn-y:hover{background:#F3D979}
+.btn-m{background:var(--musculo);color:var(--radio)}.btn-m:hover{background:#51192E}
+.btn-g{background:var(--dor-p);color:#fff}.btn-g:hover{background:#9E3014}
+.micro{margin-top:.9rem;font:500 .92rem/1.5 var(--f-d);color:var(--tendao)}.claro .micro{color:var(--suave)}
+.micro b{font-weight:700;color:var(--radio)}.claro .micro b{color:var(--musculo)}
 
-/* Faixa de números */
-.facts{background:var(--yellow);color:var(--yellow-ink);padding-block:0}
-.facts .wrap{display:grid;grid-template-columns:repeat(2,1fr);gap:0}
-.facts div{padding:18px 8px;border-bottom:1px solid rgba(58,16,32,.2)}
-.facts div:nth-child(odd){padding-right:14px;border-right:1px solid rgba(58,16,32,.2)}
-.facts div:nth-child(even){padding-left:18px}
-.facts b{display:block;font-family:var(--font-display);font-weight:800;font-size:26px;line-height:1.05;letter-spacing:-.03em}
-.facts span{font-size:14px;font-weight:600}
+/* barra fixa */
+.bar{position:fixed;left:var(--rail);right:0;top:0;z-index:20;background:var(--fundo);border-bottom:1px solid rgba(223,230,232,.12);transform:translateY(-100%);transition:transform .3s}
+.bar.on{transform:none}
+.bar div{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:.6rem clamp(1.25rem,5vw,4.5rem);max-width:80rem;margin:0 auto}
+.bar img{height:30px;width:auto}
+.bar span{font:600 .95rem var(--f-d);color:var(--tendao)}.bar span b{color:var(--radio)}
+.bar .btn{min-height:44px;padding:.5rem 1.2rem;font-size:.98rem}
 
-/* Para quem é */
-.pq{list-style:none;margin:32px 0 0;padding:0;display:grid;gap:12px}
-.pq label{display:flex;gap:16px;align-items:flex-start;background:#fff;border:1.5px solid var(--line);border-radius:10px;padding:18px 20px;font-size:17px;cursor:pointer;transition:border-color .25s,background .25s,transform .25s}
-.pq label:hover{transform:translateY(-2px)}
-.pq input{position:absolute;opacity:0;pointer-events:none}
-.pq .box{flex:none;width:28px;height:28px;border-radius:6px;border:2px solid #9AA8AD;display:grid;place-items:center;margin-top:-1px;transition:background .25s,border-color .25s}
-.pq .box svg{width:16px;height:16px;stroke:var(--yellow-ink);fill:none;stroke-width:3.4;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:24;stroke-dashoffset:24;transition:stroke-dashoffset .35s .05s}
-.pq input:checked + .box{background:var(--yellow);border-color:var(--yellow)}
-.pq input:checked + .box svg{stroke-dashoffset:0}
-.pq label:has(input:checked){border-color:var(--yellow);background:#FBF3D3}
-.pq input:focus-visible + .box{outline:3px solid var(--navy);outline-offset:3px}
-.res{margin-top:22px;border-radius:12px;background:var(--navy);color:#DFE6E8;padding:22px 24px;display:flex;flex-wrap:wrap;gap:16px;align-items:center;justify-content:space-between}
-.res .cnt{font-family:var(--font-display);font-weight:800;font-size:34px;letter-spacing:-.02em;color:var(--yellow);line-height:1}
-.res .cnt small{font-size:15px;font-weight:600;color:var(--muted-d);letter-spacing:0;margin-left:6px}
-.res p{margin:8px 0 0;max-width:40ch;color:#E4EAEB;font-size:16px}
-.res .btn{padding:14px 24px;font-size:16px;box-shadow:none}
-.res .btn[hidden]{display:none}
+/* hero */
+.hero{position:relative;min-height:100svh;display:flex;flex-direction:column;padding-top:clamp(1.2rem,2.5vw,2rem);overflow:hidden}
+.topo{display:flex;align-items:center;justify-content:space-between;gap:1rem}
+.topo img{height:clamp(30px,3.4vw,40px);width:auto}
+.topo a{font:600 .95rem var(--f-d);text-decoration:none;color:var(--tendao)}
+.hero-g{flex:1;display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,.75fr);gap:clamp(2rem,5vw,5rem);align-items:center;padding:clamp(2.5rem,6vw,5rem) 0 clamp(2rem,4vw,3.5rem)}
+.para{font:500 1.05rem/1.4 var(--f-d);color:var(--mielina);margin-bottom:1.3rem}
+.hero h1{font:800 clamp(2.3rem,5.2vw,4.9rem)/1 var(--f-d);letter-spacing:-.022em;font-variation-settings:"wdth" var(--w,104);transition:font-variation-settings 1.9s cubic-bezier(.2,.7,.2,1)}
+.hero h1.tenso{--w:68}
+.hero .lead{max-width:34rem}
+.hero .go{margin-top:2rem}
+.foto{position:relative}
+.foto img{width:100%;aspect-ratio:3/4;object-fit:cover;object-position:50% 6%;border-radius:2px;filter:saturate(.92)}
+.foto::after{content:"";position:absolute;inset:0;background:linear-gradient(to top,rgba(58,16,32,.5),transparent 40%);pointer-events:none}
+.foto .fio{position:absolute;left:-1.5rem;right:2rem;bottom:-1.2rem;height:8px;border-radius:4px;background:linear-gradient(to right,var(--mielina),var(--dor));z-index:2}
+.foto .fio::after{content:"";position:absolute;right:-8px;top:50%;width:28px;height:28px;margin-top:-14px;border-radius:50%;background:var(--dor)}
+.foto figcaption{position:absolute;left:1rem;bottom:1.6rem;z-index:2;font:600 .95rem/1.3 var(--f-d)}
+.foto figcaption small{display:block;font-weight:500;color:var(--tendao);font-size:.82rem}
 
-/* Problema */
-.cena{margin:10px 0 0;color:var(--yellow);font-weight:700;font-size:15px}
-.pens{list-style:none;margin:28px 0 0;padding:0;display:grid;gap:12px}
-.pens li{max-width:86%;padding:15px 20px;border-radius:14px 14px 14px 4px;background:var(--navy-3);border:1px solid var(--line-d);font-family:var(--font-display);font-weight:600;font-size:21px;letter-spacing:-.015em;line-height:1.2}
-.pens li:nth-child(even){justify-self:end;border-radius:14px 14px 4px 14px;background:rgba(235,203,90,.12);border-color:rgba(235,203,90,.4)}
-.pens li span{display:block;margin-bottom:4px;font-family:var(--font-body);font-size:12.5px;font-weight:600;color:var(--muted-d);letter-spacing:0}
-.js .pens li{opacity:0;transform:translateY(14px);transition:opacity .6s,transform .7s cubic-bezier(.2,.7,.2,1)}
-.js .pens.in li{opacity:1;transform:none}
-.js .pens.in li:nth-child(2){transition-delay:.35s}.js .pens.in li:nth-child(3){transition-delay:.7s}.js .pens.in li:nth-child(4){transition-delay:1.05s}.js .pens.in li:nth-child(5){transition-delay:1.4s}.js .pens.in li:nth-child(6){transition-delay:1.75s}
-.porque{margin-top:34px;display:grid;gap:12px}
-.porque div{background:var(--navy-3);border-radius:10px;padding:18px 20px;color:#D3DCDE}
-.porque b{display:block;color:var(--yellow);font-family:var(--font-display);font-size:18px;margin-bottom:4px}
+/* faixa em movimento */
+.nums{padding:0;overflow:hidden;color:var(--musculo);background:linear-gradient(90deg,var(--mielina),#E6A044,var(--dor),#E6A044,var(--mielina));background-size:300% 100%;animation:cor 14s ease-in-out infinite alternate}
+@keyframes cor{to{background-position:100% 0}}
+.sr{position:absolute;left:-9999px}
+.mq{display:flex;width:max-content;animation:corre 38s linear infinite;padding:1.35rem 0}
+.mq:hover{animation-play-state:paused}
+@keyframes corre{to{transform:translateX(-25%)}}
+.gr{display:flex;align-items:center;flex:none}
+.gr span{display:inline-flex;align-items:baseline;gap:.7rem;white-space:nowrap}
+.gr b{font:800 clamp(1.5rem,2.6vw,2.1rem)/1 var(--f-d);letter-spacing:-.01em}
+.gr em{font:500 1rem var(--f-d);font-style:normal}
+.gr i{display:block;position:relative;width:3.4rem;height:4px;margin:0 2rem;border-radius:2px;background:var(--musculo)}
+.gr i::after{content:"";position:absolute;right:-6px;top:50%;width:14px;height:14px;margin-top:-7px;border-radius:50%;background:var(--musculo)}
+@media (prefers-reduced-motion:reduce){.nums{animation:none}.mq{animation:none;width:auto;flex-wrap:wrap;justify-content:center;padding:1.2rem 1.25rem}.gr{flex-wrap:wrap;justify-content:center;gap:.6rem 0}.gr~.gr{display:none}}
+.bco{background:#fff;color:var(--musculo)}
+.bco :focus-visible{outline-color:var(--musculo)}
 
-/* Método CSC */
-.csc{margin-top:34px;display:grid;gap:14px}
-.csc article{background:#fff;border:1px solid var(--line);border-radius:12px;padding:24px;position:relative}
-.csc .n{font-family:var(--font-display);font-weight:800;font-size:15px;background:var(--navy);color:var(--yellow);width:34px;height:34px;border-radius:50%;display:grid;place-items:center;margin-bottom:14px}
-.csc p{margin:8px 0 0;color:var(--muted);font-size:16px}
+/* checklist */
+.id-g{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:clamp(2rem,6vw,6rem);align-items:start}
+.chk{display:grid;gap:.7rem}
+.chk label{display:grid;grid-template-columns:30px 1fr;gap:.9rem;align-items:start;padding:1rem 1.1rem;background:var(--radio);border:2px solid transparent;border-radius:6px;cursor:pointer;font-size:1.08rem;line-height:1.45}
+.chk input{position:absolute;opacity:0;pointer-events:none}
+.chk i{width:26px;height:26px;border-radius:4px;border:2px solid var(--musculo);display:grid;place-items:center;margin-top:2px}
+.chk i::after{content:"";width:12px;height:7px;border-left:3px solid var(--musculo);border-bottom:3px solid var(--musculo);transform:rotate(-45deg) translate(1px,-1px);opacity:0}
+.chk input:checked + i{background:var(--mielina)}.chk input:checked + i::after{opacity:1}
+.chk label:has(input:checked){border-color:var(--musculo)}
+.chk label:has(input:focus-visible){outline:3px solid var(--musculo);outline-offset:2px}
+.res{position:sticky;bottom:12px;z-index:4;margin-top:1.4rem;padding:1.3rem 1.4rem;background:var(--musculo);color:var(--radio);border-radius:6px;box-shadow:0 12px 32px rgba(36,9,18,.35)}
+.res.flash{animation:flash .7s ease-out}
+@keyframes flash{0%{box-shadow:0 0 0 0 var(--mielina),0 12px 32px rgba(36,9,18,.35)}40%{box-shadow:0 0 0 8px var(--mielina),0 12px 32px rgba(36,9,18,.35)}100%{box-shadow:0 0 0 0 transparent,0 12px 32px rgba(36,9,18,.35)}}
+.res .rt{font:600 .9rem var(--f-d);color:var(--tendao);margin-bottom:.2rem}
+.res .cont{font:700 1.05rem var(--f-d);color:var(--mielina)}
+.res h3{font:750 1.55rem/1.2 var(--f-d);margin:0 0 .5rem;color:var(--radio)}
+.res .prog{height:6px;margin:.6rem 0 1rem;border-radius:3px;background:rgba(223,230,232,.2);overflow:hidden}
+.res .prog i{display:block;height:100%;width:calc(var(--n,0)/6*100%);background:linear-gradient(to right,var(--mielina),var(--dor));transition:width .3s}
+.res p{font-size:1.08rem;line-height:1.5}
+.res .btn{margin-top:1rem;display:none}.res.on .btn{display:inline-flex}
 
-/* Autor */
-.autor{display:grid;gap:28px;align-items:center}
-.autor .foto{border-radius:12px;overflow:hidden;aspect-ratio:4/4.6;background:var(--navy-3)}
-.autor .foto img{width:100%;height:100%;object-fit:cover;object-position:50% 0%}
-.autor p{color:#D3DCDE;margin:14px 0 0}
+.res{padding:.95rem 1.2rem 1.05rem}
+.res .rt{display:none}
+.res .cont{font-size:.95rem}
+.res .prog{margin:.4rem 0 .7rem}
+.res h3{font-size:1.2rem;margin-bottom:.25rem}
+.res p{font-size:.98rem;line-height:1.45}
+.res .btn{min-height:46px;padding:.55rem 1.2rem;margin-top:.75rem}
 
-/* Módulos */
-.mods{margin-top:30px;border-top:1px solid var(--line)}
-.mods details{border-bottom:1px solid var(--line)}
-.mods summary{list-style:none;cursor:pointer;display:flex;align-items:center;gap:16px;padding:20px 2px;font-family:var(--font-display);font-weight:700;font-size:20px;letter-spacing:-.02em;line-height:1.15}
+.res{background:#fff;color:var(--musculo);border:2px solid var(--musculo)}
+.res .cont{color:var(--suave)}
+.res h3{color:var(--musculo)}
+.res .prog{background:rgba(58,16,32,.12)}
+.res .btn::after{content:"";flex:none;width:.5em;height:.5em;margin-left:.75rem;border-top:3px solid currentColor;border-right:3px solid currentColor;transform:rotate(45deg)}
+
+/* pensamentos */
+.pens{display:grid;gap:1rem;margin-top:3rem;max-width:44rem}
+.bal{padding:1rem 1.3rem 1.1rem;border-radius:18px 18px 18px 4px;background:rgba(223,230,232,.1);max-width:30rem}
+.bal small{display:block;font:500 .85rem var(--f-d);color:var(--tendao);margin-bottom:.15rem}
+.bal p{font:italic 400 1.35rem/1.35 var(--f-t)}
+.bal:nth-child(even){margin-left:auto;border-radius:18px 18px 4px 18px;background:rgba(235,203,90,.14)}
+.fecha{margin-top:3rem;max-width:36rem;font-size:1.3rem}
+.fecha b{font-weight:600;color:var(--mielina)}
+
+/* reenquadre */
+.tres{display:grid;grid-template-columns:repeat(3,1fr);gap:0;margin-top:3rem;border-top:3px solid var(--musculo)}
+.tres div{padding:1.4rem 1.6rem 0 0}.tres div+div{padding-left:1.6rem;border-left:1px solid rgba(58,16,32,.2)}
+.tres h3{font:750 1.5rem/1.1 var(--f-d);margin-bottom:.4rem}
+.tres p{font-size:1.05rem;line-height:1.55}
+
+/* método */
+.csc{position:relative;display:grid;grid-template-columns:repeat(3,1fr);gap:0;margin-top:4rem}
+.csc::before{content:"";position:absolute;left:0;right:0;top:13px;height:5px;border-radius:3px;background:linear-gradient(to right,var(--mielina),var(--dor))}
+.csc div{position:relative;padding:3rem 2.2rem 0 0}
+.csc div::before{content:"";position:absolute;left:0;top:0;width:32px;height:32px;border-radius:50%;background:var(--musculo);border:7px solid var(--c)}
+.csc div:nth-child(1){--c:var(--mielina)}.csc div:nth-child(2){--c:#E6A044}.csc div:nth-child(3){--c:var(--dor)}
+.csc div:nth-child(3)::before{background:var(--dor)}
+.csc h3{font:800 clamp(1.7rem,3vw,2.4rem)/1 var(--f-d);font-variation-settings:"wdth" 108}
+.csc p{margin-top:.6rem;font-size:1.08rem;line-height:1.55;max-width:20rem}
+.csc small{display:block;margin-top:.9rem;font:500 .88rem var(--f-d);color:var(--tendao)}
+.metodo-nota{margin-top:3.5rem;max-width:38rem;font-size:1.15rem}
+
+/* antes / depois */
+.ad{margin-top:2.6rem;border-top:1px solid rgba(58,16,32,.25)}
+.ad div{display:grid;grid-template-columns:1fr 1fr;gap:2rem;padding:1.2rem 0;border-bottom:1px solid rgba(58,16,32,.25)}
+.ad .h{padding:.8rem 0;font:700 .95rem var(--f-d);color:var(--suave)}
+.ad p:first-child{color:var(--suave)}
+.ad p:last-child{font-weight:600;font-size:1.18rem;line-height:1.45}
+.ad .h p:last-child{font:700 .95rem var(--f-d);color:var(--dor-p)}
+
+/* módulos */
+.mods{margin-top:3rem;max-width:52rem}
+.mods details{border-top:1px solid rgba(223,230,232,.2)}
+.mods details:last-child{border-bottom:1px solid rgba(223,230,232,.2)}
+.mods summary{list-style:none;display:grid;grid-template-columns:5.6rem 1fr 1.4rem;gap:.6rem;align-items:center;padding:1.15rem 0;cursor:pointer;font:700 1.25rem/1.25 var(--f-d)}
 .mods summary::-webkit-details-marker{display:none}
-.mods .k{flex:none;width:34px;height:34px;border-radius:50%;background:var(--navy);color:var(--yellow);display:grid;place-items:center;font-size:15px;font-weight:800}
-.mods summary::after{content:"";margin-left:auto;flex:none;width:11px;height:11px;border-right:2.4px solid var(--navy);border-bottom:2.4px solid var(--navy);transform:rotate(45deg) translateY(-3px);transition:transform .3s}
-.mods details[open] summary::after{transform:rotate(-135deg) translateY(-3px)}
-.mods p{margin:0;padding:0 2px 22px 50px;color:var(--muted);font-size:16px;max-width:62ch}
+.mods summary em{font:600 .95rem var(--f-d);font-style:normal;color:var(--mielina)}
+.mods summary::after{content:"";width:14px;height:14px;background:linear-gradient(var(--mielina),var(--mielina)) center/100% 2px no-repeat,linear-gradient(var(--mielina),var(--mielina)) center/2px 100% no-repeat;transition:transform .25s}
+.mods details[open] summary::after{transform:rotate(45deg)}
+.mods p{padding:0 1.4rem 1.4rem 4rem;color:var(--tendao);font-size:1.08rem;max-width:42rem}
 
-/* O que inclui */
-.inc{margin-top:32px;display:grid;gap:12px}
-.inc li{list-style:none;display:flex;justify-content:space-between;gap:16px;align-items:center;border:1px solid var(--line-d);border-radius:10px;padding:18px 20px;background:var(--navy-3)}
-.inc b{font-family:var(--font-display);font-weight:700;font-size:18px;letter-spacing:-.01em}
-.inc span{flex:none;color:var(--muted-d);font-size:15px;font-weight:600;text-decoration:line-through;text-decoration-color:rgba(235,203,90,.7)}
-.inc .free span{text-decoration:none;color:var(--yellow)}
-.inc{padding:0}
-.soma{margin-top:18px;display:flex;justify-content:space-between;gap:16px;padding:6px 4px;color:var(--muted-d);font-weight:600}
-.soma b{color:#DFE6E8;font-family:var(--font-display);font-size:20px}
+/* autor */
+.aut{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:clamp(2rem,6vw,6rem);align-items:center}
+.aut img{width:100%;aspect-ratio:1/1;object-fit:cover;object-position:35% 20%;border-radius:2px}
+.aut .nome{font:800 clamp(2rem,4vw,3rem)/1 var(--f-d);margin-bottom:1rem}
 
-/* Depoimentos */
-.dep{margin-top:30px;display:grid;gap:14px}
-.dep img{width:100%;border-radius:10px;border:1px solid var(--line);background:#fff}
+/* depoimentos */
+.dep{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem;margin-top:3rem}
+.dep blockquote{padding:1.8rem 1.8rem 1.6rem;background:var(--fundo);border-radius:4px;border-top:4px solid var(--mielina)}
+.dep blockquote:first-child{grid-column:1/-1;border-top-color:var(--dor)}
+.dep p{font:italic 400 1.3rem/1.45 var(--f-t)}
+.dep blockquote:first-child p{font-size:clamp(1.4rem,2.6vw,2rem);line-height:1.35;max-width:46rem}
+.dep footer{margin-top:1rem;font:500 .9rem var(--f-d);color:var(--tendao)}
 
-/* Preço */
-.preco{background:linear-gradient(180deg,var(--navy-2),var(--navy))}
-.card{margin:32px auto 0;max-width:520px;background:#fff;color:var(--ink);border-radius:14px;padding:32px 26px;text-align:center;box-shadow:0 30px 70px -30px rgba(0,0,0,.7)}
-.card .de{color:var(--muted);text-decoration:line-through;font-weight:600}
-.card .par{font-family:var(--font-display);font-weight:800;font-size:clamp(40px,12vw,56px);letter-spacing:-.04em;line-height:1;margin:6px 0 0}
-.card .par small{font-size:.42em;font-weight:700;letter-spacing:-.01em;margin-right:6px}
-.card .vista{margin:10px 0 0;color:var(--muted);font-weight:600}
-.card .btn{width:100%;margin-top:24px}
-.card ul{list-style:none;margin:24px 0 0;padding:20px 0 0;border-top:1px solid var(--line);display:grid;gap:10px;text-align:left;font-size:16px}
-.card li{display:flex;gap:10px}
-.card li svg{flex:none;width:20px;height:20px;margin-top:2px;stroke:var(--navy);fill:none;stroke-width:3;stroke-linecap:round;stroke-linejoin:round}
-.garantia{max-width:520px;margin:20px auto 0;display:flex;gap:16px;align-items:flex-start;padding:20px 22px;border:1.5px solid var(--yellow);border-radius:12px;color:#E4EAEB}
-.garantia b{display:block;font-family:var(--font-display);font-size:19px;color:var(--yellow);margin-bottom:4px}
-.garantia svg{flex:none;width:34px;height:34px;stroke:var(--yellow);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
-.garantia p{margin:0;font-size:15.5px}
+/* oferta */
+.of-g{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);gap:clamp(2rem,5vw,4.5rem);align-items:start;margin-top:3rem}
+.pilha{list-style:none;padding:0;margin:0}
+.pilha li{display:flex;justify-content:space-between;gap:1rem;align-items:baseline;padding:1rem 0;border-bottom:1px solid rgba(58,16,32,.22)}
+.pilha li:first-child{border-top:1px solid rgba(58,16,32,.22)}
+.pilha b{font:700 1.12rem/1.3 var(--f-d)}.pilha small{display:block;font:400 .98rem/1.45 var(--f-t);color:var(--suave);margin-top:.15rem}
+.pilha s{font:600 1rem var(--f-d);color:var(--suave);white-space:nowrap}.pilha .inc{font:700 .95rem var(--f-d);color:var(--dor-p);white-space:nowrap}
+.total{margin-top:1rem;font:600 1rem var(--f-d);color:var(--suave)}.total s{color:var(--musculo)}
+.card{background:var(--musculo);color:var(--radio);padding:clamp(1.6rem,3vw,2.4rem);border-radius:4px;position:sticky;top:90px}
+.card .de{font:600 1rem var(--f-d);color:var(--tendao)}
+.card .de s{color:var(--radio)}
+.card .pr{font:800 clamp(3rem,6vw,4.6rem)/1 var(--f-d);letter-spacing:-.02em;margin:.5rem 0 .2rem}
+.card .pr small{font-size:.4em;font-weight:600;letter-spacing:0;margin-right:.2em}
+.card .av{font:500 1.05rem var(--f-d);color:var(--mielina)}
+.card ul{list-style:none;padding:0;margin:1.5rem 0;display:grid;gap:.55rem;font-size:1.05rem}
+.card li{padding-left:1.6rem;position:relative}
+.card li::before{content:"";position:absolute;left:0;top:.55em;width:.85rem;height:3px;border-radius:2px;background:linear-gradient(to right,var(--mielina),var(--dor))}
+.card .btn{width:100%}
+.card .seg{margin-top:.9rem;text-align:center;font:500 .88rem var(--f-d);color:var(--tendao)}
+.gar{display:grid;grid-template-columns:auto 1fr;gap:1.6rem;align-items:center;margin-top:3.5rem;padding:1.8rem;background:#fff;border-radius:4px;max-width:50rem}
+.selo{width:112px;height:112px;border-radius:50%;border:6px solid var(--musculo);display:grid;place-items:center;text-align:center;font:800 2.2rem/.95 var(--f-d);color:var(--musculo);position:relative}
+.selo::after{content:"";position:absolute;right:-3px;bottom:10px;width:18px;height:18px;border-radius:50%;background:var(--dor)}
+.selo small{display:block;font:700 .8rem var(--f-d)}
+.gar h3{font:750 1.4rem/1.15 var(--f-d);margin-bottom:.4rem}
 
-/* Dúvidas */
-.faq{margin-top:28px;border-top:1px solid var(--line)}
-.faq details{border-bottom:1px solid var(--line)}
-.faq summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:16px;padding:20px 2px;font-weight:700;font-size:18px}
+/* para quem */
+.pq{display:grid;grid-template-columns:1fr 1fr;gap:clamp(1.5rem,4vw,4rem);margin-top:2.6rem}
+.pq h3{font:750 1.5rem var(--f-d);margin-bottom:1rem}
+.pq ul{list-style:none;padding:0;display:grid;gap:.9rem}
+.pq li{padding-left:1.4rem;border-left:4px solid var(--mielina);font-size:1.08rem;line-height:1.5}
+.pq .nao li{border-left-color:var(--dor);color:var(--tendao)}
+
+/* faq */
+.faq{margin-top:2.6rem;max-width:50rem}
+.faq details{border-top:1px solid rgba(58,16,32,.25)}.faq details:last-child{border-bottom:1px solid rgba(58,16,32,.25)}
+.faq summary{list-style:none;display:flex;justify-content:space-between;gap:1rem;align-items:center;padding:1.1rem 0;cursor:pointer;font:700 1.15rem/1.3 var(--f-d)}
 .faq summary::-webkit-details-marker{display:none}
-.faq summary::after{content:"";flex:none;width:11px;height:11px;border-right:2.4px solid var(--navy);border-bottom:2.4px solid var(--navy);transform:rotate(45deg) translateY(-3px);transition:transform .3s}
-.faq details[open] summary::after{transform:rotate(-135deg) translateY(-3px)}
-.faq p{margin:0;padding:0 2px 20px;color:var(--muted);max-width:62ch}
-.duv{margin-top:30px;background:#fff;border:1px solid var(--line);border-radius:12px;padding:22px;display:flex;flex-wrap:wrap;gap:14px;align-items:center;justify-content:space-between}
-.duv p{margin:0;font-weight:600}
-.duv .btn{padding:13px 22px;font-size:15px;box-shadow:none}
+.faq summary::after{content:"";flex:none;width:14px;height:14px;background:linear-gradient(var(--musculo),var(--musculo)) center/100% 2px no-repeat,linear-gradient(var(--musculo),var(--musculo)) center/2px 100% no-repeat;transition:transform .25s}
+.faq details[open] summary::after{transform:rotate(45deg)}
+.faq p{padding:0 2rem 1.3rem 0;font-size:1.08rem;max-width:42rem}
+.faq a{color:var(--dor-p);font-weight:600}
 
-footer{background:var(--navy-2);padding:36px 0 110px;color:var(--muted-d);font-size:14px;text-align:center}
-footer b{color:#DFE6E8;font-family:var(--font-display);font-size:18px;display:block;margin-bottom:6px}
+/* final */
+.final{text-align:left}
+.final .h2{max-width:20ch}
+.final .btn{margin-top:2rem}
+.ps{margin-top:2.4rem;max-width:36rem;font-size:1.05rem;color:var(--tendao)}.ps b{color:var(--radio)}
+.rod{background:var(--fundo);padding:3rem clamp(1.25rem,5vw,4.5rem) 6rem;font:400 .88rem/1.6 var(--f-d);color:var(--tendao)}
+.rod img{height:34px;width:auto;margin-bottom:1.2rem}
+.rod p{max-width:46rem}.rod p+p{margin-top:.6rem}
+.rod a{color:var(--radio)}
 
-/* Barra fixa no celular */
-.sticky{position:fixed;left:0;right:0;bottom:0;z-index:20;padding:12px var(--gr) max(12px,env(safe-area-inset-bottom,0px)) var(--gl);background:rgba(36,9,18,.92);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);border-top:1px solid var(--line-d);display:flex;gap:14px;align-items:center;justify-content:space-between;transform:translateY(110%);transition:transform .4s cubic-bezier(.2,.7,.2,1)}
-.sticky.on{transform:none}
-.sticky .p{line-height:1.15}
-.sticky .p small{display:block;color:var(--muted-d);font-size:13px}
-.sticky .p b{font-family:var(--font-display);font-size:20px}
-.sticky .btn{padding:13px 24px;font-size:16px;box-shadow:none}
-.sticky .btn::after{display:none}
-
-.btn,.tag,.facts span,.hero .mini,.cena,.pens li span,.sticky .p small,.res .cnt small,.soma span,.inc span,.card .de,.card .vista,.faq summary,.duv p,footer{font-family:var(--font-display)}
-.faq summary{font-weight:600}
-.btn{font-weight:700}
-/* A linha do trajeto: do amarelo ao laranja, terminando em um ponto */
-section h2::after{content:"";display:block;width:104px;height:14px;margin-top:20px;background:radial-gradient(circle at calc(100% - 7px) 50%,var(--dor) 6.5px,transparent 7px),linear-gradient(to right,var(--yellow),var(--dor)) 0 50%/calc(100% - 8px) 3px no-repeat}
-section.paper h2::after{background:radial-gradient(circle at calc(100% - 7px) 50%,var(--dor-p) 6.5px,transparent 7px),linear-gradient(to right,var(--navy),var(--dor-p)) 0 50%/calc(100% - 8px) 3px no-repeat}
-.preco h2::after{margin-inline:auto}
-.logo{display:block;height:auto}
-.hero .ph .brand .logo{width:min(132px,36vw);height:auto;object-fit:contain;animation:none;transform:none}
-footer .logo{width:150px}
-.rv{opacity:1}
-.js .rv{opacity:0;transform:translateY(22px);transition:opacity .7s,transform .8s cubic-bezier(.2,.7,.2,1)}
-.js .rv.in{opacity:1;transform:none}
-
-/* Títulos: letras entram uma a uma; ao passar o mouse, cada letra reage */
-.w{display:inline-block;white-space:nowrap}
-.c{display:inline-block}
-.js .split .c{opacity:0;transform:translateY(.6em) rotate(5deg);filter:blur(6px)}
-.js .split.in .c{opacity:1;transform:none;filter:none;transition:opacity .55s,transform .75s cubic-bezier(.2,.7,.2,1),filter .6s;transition-delay:calc(var(--i)*24ms)}
+@media (max-width:900px){
+  :root{--rail:14px}
+  .rail i,.rail b{width:3px;margin-left:-1.5px}
+  .rail u{width:10px;height:10px;margin:-5px 0 0 -5px;box-shadow:0 0 0 3px rgba(236,92,50,.25);transform:translateY(calc(var(--p,0)*-10px + 5px))}
+  .hero-g,.id-g,.aut,.of-g,.pq{grid-template-columns:1fr}
+  .foto{max-width:26rem}.foto .fio{left:-.8rem}
+  .tres{grid-template-columns:1fr}.tres div,.tres div+div{padding:1.2rem 0;border-left:0;border-bottom:1px solid rgba(58,16,32,.2)}
+  .csc{grid-template-columns:1fr;gap:2rem}
+  .csc::before{left:15px;right:auto;top:0;bottom:0;width:5px;height:auto;background:linear-gradient(to bottom,var(--mielina),var(--dor))}
+  .csc div{padding:0 0 0 3.6rem}
+  .csc small{margin-top:.5rem}
+  .ad div{grid-template-columns:1fr;gap:.4rem}
+  .ad .h{display:none}
+  .dep{grid-template-columns:1fr}
+  .card{position:static}
+  .gar{grid-template-columns:1fr;justify-items:start}
+  .bar span{display:none}
+  .mods p{padding-left:0}
+  .mods summary{grid-template-columns:1fr 1.4rem}.mods summary em{grid-column:1/-1}
+}
+@media (max-width:520px){
+  body{font-size:1.08rem}
+  .hero h1{font-size:clamp(1.95rem,8.8vw,2.6rem)}
+  .btn{width:100%}
+  .bar .btn{width:auto}
+  .pilha li{flex-direction:column;gap:.2rem}
+}
+/* títulos: letras entram uma a uma e reagem ao mouse */
+.w{display:inline-block;white-space:nowrap}.c{display:inline-block}
+.js .split .c{opacity:0;transform:translateY(.55em) rotate(5deg);filter:blur(6px)}
+.js .split.in .c{opacity:1;transform:none;filter:none;transition:opacity .55s,transform .75s cubic-bezier(.2,.7,.2,1),filter .6s;transition-delay:calc(var(--i)*22ms)}
 .js .split.done .c{transition:transform .35s cubic-bezier(.2,.7,.2,1),color .25s;transition-delay:0s}
-.paper h2{--hv:#B93A18}
-.hero h1,.dark h2,.dark2 h2,.preco h2{--hv:var(--yellow)}
-@media (hover:hover){
-  .split.done .c:hover{transform:translateY(-.16em) scale(1.1) rotate(-3deg);color:var(--hv)}
-  .csc article,.porque div,.inc li,.pens li{transition:transform .35s cubic-bezier(.2,.7,.2,1),border-color .3s,box-shadow .3s}
-  .csc article:hover{transform:translateY(-5px);border-color:var(--yellow);box-shadow:0 18px 36px -22px rgba(58,16,32,.5)}
-  .porque div:hover{transform:translateY(-4px)}
-  .inc li:hover{transform:translateX(6px);border-color:var(--yellow)}
-  .js .pens.in li:hover{transform:scale(1.03) rotate(-.6deg);border-color:var(--yellow)}
-  .mods summary{transition:padding-left .3s}
-  .mods summary:hover{padding-left:10px}
-  .mods summary:hover .k{background:var(--yellow);color:var(--yellow-ink)}
-  .facts div{transition:background .25s}
-  .facts div:hover{background:rgba(255,255,255,.3)}
-  .btn:active{transform:scale(.97)}
-}
-@media (min-width:760px){
-  section{padding-block:96px}
-  .hero .ph{aspect-ratio:21/9;max-height:none}
-  .hero .txt{margin-top:-170px}
-  .facts .wrap{grid-template-columns:repeat(4,1fr)}
-  .facts div{border-bottom:0;border-right:1px solid rgba(58,16,32,.2);padding:22px 20px!important}
-  .facts div:last-child{border-right:0}
-  .pq,.csc,.porque{grid-template-columns:repeat(3,1fr)}
-  .pq{grid-template-columns:repeat(2,1fr)}
-  .autor{grid-template-columns:.8fr 1.2fr;gap:56px}
-  .dep{grid-template-columns:repeat(2,1fr)}
-  .sticky{display:none}
-}
-@media (prefers-reduced-motion:reduce){
-  html{scroll-behavior:auto}.hero .ph img,.hero .txt{animation:none}.btn::after{animation:none}
-  .js .rv{opacity:1;transform:none;transition:none}.sticky{transition:none}.faq summary::after,.mods summary::after{transition:none}
-}
+.escuro .split,.fundo .split{--hv:var(--mielina)}.claro .split,.bco .split{--hv:var(--dor-p)}
+@media (hover:hover){.split.done .c:hover{transform:translateY(-.14em) scale(1.08) rotate(-3deg);color:var(--hv)}}
+@media (prefers-reduced-motion:reduce){.hero h1{transition:none}.bar{transition:none}.res.flash{animation:none}}
+
+/* ===== luz e degradê ===== */
+.escuro{background:radial-gradient(820px 460px at 94% 6%,rgba(236,92,50,.20),transparent 62%),radial-gradient(640px 400px at 2% 98%,rgba(235,203,90,.12),transparent 62%),linear-gradient(180deg,#3A1020,#2F0D1A)}
+main>.escuro:nth-of-type(even){background:radial-gradient(820px 460px at 6% 6%,rgba(236,92,50,.18),transparent 62%),radial-gradient(640px 400px at 98% 96%,rgba(235,203,90,.12),transparent 62%),linear-gradient(180deg,#3A1020,#2F0D1A)}
+.fundo{background:radial-gradient(760px 420px at 100% 100%,rgba(236,92,50,.16),transparent 62%),radial-gradient(560px 360px at 0% 0%,rgba(235,203,90,.08),transparent 62%),linear-gradient(180deg,#240912,#1B0710)}
+.claro{background:radial-gradient(700px 360px at 96% 0%,rgba(235,203,90,.26),transparent 68%),radial-gradient(520px 320px at 0% 100%,rgba(236,92,50,.10),transparent 68%),linear-gradient(180deg,#E6ECEE,#D6DEE1)}
+.bco{background:radial-gradient(720px 380px at 98% 0%,rgba(235,203,90,.24),transparent 66%),radial-gradient(520px 320px at 0% 100%,rgba(236,92,50,.07),transparent 66%),linear-gradient(180deg,#fff,#F2F5F6)}
+.hero{background:radial-gradient(640px 640px at 76% 46%,rgba(236,92,50,.34),rgba(235,203,90,.10) 48%,transparent 72%),radial-gradient(700px 420px at 0% 100%,rgba(235,203,90,.14),transparent 64%),linear-gradient(180deg,#3A1020,#2A0B17)}
+.final{background:radial-gradient(900px 520px at 12% 100%,rgba(236,92,50,.36),rgba(235,203,90,.10) 50%,transparent 72%),radial-gradient(700px 420px at 100% 0%,rgba(235,203,90,.14),transparent 62%),linear-gradient(180deg,#3A1020,#2A0B17)}
+.foto{isolation:isolate}
+.foto::before{content:'';position:absolute;inset:-14% -16%;z-index:-1;background:radial-gradient(closest-side,rgba(236,92,50,.55),rgba(235,203,90,.20) 58%,transparent 78%);filter:blur(10px)}
+.foto .fio{box-shadow:0 0 18px rgba(236,92,50,.5)}
+.foto .fio::after{box-shadow:0 0 0 6px rgba(236,92,50,.25),0 0 24px 8px rgba(236,92,50,.8)}
+.rail b{box-shadow:0 0 12px rgba(235,203,90,.45)}
+.rail u{box-shadow:0 0 0 5px rgba(236,92,50,.25),0 0 20px 7px rgba(236,92,50,.85)}
+.btn-y{background:linear-gradient(135deg,#F7E08C 0%,#EBCB5A 52%,#E8A64A 100%);box-shadow:0 6px 24px rgba(235,203,90,.28)}
+.btn-y:hover{background:linear-gradient(135deg,#FBE9A6 0%,#F0D06A 52%,#EDB055 100%);box-shadow:0 8px 30px rgba(236,92,50,.45)}
+.btn-m{background:linear-gradient(135deg,#4A1428,#3A1020 60%,#2B0B18)}
+.btn-m:hover{background:linear-gradient(135deg,#5A1A32,#46142A 60%,#33101F)}
+.csc::before{box-shadow:0 0 18px rgba(236,92,50,.55)}
+.csc div::before{box-shadow:0 0 0 4px rgba(0,0,0,0),0 0 20px 3px var(--c)}
+.dep blockquote{border-top:0;position:relative;background:linear-gradient(160deg,#2F0D1A,#240912)}
+.dep blockquote::before{content:'';position:absolute;left:0;right:0;top:0;height:4px;background:linear-gradient(90deg,var(--mielina),var(--dor));box-shadow:0 0 16px rgba(236,92,50,.5)}
+.card{background:radial-gradient(420px 260px at 100% 0%,rgba(236,92,50,.38),transparent 65%),radial-gradient(300px 220px at 0% 100%,rgba(235,203,90,.20),transparent 70%),linear-gradient(160deg,#4A1428,#3A1020 60%,#2B0B18);box-shadow:0 20px 60px rgba(58,16,32,.35)}
+.card .pr{background:linear-gradient(100deg,#FFFFFF 25%,#F7E08C 70%,#EBCB5A);-webkit-background-clip:text;background-clip:text;color:transparent}
+.selo::after{box-shadow:0 0 14px 3px rgba(236,92,50,.7)}
+.res .prog i{box-shadow:0 0 10px rgba(236,92,50,.55)}
+
+/* ===== foto integrada ao topo ===== */
+.hero-g{grid-template-columns:minmax(0,1.45fr) minmax(0,.55fr)}
+.foto{max-width:25rem;justify-self:end;width:100%}
+.foto img{height:auto;aspect-ratio:10/9;object-position:50% 5%;filter:none;
+  -webkit-mask-image:radial-gradient(ellipse 56% 58% at 50% 42%,#000 38%,transparent 100%);
+  mask-image:radial-gradient(ellipse 56% 58% at 50% 42%,#000 38%,transparent 100%)}
+.foto::after{display:none}
+.foto::before{inset:-18% -22%}
+.foto figcaption{left:50%;transform:translateX(-50%);bottom:2.2rem;text-align:center;white-space:nowrap}
+.foto .fio{left:6%;right:6%;bottom:.6rem}
+@media (max-width:900px){.foto{max-width:19rem;justify-self:start}}
+
+/* ajuste final da foto */
+.hero-g{grid-template-columns:minmax(0,1.2fr) minmax(0,.8fr)}
+.foto{max-width:30rem}
+.foto img{aspect-ratio:1/1.02;object-position:50% 4%;
+  -webkit-mask-image:radial-gradient(ellipse 60% 60% at 50% 42%,#000 42%,transparent 100%);
+  mask-image:radial-gradient(ellipse 60% 60% at 50% 42%,#000 42%,transparent 100%)}
+.foto figcaption{position:static;transform:none;text-align:left;white-space:normal;margin:.3rem 7% 0}
+.foto .fio{display:block;height:8px;position:relative;left:auto;right:auto;bottom:auto;margin:.7rem 7% 0}
+@media (max-width:900px){.foto{max-width:22rem}}
+.aut img{height:auto;aspect-ratio:5/4;object-position:58% 35%}
+@media (min-width:901px){.aut{grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr)}}
+
+/* foto limpa, sem esmaecer */
+.foto{max-width:27rem}
+.foto img{-webkit-mask-image:none;mask-image:none;aspect-ratio:4/4.6;object-position:50% 6%;border-radius:3px;box-shadow:0 18px 50px rgba(20,4,10,.45)}
+.foto::before{inset:-10% -14%}
+.foto figcaption{margin:.9rem 0 0}
+.foto .fio{margin:.7rem 0 0}
+@media (max-width:900px){.foto{max-width:21rem}}
+@media (max-width:900px){.hero-g{grid-template-columns:1fr}.foto{justify-self:start;max-width:20rem}.hero h1{overflow-wrap:break-word}}
 </style>
 </head>
 <body>
 
-<header class="hero" id="topo">
-  <div class="ph">
-    <img src="../assets/site6.jpg" alt="Gunther Löffler explicando a coluna vertebral com um modelo anatômico" width="1200" height="800" fetchpriority="high">
-    <div class="brand wrap" style="padding:0;left:var(--gl);right:auto;max-width:none"><img class="logo" src="../assets/fisioexpert-assinado-escuro.svg" alt="FisioExpert, por Gunther Löffler" width="200" height="44"></div>
+<div class="rail" aria-hidden="true"><i></i><b></b><u></u></div>
+
+<div class="bar" id="bar" aria-hidden="true">
+  <div>
+    <img src="../img/fisioexpert-principal-escuro.svg" alt="">
+    <span>12x de <b>R$ 258</b> ou <b>R$ 2.497</b> à vista</span>
+    <a class="btn btn-y" href="#oferta" data-buy tabindex="-1">Quero entrar no FisioExpert</a>
   </div>
-  <div class="wrap txt">
-    <p class="tag">Para fisioterapeutas que atendem dor irradiada</p>
-    <h1>Dor irradiada com clareza, critério e conduta.</h1>
-    <p class="lede">O método do Gunther Löffler para investigar, interpretar e tratar os casos que a maioria dos fisioterapeutas evita, sem depender de tentativa e erro.</p>
-    <div class="cta-row">
-      <a class="btn" id="heroCta" href="#preco" data-link="entrar">Quero entrar
-        <svg viewBox="0 0 14 14" aria-hidden="true"><path d="M2 7h10M8 3l4 4-4 4"/></svg></a>
-      <span class="mini">Acesso por 12 meses</span>
+</div>
+
+<main>
+
+<!-- 1. ABERTURA -->
+<header class="sec hero escuro" id="topo">
+  <div class="topo">
+    <img src="../img/fisioexpert-principal-escuro.svg" alt="FisioExpert">
+    <a href="#conteudo">Ver o conteúdo</a>
+  </div>
+  <div class="hero-g">
+    <div>
+      <p class="para">Para fisioterapeutas que atendem dor irradiada</p>
+      <h1 id="h1">Domine os casos de dor irradiada usando a neurodinâmica</h1>
+      <p class="lead">O método CSC, desenvolvido por Gunther Löffler, dá clareza ao caso, classifica e conduz com segurança os casos que desafiam até quem tem anos de consultório.</p>
+      <div class="go">
+        <a class="btn btn-y" href="#oferta" data-buy>Quero entrar no FisioExpert</a>
+        <p class="micro"><b>12x de R$ 258</b> ou R$ 2.497 à vista. Acesso por 12 meses e 7 dias de garantia.</p>
+      </div>
     </div>
-    <!-- Espaço reservado para o vídeo de apresentação (entra depois) -->
-    <div id="video" hidden></div>
+    <figure class="foto">
+      <img src="../img/gunther-hero.jpg" alt="Gunther Löffler, fisioterapeuta, em seu consultório" width="1122" height="1402" fetchpriority="high">
+      <figcaption>Gunther Löffler<small>Criador do Método CSC</small></figcaption>
+      <span class="fio" aria-hidden="true"></span>
+    </figure>
   </div>
 </header>
 
-<div class="facts">
-  <div class="wrap">
-    <div><b>8 módulos</b><span>da dor à prática</span></div>
-    <div><b>12 meses</b><span>de acesso e suporte</span></div>
-    <div><b>Casos reais</b><span>analisados pelo Gunther</span></div>
-    <div><b>Comunidade</b><span>de alunos</span></div>
-  </div>
-</div>
+<!-- 2. FAIXA EM MOVIMENTO -->
+<section class="nums" aria-label="O que a formação oferece">
+  <ul class="sr"><li>8 módulos, da dor à prática</li><li>12 meses de acesso e suporte</li><li>Casos reais analisados pelo Gunther</li><li>Comunidade de alunos</li></ul>
+  <div class="mq" aria-hidden="true"><div class="gr"><span><b>8 módulos</b><em>da dor à prática</em></span><i></i><span><b>12 meses</b><em>de acesso e suporte</em></span><i></i><span><b>Casos reais</b><em>analisados pelo Gunther</em></span><i></i><span><b>Comunidade</b><em>de alunos</em></span><i></i></div><div class="gr"><span><b>8 módulos</b><em>da dor à prática</em></span><i></i><span><b>12 meses</b><em>de acesso e suporte</em></span><i></i><span><b>Casos reais</b><em>analisados pelo Gunther</em></span><i></i><span><b>Comunidade</b><em>de alunos</em></span><i></i></div><div class="gr"><span><b>8 módulos</b><em>da dor à prática</em></span><i></i><span><b>12 meses</b><em>de acesso e suporte</em></span><i></i><span><b>Casos reais</b><em>analisados pelo Gunther</em></span><i></i><span><b>Comunidade</b><em>de alunos</em></span><i></i></div><div class="gr"><span><b>8 módulos</b><em>da dor à prática</em></span><i></i><span><b>12 meses</b><em>de acesso e suporte</em></span><i></i><span><b>Casos reais</b><em>analisados pelo Gunther</em></span><i></i><span><b>Comunidade</b><em>de alunos</em></span><i></i></div></div>
+</section>
 
-<section class="paper" id="para-quem">
+<!-- 4. DOR / PENSAMENTOS -->
+<section class="sec escuro">
   <div class="wrap">
-    <h2>Você se reconhece aqui?</h2>
-    <p class="lede">Marque o que acontece com você no consultório.</p>
-    <ul class="pq" id="pq">
-      <li><label><input type="checkbox"><span class="box"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg></span><span>Estudo bastante e atendo todo dia, mas alguns pacientes não evoluem como deveriam.</span></label></li>
-      <li><label><input type="checkbox"><span class="box"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg></span><span>Quero parar de depender de tentativa e erro na dor irradiada.</span></label></li>
-      <li><label><input type="checkbox"><span class="box"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg></span><span>Conheço várias técnicas, mas travo na hora de escolher quando o caso foge do padrão.</span></label></li>
-      <li><label><input type="checkbox"><span class="box"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg></span><span>Falta segurança para investigar e interpretar os sinais de alguns casos.</span></label></li>
-      <li><label><input type="checkbox"><span class="box"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg></span><span>Não entendo por que uns pacientes melhoram rápido e outros nem respondem.</span></label></li>
-      <li><label><input type="checkbox"><span class="box"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg></span><span>Quero ser referência nos casos que a maioria dos fisioterapeutas evita.</span></label></li>
-    </ul>
-    <div class="res" id="res" aria-live="polite">
-      <div><div class="cnt"><span id="n">0</span><small>de 6</small></div><p id="msg">Toque nas frases que descrevem a sua rotina.</p></div>
-      <a class="btn" id="resBtn" href="#preco" hidden>Quero entrar</a>
+    <h2 class="h2 largo">O que passa na sua cabeça depois do último paciente.</h2>
+    <p class="lead mut">Fim do dia. Você revisa os casos que ficaram.</p>
+    <div class="pens">
+      <div class="bal"><small>Sobre o paciente com dor na perna</small><p>Será que é o nervo mesmo?</p></div>
+      <div class="bal"><small>Terça-feira</small><p>Ele melhorou por três dias e voltou tudo.</p></div>
+      <div class="bal"><small>Sobre o caso da semana passada</small><p>Já fiz tudo o que sei. O que me falta?</p></div>
+      <div class="bal"><small>Na hora de decidir</small><p>Mudo a conduta ou insisto mais uma semana?</p></div>
+      <div class="bal"><small>Antes de fechar a ficha</small><p>Dou alta ou tem algo que eu não vi?</p></div>
+    </div>
+    <p class="fecha">Se você já pensou isso, <b>não falta esforço. Falta um caminho claro.</b></p>
+  </div>
+</section>
+
+<!-- 5. REENQUADRE -->
+<section class="sec claro">
+  <div class="wrap">
+    <h2 class="h2 largo">O problema não é falta de técnica.</h2>
+    <div class="txt" style="margin-top:1.6rem">
+      <p>Você estuda, faz curso, atende todo dia. O repertório existe. O que falta, nos casos que fogem do padrão, é uma ordem: o que esse sinal está dizendo, em que quadro esse paciente se encaixa e qual é o próximo passo.</p>
+      <p>Sem essa ordem, cada decisão vira aposta. Você troca a técnica, insiste mais uma semana ou encaminha com a sensação de que deixou algo passar.</p>
+      <p><b>Casos complexos não são resolvidos por mais técnicas. São resolvidos por clareza clínica.</b></p>
+    </div>
+    <div class="tres">
+      <div><h3>Mecanismo</h3><p>Identificar qual mecanismo está por trás da dor.</p></div>
+      <div><h3>Interpretação</h3><p>Ler as respostas do paciente durante a avaliação.</p></div>
+      <div><h3>Critério</h3><p>Ter regras claras para cada fase do tratamento.</p></div>
     </div>
   </div>
 </section>
 
-<section class="dark2" id="problema">
+<!-- 6. MÉTODO -->
+<section class="sec escuro" id="metodo">
   <div class="wrap">
-    <h2>O que passa na sua cabeça depois do último paciente</h2>
-    <p class="cena">Fim do dia. Você revisa os casos que ficaram.</p>
-    <ul class="pens" id="pens">
-      <li><span>Sobre o paciente com dor na perna</span>Será que é o nervo mesmo?</li>
-      <li><span>Terça-feira</span>Ele melhorou por três dias e voltou tudo.</li>
-      <li><span>Sobre o caso da semana passada</span>Já fiz tudo o que sei. O que me falta?</li>
-      <li><span>Na hora de decidir</span>Mudo a conduta ou insisto mais uma semana?</li>
-      <li><span>Antes de fechar a ficha</span>Dou alta ou tem algo que eu não vi?</li>
-    </ul>
-    <p class="lede">Se você já pensou isso, não falta esforço. Falta um caminho claro. Costumam faltar três coisas:</p>
-    <div class="porque">
-      <div><b>Mecanismo</b>Identificar qual mecanismo está por trás da dor.</div>
-      <div><b>Interpretação</b>Ler as respostas do paciente durante a avaliação.</div>
-      <div><b>Critério</b>Ter regras claras para cada fase do tratamento.</div>
-    </div>
-    <p class="lede" style="color:#DFE6E8;font-weight:600">O Fisioexpert foi criado para organizar a investigação, a interpretação e o tratamento da dor irradiada.</p>
-  </div>
-</section>
-
-<section class="paper" id="metodo">
-  <div class="wrap">
-    <h2>O método CSC em três passos</h2>
-    <p class="lede">O Sistema CSC organiza o raciocínio clínico do Gunther para você seguir a mesma sequência em todo caso.</p>
+    <h2 class="h2 largo">Siga o nervo até a causa da dor.</h2>
+    <p class="lead">O Método CSC, de Clínica Sob Controle, organiza o raciocínio clínico do Gunther em três passos. Você repete a mesma sequência em todo caso.</p>
     <div class="csc">
-      <article class="rv"><span class="n">1</span><h3>Clareza</h3><p>Entenda o que está acontecendo com o paciente e qual mecanismo explica a dor.</p></article>
-      <article class="rv"><span class="n">2</span><h3>Classificação</h3><p>Situe o paciente no quadro clínico certo, com critérios para cada nível.</p></article>
-      <article class="rv"><span class="n">3</span><h3>Conduta</h3><p>Escolha o tratamento, saiba quando progredir, mudar de estratégia ou dar alta.</p></article>
+      <div><h3>Clareza</h3><p>Entenda o que está acontecendo com o paciente e qual mecanismo explica a dor.</p><small>A raiz: de onde o sinal parte.</small></div>
+      <div><h3>Classificação</h3><p>Situe o paciente no quadro clínico certo, com critérios para cada nível.</p><small>O trajeto: por onde o caso passa.</small></div>
+      <div><h3>Condução</h3><p>Escolha o tratamento, saiba quando progredir, mudar de estratégia ou dar alta.</p><small>O destino: o que fazer a seguir.</small></div>
+    </div>
+    <p class="metodo-nota">A neurodinâmica entra como ferramenta dentro dessa sequência. Você aprende a técnica e, principalmente, <b style="color:var(--mielina);font-weight:600">quando ela faz sentido</b>.</p>
+    <p style="margin-top:2.4rem"><a class="btn btn-y" href="#oferta" data-buy>Quero entrar no FisioExpert</a></p>
+  </div>
+</section>
+
+<!-- 7. ANTES / DEPOIS -->
+<section class="sec claro">
+  <div class="wrap">
+    <h2 class="h2 largo">O que muda no seu atendimento.</h2>
+    <div class="ad">
+      <div class="h"><p>Hoje</p><p>Com o método</p></div>
+      <div><p>Testar uma técnica e esperar para ver.</p><p>Saber qual mecanismo você está tratando antes de escolher a conduta.</p></div>
+      <div><p>O paciente melhora por três dias e volta tudo.</p><p>Ler as respostas durante a avaliação e ajustar a conduta com critério.</p></div>
+      <div><p>Insistir ou mudar? A dúvida fica para a próxima sessão.</p><p>Regras claras para progredir, mudar de estratégia ou dar alta.</p></div>
+      <div><p>Evitar o caso que foge do padrão.</p><p>Segurança para investigar e conduzir o caso complexo.</p></div>
     </div>
   </div>
 </section>
 
-<section class="dark" id="autor">
-  <div class="wrap autor">
-    <div class="foto"><img src="../assets/site5.jpg" alt="Gunther Löffler de camisa branca, com os braços apoiados na bancada da clínica" loading="lazy" width="1200" height="1500"></div>
+<!-- TESTE NO MEIO DA PÁGINA -->
+<section class="sec bco" id="reconhece">
+  <div class="wrap id-g">
     <div>
-      <p class="tag" style="margin-bottom:14px">Seu professor</p>
-      <h2>Gunther Löffler</h2>
-      <p>Fisioterapeuta com atuação prática em casos complexos de dor irradiada e especializações nacionais e internacionais.</p>
-      <p>Desenvolveu o Sistema CSC (Clareza, Classificação e Conduta) e já ajudou centenas de fisioterapeutas a conduzir esses casos com mais segurança.</p>
+      <h2 class="h2">Teste rápido: você se reconhece aqui?</h2>
+      <p class="lead">Marque o que acontece no seu consultório. Leva menos de um minuto.</p>
+    </div>
+    <div>
+      <form class="chk" id="chk" onsubmit="return false">
+        <label><input type="checkbox"><i></i><span>Estudo bastante e atendo todo dia, mas alguns pacientes não evoluem como deveriam.</span></label>
+        <label><input type="checkbox"><i></i><span>Quero parar de depender de tentativa e erro na dor irradiada.</span></label>
+        <label><input type="checkbox"><i></i><span>Conheço várias técnicas, mas travo na hora de escolher quando o caso foge do padrão.</span></label>
+        <label><input type="checkbox"><i></i><span>Falta segurança para investigar e interpretar os sinais de alguns casos.</span></label>
+        <label><input type="checkbox"><i></i><span>Não entendo por que uns pacientes melhoram rápido e outros nem respondem.</span></label>
+        <label><input type="checkbox"><i></i><span>Quero ser referência nos casos que a maioria dos fisioterapeutas evita.</span></label>
+      </form>
+      <div class="res" id="res" aria-live="polite">
+        <p class="rt">Seu resultado</p>
+        <div class="cont" id="cont">0 de 6 frases marcadas</div>
+        <div class="prog"><i></i></div>
+        <h3 id="restit">Marque as frases ao lado</h3>
+        <p id="resmsg">Escolha as que descrevem o seu consultório e o seu resultado aparece aqui.</p>
+        <a class="btn btn-m" href="#oferta" data-buy>Quero entrar no FisioExpert</a>
+      </div>
     </div>
   </div>
 </section>
 
-<section class="paper" id="modulos">
+<!-- 8. CONTEÚDO -->
+<section class="sec fundo" id="conteudo">
   <div class="wrap">
-    <h2>Por dentro do Fisioexpert</h2>
+    <h2 class="h2">Por dentro do FisioExpert.</h2>
+    <p class="lead">Oito módulos em aulas gravadas e diretas ao ponto, da dor à prática. Toque em um módulo para ver o que ele cobre.</p>
     <div class="mods">
-      <details><summary><span class="k">1</span>Boas-vindas e orientação</summary><p>Como a formação funciona e como aproveitar melhor cada conteúdo.</p></details>
-      <details><summary><span class="k">2</span>Entendendo a dor</summary><p>Dor nociceptiva, neuropática e nociplástica, dor somática referida, mecanossensibilidade, dor radicular, radiculopatia e outras disfunções neurais.</p></details>
-      <details><summary><span class="k">3</span>Possibilidades de tratamento</summary><p>Educação, estilo de vida, fisioterapia, exercícios, medicação, tratamentos minimamente invasivos, espera assistida e cirurgia.</p></details>
-      <details><summary><span class="k">4</span>Investigação e neurodinâmica</summary><p>Questionamento, sintomas, avaliação geral e bandeiras vermelhas.</p></details>
-      <details><summary><span class="k">5</span>Avaliação neurológica e testes</summary><p>Força, reflexos, sensibilidade, mecanossensibilidade, palpação e testes neurodinâmicos.</p></details>
-      <details><summary><span class="k">6</span>Classificação do paciente</summary><p>Os níveis de classificação e as disfunções patológicas neurais.</p></details>
-      <details><summary><span class="k">7</span>Tratamento e neurodinâmica na prática</summary><p>Tensão neural, abertura e deslizamentos, com casos cervicais e lombares.</p></details>
-      <details><summary><span class="k">8</span>Condições específicas</summary><p>Síndrome do túnel do carpo, túnel supinador, piriforme, dor no calcanhar, desfiladeiro torácico e neuroma de Morton, entre outras.</p></details>
+      <details open><summary><em>Módulo 1</em>Boas-vindas e orientação</summary><p>Como a formação funciona e como aproveitar melhor cada conteúdo.</p></details>
+      <details><summary><em>Módulo 2</em>Entendendo a dor</summary><p>Dor nociceptiva, neuropática e nociplástica, dor somática referida, mecanossensibilidade, dor radicular, radiculopatia e outras disfunções neurais.</p></details>
+      <details><summary><em>Módulo 3</em>Possibilidades de tratamento</summary><p>Educação, estilo de vida, fisioterapia, exercícios, medicação, tratamentos minimamente invasivos, espera assistida e cirurgia.</p></details>
+      <details><summary><em>Módulo 4</em>Investigação e neurodinâmica</summary><p>Questionamento, sintomas, avaliação geral e bandeiras vermelhas.</p></details>
+      <details><summary><em>Módulo 5</em>Avaliação neurológica e testes</summary><p>Força, reflexos, sensibilidade, mecanossensibilidade, palpação e testes neurodinâmicos.</p></details>
+      <details><summary><em>Módulo 6</em>Classificação do paciente</summary><p>Os níveis de classificação e as disfunções patológicas neurais.</p></details>
+      <details><summary><em>Módulo 7</em>Tratamento e neurodinâmica na prática</summary><p>Tensão neural, abertura e deslizamentos, com casos cervicais e lombares.</p></details>
+      <details><summary><em>Módulo 8</em>Condições específicas</summary><p>Síndrome do túnel do carpo, túnel supinador, piriforme, dor no calcanhar, desfiladeiro torácico e neuroma de Morton, entre outras.</p></details>
     </div>
   </div>
 </section>
 
-<section class="dark2" id="inclui">
-  <div class="wrap">
-    <h2>O que você leva</h2>
-    <p class="lede">Além das aulas gravadas, diretas ao ponto, o Fisioexpert inclui:</p>
-    <ul class="inc">
-      <li><b>Método Fisioexpert</b><span>R$ 2.997</span></li>
-      <li><b>Fluxograma de condução do paciente</b><span>R$ 750</span></li>
-      <li><b>Checklist avançado de investigação e interpretação</b><span>R$ 500</span></li>
-      <li><b>Biblioteca de casos analisados pelo Gunther</b><span>R$ 700</span></li>
-      <li class="free"><b>Comunidade de alunos</b><span>Incluída</span></li>
-      <li class="free"><b>Suporte de 12 meses para aplicar o método</b><span>Incluído</span></li>
-    </ul>
-    <div class="soma"><span>Valor separado dos itens</span><b>R$ 4.947</b></div>
-  </div>
-</section>
-
-<section class="paper" id="depoimentos" hidden>
-  <div class="wrap">
-    <h2>Quem aplicou o Fisioexpert teve este resultado</h2>
-    <div class="dep" id="dep"></div>
-  </div>
-</section>
-
-<section class="preco" id="preco">
-  <div class="wrap">
-    <h2 style="text-align:center">Entre para o Fisioexpert</h2>
-    <p class="lede" style="text-align:center;margin-inline:auto">Acesso por 12 meses à formação completa, com o suporte para aplicar o método.</p>
-    <div class="card">
-      <div class="de">De R$ 2.997</div>
-      <div class="par"><small>12x de</small>R$ 258</div>
-      <p class="vista">ou R$ 2.497 à vista</p>
-      <a class="btn" id="buy" data-link="comprar" href="https://pay.hotmart.com/X103773777S?off=xcekc9ud" target="_blank" rel="noopener">Sim, eu quero ter mais segurança na clínica</a>
-      <ul>
-        <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg>8 módulos em aulas gravadas</li>
-        <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg>Fluxograma e checklist avançado</li>
-        <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg>Biblioteca de casos analisados</li>
-        <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg>Comunidade e suporte por 12 meses</li>
-      </ul>
-    </div>
-    <div class="garantia">
-      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3 5 6v5.5c0 4.4 2.9 7.9 7 9.5 4.1-1.6 7-5.1 7-9.5V6z"/><path d="m9 12 2.2 2.2L15.5 10"/></svg>
-      <div><b>7 dias de garantia incondicional</b>
-      <p>Experimente por 7 dias. Se não fizer sentido para você, peça à equipe e receba 100% do valor de volta.</p></div>
+<!-- 9. AUTOR -->
+<section class="sec claro" id="gunther">
+  <div class="wrap aut">
+    <img src="../img/gunther-coluna.jpg" alt="Gunther Löffler explicando com um modelo de coluna vertebral" width="1536" height="1024" loading="lazy">
+    <div>
+      <h2 class="nome">Gunther Löffler</h2>
+      <div class="txt">
+        <p>Fisioterapeuta com atuação prática em casos complexos de dor irradiada e especializações nacionais e internacionais.</p>
+        <p>Ele também já travou diante de casos que não evoluíam. A busca por clareza virou o Sistema CSC, e esse caminho já ajudou centenas de fisioterapeutas a conduzir esses casos com mais segurança.</p>
+        <p>No FisioExpert, ele não entrega uma lista de técnicas. Mostra o raciocínio por trás de cada decisão, com casos reais.</p>
+      </div>
     </div>
   </div>
 </section>
 
-<section class="paper" id="duvidas">
+<!-- 10. DEPOIMENTOS -->
+<section class="sec escuro" id="depoimentos">
   <div class="wrap">
-    <h2>Perguntas frequentes</h2>
+    <h2 class="h2 largo">O que fisioterapeutas dizem depois de aplicar.</h2>
+    <div class="dep">
+      <blockquote><p>Antes tinha mais insegurança para trabalhar com dores irradiadas. Agora consigo tratar com mais segurança.</p><footer>Fisioterapeuta, aluno do Gunther</footer></blockquote>
+      <blockquote><p>Tenho mais segurança e melhores resultados nos tratamentos, e mais indicações dos pacientes tratados. Esses pacientes indicam outros.</p><footer>Fisioterapeuta, aluno do Gunther</footer></blockquote>
+      <blockquote><p>Me abriu os olhos sobre outras possibilidades além de todas as que eu já tinha investigado. Pelos testes que aprendi, já consegui identificar na avaliação.</p><footer>Fisioterapeuta, aluna do Gunther</footer></blockquote>
+      <blockquote><p>Consegui definir com mais clareza o que fazer nos casos de dores irradiadas.</p><footer>Fisioterapeuta, aluno do Gunther</footer></blockquote>
+    </div>
+  </div>
+</section>
+
+<!-- 11. OFERTA -->
+<section class="sec claro" id="oferta">
+  <div class="wrap">
+    <h2 class="h2 largo">Entre para o FisioExpert.</h2>
+    <p class="lead">Além das aulas gravadas, o FisioExpert inclui as ferramentas para aplicar o método no dia seguinte.</p>
+    <div class="of-g">
+      <div>
+        <ul class="pilha">
+          <li><div><b>Método FisioExpert</b><small>8 módulos em aulas gravadas, da dor à prática.</small></div><s>R$ 2.997</s></li>
+          <li><div><b>Fluxograma de condução do paciente</b><small>A sequência do Método CSC em uma página.</small></div><s>R$ 750</s></li>
+          <li><div><b>Checklist avançado de investigação e interpretação</b><small>Para não esquecer nenhum sinal na avaliação.</small></div><s>R$ 500</s></li>
+          <li><div><b>Biblioteca de casos analisados pelo Gunther</b><small>Casos reais com o raciocínio explicado.</small></div><s>R$ 700</s></li>
+          <li><div><b>Comunidade de alunos</b><small>Para trocar casos e aprofundar o raciocínio.</small></div><span class="inc">Incluída</span></li>
+          <li><div><b>Suporte de 12 meses</b><small>Para aplicar o método com acompanhamento.</small></div><span class="inc">Incluído</span></li>
+        </ul>
+        <p class="total">Valor dos itens separados: <s>R$ 4.947</s></p>
+      </div>
+      <aside class="card" aria-label="Preço e compra">
+        <p class="de">De <s>R$ 2.997</s> por</p>
+        <p class="pr"><small>12x de</small>R$ 258</p>
+        <p class="av">ou R$ 2.497 à vista</p>
+        <ul>
+          <li>8 módulos em aulas gravadas</li>
+          <li>Fluxograma e checklist avançado</li>
+          <li>Biblioteca de casos analisados</li>
+          <li>Comunidade e suporte por 12 meses</li>
+        </ul>
+        <a class="btn btn-y" href="#oferta" data-buy id="buy">Quero entrar no FisioExpert</a>
+        <p class="seg">Pagamento seguro. 7 dias de garantia.</p>
+      </aside>
+    </div>
+
+    <div class="gar">
+      <div class="selo" aria-hidden="true"><div>7<small>dias</small></div></div>
+      <div>
+        <h3>Garantia incondicional de 7 dias</h3>
+        <p>Entre, assista às aulas e aplique no consultório. Se o FisioExpert não fizer sentido para você, peça à equipe dentro de 7 dias e receba 100% do valor de volta.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 12. PARA QUEM -->
+<section class="sec fundo">
+  <div class="wrap">
+    <h2 class="h2 largo">Para quem é, e para quem não é.</h2>
+    <div class="pq">
+      <div><h3>É para você se</h3>
+        <ul>
+          <li>Você atende dor irradiada ou casos de coluna e quer mais segurança nos que fogem do padrão.</li>
+          <li>Você já tem repertório de técnicas, mas trava na hora de decidir a conduta.</li>
+          <li>Você quer um raciocínio que se repete em todo caso, não uma receita avulsa.</li>
+          <li>Você prefere estudar no seu ritmo, com acesso por 12 meses.</li>
+        </ul></div>
+      <div class="nao"><h3>Não é para você se</h3>
+        <ul>
+          <li>Você procura um protocolo único que dispense o raciocínio clínico.</li>
+          <li>Você espera uma promessa de resultado garantido. O curso ensina a conduzir o caso, não substitui a avaliação de cada paciente.</li>
+          <li>Você ainda não atende pacientes. A formação parte da prática clínica.</li>
+        </ul></div>
+    </div>
+  </div>
+</section>
+
+<!-- 13. FAQ -->
+<section class="sec claro" id="duvidas">
+  <div class="wrap">
+    <h2 class="h2">Perguntas frequentes.</h2>
     <div class="faq">
-      <details><summary>Por quanto tempo terei acesso?</summary><p>Você tem acesso completo por 1 ano e assiste às aulas no seu ritmo.</p></details>
+      <details><summary>Por quanto tempo terei acesso?</summary><p>Você tem acesso completo por 12 meses e assiste às aulas no seu ritmo.</p></details>
       <details><summary>Terei acesso ao Gunther?</summary><p>Sim. Há acesso contínuo à comunidade, com acompanhamento e aulas.</p></details>
-      <details><summary>Como posso tirar dúvidas?</summary><p>Pela comunidade exclusiva, para trocar experiências e aprofundar o raciocínio clínico.</p></details>
-      <details><summary>Qual a diferença entre este curso e o presencial?</summary><p>O Fisioexpert é mais completo e detalhado, e você assiste quando quiser.</p></details>
-    </div>
-    <div class="duv">
-      <p>Ainda tem dúvidas? Fale com a equipe.</p>
-      <a class="btn" id="duvBtn" data-link="duvidas" href="#" target="_blank" rel="noopener">Tenho dúvidas</a>
+      <details><summary>Como tiro minhas dúvidas?</summary><p>Pela comunidade exclusiva de alunos, onde você troca experiências e aprofunda o raciocínio clínico.</p></details>
+      <details><summary>Preciso já dominar neurodinâmica?</summary><p>Não. A formação parte do entendimento da dor e constrói a investigação, a avaliação e a neurodinâmica passo a passo, até a aplicação em casos.</p></details>
+      <details><summary>Qual a diferença entre este curso e o presencial?</summary><p>O FisioExpert é mais completo e detalhado, e você assiste quando quiser.</p></details>
+      <details><summary>E se eu não gostar?</summary><p>Você tem 7 dias de garantia incondicional. Se não fizer sentido para você, peça à equipe e receba 100% do valor de volta.</p></details>
+      <details><summary>Como posso pagar?</summary><p>Em 12x de R$ 258 ou R$ 2.497 à vista.</p></details>
+      <details><summary>Ainda tenho dúvidas.</summary><p>Fale com a equipe pelo <a href="https://wa.me/5512988761420?text=Ol%C3%A1!%20Vim%20pela%20p%C3%A1gina%20do%20FisioExpert%20e%20tenho%20uma%20d%C3%BAvida." rel="noopener">WhatsApp</a>.</p></details>
     </div>
   </div>
 </section>
 
-<footer>
+<!-- 14. CHAMADA FINAL -->
+<section class="sec escuro final">
   <div class="wrap">
-    <img class="logo" src="../assets/fisioexpert-principal-escuro.svg" alt="FisioExpert" width="150" height="33" style="margin:0 auto 14px">
-    © 2026 Gunther Löffler. Todos os direitos reservados.<br>CNPJ 57.225.507/0001-60
+    <h2 class="h2 largo">Na próxima vez que o paciente apontar o pé, você sabe por onde começar.</h2>
+    <p class="lead">Entre para o FisioExpert e passe a conduzir a dor irradiada com clareza, critério e segurança.</p>
+    <a class="btn btn-y" href="#oferta" data-buy>Quero entrar no FisioExpert</a>
+    <p class="micro"><b>12x de R$ 258</b> ou R$ 2.497 à vista. Acesso por 12 meses e 7 dias de garantia.</p>
+    <p class="ps"><b>P.S.</b> Se você respondeu "sim" a pelo menos uma das frases da checklist, o FisioExpert foi feito para o seu caso. Experimente por 7 dias. Se não fizer sentido, você recebe tudo de volta.</p>
   </div>
+</section>
+
+<footer class="rod">
+  <img src="../img/fisioexpert-assinado-escuro.svg" alt="FisioExpert, por Gunther Löffler">
+  <p>© 2026 Gunther Löffler. Todos os direitos reservados. CNPJ 57.225.507/0001-60.</p>
+  <p>Conteúdo educacional para fisioterapeutas. Os resultados dependem da aplicação clínica e variam de profissional para profissional. O curso não substitui a avaliação individual de cada paciente.</p>
+  <p>Instagram: <a href="https://instagram.com/guntherloffler" rel="noopener">@guntherloffler</a></p>
 </footer>
 
-<div class="sticky" id="sticky" aria-hidden="true">
-  <div class="p"><small>12x de</small><b>R$ 258</b></div>
-  <a class="btn" href="#preco" tabindex="-1">Quero entrar</a>
-</div>
+</main>
 
 <script>
-/* ====== EDITE AQUI ====== */
-var WHATS='5512988761420';
-/* Depoimentos: coloque as imagens em /assets/depoimentos/ e liste aqui. Sem itens, a seção fica oculta. */
-var DEPOIMENTOS=[
-  /* {src:'../assets/depoimentos/depoimento-1.jpg', alt:'Depoimento de aluno do Fisioexpert'} */
-];
-/* ====== FIM ====== */
 (function(){
-  document.documentElement.classList.add('js');
-  var reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  /* Troque pelo link do checkout (Hotmart ou outro). Enquanto estiver vazio, os botões levam à oferta. */
+  var CHECKOUT_URL = "https://pay.hotmart.com/X103773777S?off=xcekc9ud";
+  var root = document.documentElement;
+  var reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  document.getElementById('duvBtn').href='https://wa.me/'+WHATS+'?text='+encodeURIComponent('Olá! Vim pela página do Fisioexpert e tenho uma dúvida.');
+  document.querySelectorAll('[data-buy]').forEach(function(a){
+    if (CHECKOUT_URL && (a.id === 'buy')) { a.href = CHECKOUT_URL; a.target = '_blank'; a.rel = 'noopener'; }
+  });
 
-  if(DEPOIMENTOS.length){
-    document.getElementById('dep').innerHTML=DEPOIMENTOS.map(function(d){return '<img src="'+d.src+'" alt="'+(d.alt||'')+'" loading="lazy">';}).join('');
-    document.getElementById('depoimentos').hidden=false;
+  function prog(){
+    var m = root.scrollHeight - innerHeight;
+    root.style.setProperty('--p', (m > 0 ? Math.min(1, Math.max(0, scrollY / m)) : 0).toFixed(4));
+  }
+  prog(); addEventListener('scroll', prog, {passive:true}); addEventListener('resize', prog);
+
+  var h = document.getElementById('h1');
+  if (h && !reduce) {
+    h.classList.add('tenso');
+    var go = function(){ requestAnimationFrame(function(){ requestAnimationFrame(function(){ h.classList.remove('tenso'); }); }); };
+    (document.fonts && document.fonts.ready) ? document.fonts.ready.then(go) : addEventListener('load', go);
   }
 
-
-  /* Você se reconhece? */
-  var boxes=[].slice.call(document.querySelectorAll('#pq input')),nEl=document.getElementById('n'),msg=document.getElementById('msg'),rb=document.getElementById('resBtn');
-  function recalc(){
-    var n=boxes.filter(function(b){return b.checked;}).length;
-    nEl.textContent=n;
-    msg.textContent=n===0?'Toque nas frases que descrevem a sua rotina.':
-      n<3?'Você já se reconhece. O Fisioexpert organiza esse raciocínio, passo a passo.':
-      'Esse é o perfil de quem o Fisioexpert foi criado para ajudar.';
-    rb.hidden=n===0;
+  var bar = document.getElementById('bar'), hero = document.getElementById('topo');
+  if ('IntersectionObserver' in window && bar && hero) {
+    new IntersectionObserver(function(e){
+      var on = !e[0].isIntersecting;
+      bar.classList.toggle('on', on);
+      bar.setAttribute('aria-hidden', on ? 'false' : 'true');
+      bar.querySelector('a').tabIndex = on ? 0 : -1;
+    }, {threshold:0}).observe(hero);
   }
-  boxes.forEach(function(b){b.addEventListener('change',recalc);});
 
-  /* Balões de pensamento aparecem em sequência */
-  var pens=document.getElementById('pens');
-  if('IntersectionObserver' in window && !reduce){
-    new IntersectionObserver(function(es,o){es.forEach(function(e){if(e.isIntersecting){pens.classList.add('in');o.disconnect();}});},{threshold:.3}).observe(pens);
-  } else pens.classList.add('in');
-
-  /* Títulos: separa em letras e anima quando aparecem na tela */
-  if(!reduce){
-    [].slice.call(document.querySelectorAll('h1,h2')).forEach(function(el){
-      var txt=el.textContent.trim(),i=0;
-      el.setAttribute('aria-label',txt);el.classList.add('split');el.textContent='';
-      var words=txt.split(' ');
-      words.forEach(function(word,wi){
-        var w=document.createElement('span');w.className='w';w.setAttribute('aria-hidden','true');
-        word.split('').forEach(function(ch){var c=document.createElement('span');c.className='c';c.textContent=ch;c.style.setProperty('--i',i++);w.appendChild(c);});
+  /* letras nos títulos */
+  if (!reduce) {
+    root.classList.add('js');
+    var heads = [].slice.call(document.querySelectorAll('h2.h2, h2.nome'));
+    heads.forEach(function(el){
+      var txt = el.textContent.trim(), i = 0;
+      el.setAttribute('aria-label', txt); el.classList.add('split'); el.textContent = '';
+      var words = txt.split(' ');
+      words.forEach(function(word, wi){
+        var w = document.createElement('span'); w.className = 'w'; w.setAttribute('aria-hidden','true');
+        word.split('').forEach(function(ch){ var c = document.createElement('span'); c.className = 'c'; c.textContent = ch; c.style.setProperty('--i', i++); w.appendChild(c); });
         el.appendChild(w);
-        if(wi<words.length-1) el.appendChild(document.createTextNode(' '));
+        if (wi < words.length - 1) el.appendChild(document.createTextNode(' '));
       });
-      el._dur=i*24+900;
+      el._dur = i * 22 + 900;
     });
-    var heads=[].slice.call(document.querySelectorAll('.split'));
-    function go(el){el.classList.add('in');setTimeout(function(){el.classList.add('done');},el._dur);}
-    if('IntersectionObserver' in window){
-      var ho=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){go(e.target);ho.unobserve(e.target);}});},{threshold:.4});
-      heads.forEach(function(h){ho.observe(h);});
-    } else heads.forEach(go);
+    var show = function(el){ el.classList.add('in'); setTimeout(function(){ el.classList.add('done'); }, el._dur); };
+    if ('IntersectionObserver' in window) {
+      var ho = new IntersectionObserver(function(es){ es.forEach(function(e){ if (e.isIntersecting) { show(e.target); ho.unobserve(e.target); } }); }, {threshold:.4});
+      heads.forEach(function(x){ ho.observe(x); });
+    } else heads.forEach(show);
   }
 
-  var rv=[].slice.call(document.querySelectorAll('.rv'));
-  if('IntersectionObserver' in window && !reduce){
-    var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});},{threshold:.1});
-    rv.forEach(function(el){io.observe(el);});
-  } else rv.forEach(function(el){el.classList.add('in');});
-
-  /* Barra fixa: aparece depois do botão da abertura e some ao chegar no preço */
-  var sticky=document.getElementById('sticky'),hero=document.getElementById('heroCta'),preco=document.getElementById('preco');
-  if('IntersectionObserver' in window){
-    var heroOut=false,precoIn=false;
-    function upd(){sticky.classList.toggle('on',heroOut&&!precoIn);}
-    new IntersectionObserver(function(es){heroOut=!es[0].isIntersecting&&es[0].boundingClientRect.top<0;upd();}).observe(hero);
-    new IntersectionObserver(function(es){precoIn=es[0].isIntersecting;upd();},{threshold:.15}).observe(preco);
-  }
+  var form = document.getElementById('chk'), res = document.getElementById('res');
+  var cont = document.getElementById('cont'), msg = document.getElementById('resmsg'), tit = document.getElementById('restit');
+  if (form) form.addEventListener('change', function(){
+    var n = form.querySelectorAll('input:checked').length;
+    cont.textContent = n + (n === 1 ? ' de 6 frases marcada' : ' de 6 frases marcadas');
+    res.style.setProperty('--n', n);
+    res.classList.toggle('on', n > 0);
+    if (n === 0) { tit.textContent = 'Marque as frases ao lado'; msg.textContent = 'Escolha as que descrevem o seu consultório e o seu resultado aparece aqui.'; }
+    else if (n <= 2) { tit.textContent = 'Você já se reconhece.'; msg.textContent = 'Alguns desses pontos fazem parte da sua rotina. O FisioExpert organiza o raciocínio para você investigar, classificar e conduzir esses casos passo a passo.'; }
+    else if (n <= 4) { tit.textContent = 'O FisioExpert foi feito para você.'; msg.textContent = 'Você marcou vários pontos que o Método CSC resolve: clareza do caso, classificação e condução com critério.'; }
+    else { tit.textContent = 'Este é exatamente o seu perfil.'; msg.textContent = 'Quase tudo isso descreve o seu dia a dia. É para esse fisioterapeuta que o FisioExpert foi criado.'; }
+    res.classList.remove('flash'); void res.offsetWidth; res.classList.add('flash');
+  });
 })();
 </script>
 </body>
