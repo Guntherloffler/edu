@@ -189,7 +189,8 @@ main{margin-left:var(--rail)}
 .aut .nome{font:800 clamp(2rem,4vw,3rem)/1 var(--f-d);margin-bottom:1rem}
 
 /* depoimentos */
-.dep{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem;margin-top:3rem}
+.dep{display:grid;grid-template-columns:repeat(2,1fr);gap:1.2rem;margin-top:3rem}
+.dep figure{margin:0}.dep figure img{width:100%;height:auto;border-radius:6px;box-shadow:0 14px 40px rgba(20,4,10,.45)}
 .dep blockquote{padding:1.8rem 1.8rem 1.6rem;background:var(--fundo);border-radius:4px;border-top:4px solid var(--mielina)}
 .dep blockquote:first-child{grid-column:1/-1;border-top-color:var(--dor)}
 .dep p{font:italic 400 1.3rem/1.45 var(--f-t)}
@@ -516,11 +517,12 @@ main>.escuro:nth-of-type(even){background:radial-gradient(820px 460px at 6% 6%,r
 <section class="sec escuro" id="depoimentos">
   <div class="wrap">
     <h2 class="h2 largo">O que fisioterapeutas dizem depois de aplicar.</h2>
+    <!-- Vídeos: entram aqui, antes dos prints (placeholder) -->
     <div class="dep">
-      <blockquote><p>Antes tinha mais insegurança para trabalhar com dores irradiadas. Agora consigo tratar com mais segurança.</p><footer>Fisioterapeuta, aluno do Gunther</footer></blockquote>
-      <blockquote><p>Tenho mais segurança e melhores resultados nos tratamentos, e mais indicações dos pacientes tratados. Esses pacientes indicam outros.</p><footer>Fisioterapeuta, aluno do Gunther</footer></blockquote>
-      <blockquote><p>Me abriu os olhos sobre outras possibilidades além de todas as que eu já tinha investigado. Pelos testes que aprendi, já consegui identificar na avaliação.</p><footer>Fisioterapeuta, aluna do Gunther</footer></blockquote>
-      <blockquote><p>Consegui definir com mais clareza o que fazer nos casos de dores irradiadas.</p><footer>Fisioterapeuta, aluno do Gunther</footer></blockquote>
+      <figure><img src="../img/depoimentos/depoimento-1.png" alt="Depoimento de aluna por WhatsApp: ajudou no diagnóstico diferencial e trouxe mais segurança na progressão dos exercícios" loading="lazy"></figure>
+      <figure><img src="../img/depoimentos/depoimento-2.png" alt="Depoimento de Miriam Santos por WhatsApp: mais segurança e assertividade na avaliação de pacientes com dor irradiada" loading="lazy"></figure>
+      <figure><img src="../img/depoimentos/depoimento-3.png" alt="Depoimento de Fábio Vieira por WhatsApp: mais segurança na avaliação e resultados mais previsíveis" loading="lazy"></figure>
+      <figure><img src="../img/depoimentos/depoimento-4.png" alt="Depoimento de Anelise Soares por WhatsApp: avaliação mais criteriosa e mais raciocínio clínico" loading="lazy"></figure>
     </div>
   </div>
 </section>
