@@ -84,6 +84,8 @@ h1{font-family:var(--font-display);font-weight:800;font-size:clamp(38px,11.5vw,5
 /* Fotos com rosto ficam presas ao topo do cartão (nada de cortar a cabeça); só as sem rosto têm paralaxe (data-par). */
 .card .par{position:absolute;inset:0;z-index:-2}
 .card .par[data-par]{top:-9%;bottom:auto;height:118%;transform:translate3d(0,var(--shift,0px),0);will-change:transform}
+.card .par.emb{display:flex;justify-content:center;align-items:flex-start;padding-top:24px;background:radial-gradient(ellipse at 50% 22%,#1D3347 0%,#11202E 62%)}
+.card .par.emb svg{width:min(66%,260px);height:auto;display:block}
 .card .par img{width:100%;height:100%;object-fit:cover;object-position:var(--pos,50% 0%);display:block;transform-origin:50% 0%;transition:transform 1.4s cubic-bezier(.2,.7,.2,1)}
 .js .rv .par img{transform:scale(1.1)}
 .js .rv.in .par img{transform:scale(1)}
@@ -245,8 +247,8 @@ footer{margin-top:34px;text-align:center;color:var(--muted);font-size:13px}
       </div>
     </a>
 
-    <a class="card big mid2 rv" href="/quiz/" data-link="quiz" style="min-height:330px">
-      <div class="par"><img src="quiz/assets/gunther-caso.jpg" alt="" loading="lazy" style="--pos:50% 0%"></div>
+    <a class="card big mid2 rv" href="/quiz/" data-link="quiz" style="min-height:420px">
+      <div class="par emb" aria-hidden="true"><svg viewBox="0 0 300 196" fill="none" stroke-linecap="round" stroke-linejoin="round"><defs><filter id="glw" x="-20%" y="-20%" width="140%" height="140%"><feGaussianBlur stdDeviation="3.2" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs><g filter="url(#glw)"><g transform="rotate(-12 62 48)"><rect x="22" y="12" width="76" height="76" rx="18" stroke="#EC5C32" stroke-width="4"/><text x="60" y="66" text-anchor="middle" font-family="Bricolage Grotesque,Arial" font-weight="800" font-size="50" fill="#F7F7F4">?</text></g><circle cx="150" cy="48" r="42" stroke="#6FA3B3" stroke-width="4"/><path d="M128 50l16 16 28-32" stroke="#F7F7F4" stroke-width="8"/><g transform="rotate(10 238 48)"><rect x="200" y="12" width="76" height="76" rx="18" stroke="#7C93AB" stroke-width="4"/><text x="238" y="66" text-anchor="middle" font-family="Bricolage Grotesque,Arial" font-weight="800" font-size="50" fill="#F7F7F4">!</text></g><rect x="52" y="100" width="196" height="84" rx="22" stroke="#6FA3B3" stroke-width="3.5"/></g><text x="150" y="153" text-anchor="middle" font-family="Bricolage Grotesque,Arial" font-weight="800" font-size="52" letter-spacing="1.5" fill="none" stroke="#EC5C32" stroke-width="2.4">QUIZ</text><text x="150" y="175" text-anchor="middle" font-family="Bricolage Grotesque,Arial" font-weight="800" font-size="15" letter-spacing="3.4" fill="#F7F7F4">DO FISIO</text></svg></div>
       <div class="body">
         <span class="live fixo"><i></i>Gratuito</span>
         <h2>Quiz para fisioterapeutas</h2>
