@@ -1,0 +1,393 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Aplicação para o diagnóstico gratuito | Gunther Löffler</title>
+<meta name="description" content="Aplique para receber, em reunião ao vivo com Gunther Löffler ou a equipe, o diagnóstico de um caso que te deixa em dúvida. As vagas são selecionadas.">
+<link rel="icon" href="assets/simbolo_cor_difusa.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700&display=swap">
+<style>
+@font-face{font-family:"Bricolage Grotesque";src:url("assets/BricolageGrotesque-opsz96-400.ttf");font-weight:400;font-display:swap}
+@font-face{font-family:"Bricolage Grotesque";src:url("assets/BricolageGrotesque-opsz96-800.ttf");font-weight:700 800;font-display:swap}
+:root{
+  --tinta:#11202E; --papel:#F7F7F4; --nevoa:#EDEFEC;
+  --foco:#EC5C32; --foco-esc:#C23A0A; --petroleo:#2D5F6E; --petroleo-c:#6FA3B3; --nevoa-az:#7C93AB;
+  --g700:#2B3743; --g500:#5E6B77; --g300:#AEB7BF; --g100:#DDE1E3;
+  --f-disp:"Bricolage Grotesque","Segoe UI",Arial,sans-serif;
+  --f-body:"Figtree","Segoe UI",Arial,sans-serif;
+  --gut:clamp(20px,5vw,72px);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--papel);color:var(--tinta);font:400 18px/1.6 var(--f-body)}
+h1,h2,h3,p,ul,ol{margin:0}
+ul,ol{padding:0;list-style:none}
+:focus-visible{outline:3px solid var(--foco);outline-offset:3px}
+.wrap{max-width:1160px;margin-inline:auto;padding-inline:var(--gut)}
+section{padding-block:clamp(56px,9vw,112px)}
+
+/* tipografia */
+.h1{font:800 clamp(40px,6vw,76px)/1 var(--f-disp);letter-spacing:-.035em;text-wrap:balance}
+.h2{font:800 clamp(30px,4vw,48px)/1.06 var(--f-disp);letter-spacing:-.03em;text-wrap:balance;max-width:20ch}
+.h3{font:700 22px/1.2 var(--f-disp);letter-spacing:-.015em}
+.lead{font-size:clamp(18px,1.6vw,21px);color:var(--g700);max-width:54ch;margin-top:24px}
+.emb{display:inline-block;filter:blur(.045em);color:var(--g500)}
+.sub{color:var(--g700);margin-top:10px;max-width:54ch}
+
+/* botões */
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:54px;padding:0 30px;border:0;border-radius:999px;background:var(--foco);color:var(--tinta);font:700 17px var(--f-body);cursor:pointer;text-decoration:none;transition:background .2s,transform .2s}
+.btn:hover{background:#F27F58}.btn:active{transform:scale(.98)}
+.btn.escuro{background:var(--tinta);color:var(--papel)}.btn.escuro:hover{background:var(--g700)}
+.btn[disabled]{opacity:.6;cursor:wait}
+
+/* topo */
+.topo{position:sticky;top:0;z-index:10;background:rgba(247,247,244,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--g100)}
+.topo .wrap{display:flex;align-items:center;justify-content:space-between;height:68px}
+.topo img{height:34px;display:block}
+.topo .btn{min-height:42px;padding:0 20px;font-size:15px}
+
+/* hero */
+.hero{padding-block:clamp(40px,6vw,84px) clamp(48px,7vw,96px)}
+.hero .wrap{display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(32px,5vw,72px);align-items:center}
+.hero .acoes{display:flex;flex-wrap:wrap;gap:14px 22px;align-items:center;margin-top:36px}
+.hero .acoes span{font-size:15px;color:var(--g500)}
+.foto{position:relative;aspect-ratio:4/3;border-radius:22px;overflow:hidden;background:var(--nevoa)}
+.foto img{width:100%;height:100%;display:block;object-fit:cover;object-position:100% 50%}
+.anel{position:absolute;left:70.5%;top:53%;width:14%;aspect-ratio:1;transform:translate(-50%,-50%);border:3px solid var(--foco);border-radius:50%;box-shadow:0 0 0 6px rgba(236,92,50,.22)}
+.seletivo{margin-top:34px;padding:16px 20px;border-left:4px solid var(--foco);background:var(--nevoa);border-radius:0 12px 12px 0;font-size:16.5px;max-width:52ch}
+.seletivo b{font-weight:700}
+
+/* como funciona (sequência real) */
+.escuro-sec{background:var(--tinta);color:var(--papel)}
+.escuro-sec .sub{color:var(--g100)}
+.passos{margin-top:48px;display:grid;gap:0;counter-reset:p;max-width:760px}
+.passos li{position:relative;padding:0 0 34px 68px;counter-increment:p}
+.passos li::before{content:counter(p);position:absolute;left:0;top:-2px;width:44px;height:44px;border-radius:50%;display:grid;place-items:center;font:800 20px var(--f-disp);background:var(--papel);color:var(--tinta)}
+.passos li::after{content:"";position:absolute;left:21px;top:50px;bottom:6px;width:2px;background:rgba(247,247,244,.2)}
+.passos li:last-child{padding-bottom:0}.passos li:last-child::after{display:none}
+.passos li:last-child::before{background:var(--foco)}
+.passos .h3{color:var(--papel)}
+.passos p{color:var(--g100);margin-top:6px;max-width:52ch;font-size:17px}
+
+/* três etapas */
+.tres{margin-top:48px;display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(20px,3vw,44px)}
+.tres svg{width:68px;height:68px;overflow:visible;margin-bottom:18px}
+.tres p{color:var(--g700);margin-top:8px;font-size:17px}
+
+/* para quem é */
+.nev{background:var(--nevoa)}
+.duas{margin-top:44px;display:grid;grid-template-columns:1fr 1fr;gap:clamp(28px,5vw,72px)}
+.duas h3{margin-bottom:18px}
+.lista li{position:relative;padding-left:30px;margin-bottom:14px;font-size:17px}
+.sim li::before{content:"";position:absolute;left:2px;top:.5em;width:12px;height:12px;border-radius:50%;background:var(--petroleo)}
+.nao li::before{content:"";position:absolute;left:0;top:.8em;width:16px;height:3px;background:var(--foco)}
+
+/* história */
+.hist .wrap{display:grid;grid-template-columns:1.1fr .9fr;gap:clamp(28px,6vw,88px);align-items:center}
+.hist-txt p{font-size:clamp(19px,1.9vw,23px);line-height:1.55;color:var(--g700);max-width:44ch;margin-top:24px}
+figure{margin:0}
+figure img{width:100%;height:auto;display:block;object-fit:cover;border-radius:20px;background:var(--nevoa)}
+figcaption{font-size:15px;color:var(--g500);margin-top:10px}
+.foto-hist img{aspect-ratio:4/5;object-position:50% 50%}
+.foto-plateia{margin-top:44px}
+.foto-plateia img{aspect-ratio:2.3/1;object-position:50% 36%}
+.foto-fim{margin-top:32px}
+.foto-fim img{aspect-ratio:5/4;object-position:50% 0}
+
+/* formulário */
+.form-sec{background:var(--nevoa)}
+.form-sec .wrap{display:grid;grid-template-columns:.8fr 1.2fr;gap:clamp(32px,6vw,88px);align-items:start}
+.form-sec aside{position:sticky;top:100px}
+.form-sec aside ul{margin-top:28px}
+.form-sec aside li{position:relative;padding-left:28px;margin-bottom:12px;font-size:16.5px;color:var(--g700)}
+.form-sec aside li::before{content:"";position:absolute;left:2px;top:.55em;width:11px;height:11px;border-radius:50%;background:var(--foco)}
+form{background:var(--papel);border-radius:22px;padding:clamp(22px,4vw,44px);box-shadow:0 1px 0 var(--g100)}
+.bloco{border:0;padding:0;margin:0 0 34px;min-width:0}
+.bloco legend{font:700 22px/1.2 var(--f-disp);letter-spacing:-.015em;margin-bottom:18px;padding:0}
+.campo{margin-bottom:20px}
+.campo label,.campo .rot{display:block;font-weight:600;font-size:16.5px;margin-bottom:8px}
+.campo .ajuda{display:block;font-weight:400;color:var(--g500);font-size:15px;margin-top:2px}
+input[type=text],input[type=email],input[type=tel],select,textarea{width:100%;font:400 17px var(--f-body);color:var(--tinta);background:#fff;border:2px solid var(--g100);border-radius:12px;padding:13px 14px;min-height:50px;transition:border-color .2s}
+textarea{min-height:130px;resize:vertical;line-height:1.5}
+input:hover,select:hover,textarea:hover{border-color:var(--g300)}
+input:focus,select:focus,textarea:focus{outline:none;border-color:var(--tinta);box-shadow:0 0 0 3px rgba(236,92,50,.35)}
+.dupla{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.pilulas{display:flex;flex-wrap:wrap;gap:8px}
+.pilulas label{margin:0}
+.pilulas input{position:absolute;opacity:0;width:1px;height:1px}
+.pilulas span{display:grid;place-items:center;min-width:44px;height:44px;padding:0 12px;border-radius:999px;border:2px solid var(--g100);background:#fff;font:600 16px var(--f-body);cursor:pointer;transition:all .15s}
+.pilulas input:hover+span{border-color:var(--g300)}
+.pilulas input:checked+span{background:var(--tinta);border-color:var(--tinta);color:var(--papel)}
+.pilulas input:focus-visible+span{outline:3px solid var(--foco);outline-offset:3px}
+.escala{display:flex;justify-content:space-between;font-size:14px;color:var(--g500);margin-top:6px;max-width:520px}
+.check{display:flex;gap:12px;align-items:flex-start;font-size:15.5px;color:var(--g700)}
+.check input{width:22px;height:22px;margin:2px 0 0;accent-color:var(--tinta);flex:none}
+.erro{display:none;color:var(--foco-esc);font-size:15px;font-weight:600;margin-top:6px}
+.invalido .erro{display:block}
+.invalido input[type=text],.invalido input[type=email],.invalido input[type=tel],.invalido select,.invalido textarea{border-color:var(--foco-esc)}
+.rodape-form{margin-top:10px;display:flex;flex-wrap:wrap;gap:16px 24px;align-items:center}
+.rodape-form small{color:var(--g500);font-size:14.5px;max-width:34ch}
+.resumo-erro{display:none;margin-bottom:24px;padding:14px 16px;border-radius:12px;background:#FBE9E2;color:var(--foco-esc);font-weight:600;font-size:16px}
+.resumo-erro.on{display:block}
+
+/* confirmação */
+.ok{display:none;background:var(--papel);border-radius:22px;padding:clamp(28px,5vw,56px)}
+.ok.on{display:block}
+.ok svg{width:72px;height:72px;overflow:visible;margin-bottom:20px}
+.ok p{margin-top:14px;color:var(--g700);max-width:48ch}
+.etapa-nota{display:none;margin:-8px 0 26px;padding:12px 16px;border-radius:12px;background:var(--nevoa);font-size:16px}
+.etapa-nota.on{display:block}
+
+footer{background:var(--tinta);color:var(--g300);padding-block:40px;font-size:15px}
+footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:16px 40px;align-items:center}
+footer p{max-width:62ch}
+
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+
+/* responsivo */
+@media (max-width:900px){
+  .hero .wrap,.hist .wrap,.form-sec .wrap{grid-template-columns:1fr}
+  .form-sec aside{position:static}
+  .tres,.duas{grid-template-columns:1fr}
+  .hist .wrap{grid-template-columns:1fr}
+  .foto-hist img{aspect-ratio:1/1;object-position:50% 35%}
+  .foto-plateia img{aspect-ratio:3/2}
+  .foto-fim img{aspect-ratio:3/2}
+}
+@media (max-width:520px){.dupla{grid-template-columns:1fr}.btn.full{width:100%}.topo .btn{padding:0 16px}}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}}
+
+/* página do formulário: sem imagens, uma coluna */
+.pg-form .intro{padding-block:clamp(40px,6vw,72px) clamp(36px,5vw,56px)}
+.pg-form .intro .wrap,.pg-form .escuro-sec .wrap,.pg-form .form-sec .wrap{max-width:860px;display:block}
+.pg-form .intro .h1{font-size:clamp(36px,5.2vw,60px);max-width:16ch}
+.pg-form .avisos{margin-top:28px;display:grid;gap:10px}
+.pg-form .avisos li{position:relative;padding-left:28px;font-size:17px;color:var(--g700)}
+.pg-form .avisos li::before{content:"";position:absolute;left:2px;top:.55em;width:11px;height:11px;border-radius:50%;background:var(--foco)}
+.pg-form .escuro-sec{padding-block:clamp(44px,6vw,72px)}
+.pg-form .passos{margin-top:36px}
+.pg-form .passos li{padding-bottom:26px}
+.pg-form .form-sec{padding-block:clamp(40px,6vw,80px) clamp(56px,8vw,112px)}
+.voltar{font-size:15px;color:var(--g500);text-decoration:underline;text-underline-offset:3px}
+.voltar:hover{color:var(--tinta)}
+</style>
+</head>
+<body class="pg-form">
+
+<header class="topo">
+  <div class="wrap">
+    <a href="aplicar.html" aria-label="Voltar para a apresentação"><img src="assets/logo-horizontal_cor_difusa.svg" alt="Gunther Löffler" width="160" height="34"></a>
+    <a class="voltar" href="aplicar.html">Voltar</a>
+  </div>
+</header>
+
+<main>
+<section class="intro">
+  <div class="wrap">
+    <h1 class="h1">Aplique para o seu diagnóstico.</h1>
+    <p class="lead">Conte quem você é, como atende e descreva um caso que te deixa em dúvida. Leva cerca de 5 minutos.</p>
+    <ul class="avisos">
+      <li><b>Nem toda aplicação é aceita.</b> A equipe lê cada uma e escolhe os casos em que a reunião vai fazer diferença.</li>
+      <li>Sem custo para aplicar nem para participar da reunião.</li>
+      <li>Respondemos todas as aplicações, aceitas ou não.</li>
+    </ul>
+  </div>
+</section>
+
+<section class="escuro-sec" id="como">
+  <div class="wrap">
+    <h2 class="h2" style="max-width:24ch">Como funciona, do formulário à reunião.</h2>
+    <ol class="passos">
+      <li><h3 class="h3">Você aplica</h3><p>Conta quem você é, como atende e descreve um caso que te deixou em dúvida.</p></li>
+      <li><h3 class="h3">A equipe lê</h3><p>Uma pessoa da equipe lê a sua aplicação com atenção, caso a caso.</p></li>
+      <li><h3 class="h3">Você recebe uma resposta</h3><p>Se for selecionado, o convite chega por WhatsApp com dia e horário. Se não for desta vez, você também recebe um retorno.</p></li>
+      <li><h3 class="h3">Reunião ao vivo</h3><p>Você apresenta o caso. Gunther ou a equipe conduz o raciocínio, passo a passo, diante de você.</p></li>
+      <li><h3 class="h3">Você sai com o próximo passo</h3><p>Fica claro onde o caso estava embaçado e o que fazer na próxima sessão.</p></li>
+    </ol>
+  </div>
+</section>
+
+<section class="form-sec" id="aplicar">
+  <div class="wrap">
+    <form id="form" name="aplicacao" method="POST" action="/diagnostico/formulario" data-netlify="true" netlify-honeypot="bot-field" novalidate>
+        <input type="hidden" name="form-name" value="aplicacao">
+        <p class="sr" aria-hidden="true"><label>Não preencha este campo <input name="bot-field" tabindex="-1" autocomplete="off"></label></p>
+        <div class="resumo-erro" id="resumoErro" role="alert" tabindex="-1"></div>
+        <p class="etapa-nota" id="etapaNota"></p>
+
+        <fieldset class="bloco">
+          <legend>Quem é você</legend>
+          <div class="campo" data-f="nome">
+            <label for="nome">Nome completo</label>
+            <input type="text" id="nome" name="nome" autocomplete="name" required>
+            <span class="erro">Informe o seu nome completo.</span>
+          </div>
+          <div class="dupla">
+            <div class="campo" data-f="email">
+              <label for="email">E-mail</label>
+              <input type="email" id="email" name="email" autocomplete="email" required>
+              <span class="erro">Informe um e-mail válido, como nome@exemplo.com.</span>
+            </div>
+            <div class="campo" data-f="whats">
+              <label for="whats">WhatsApp com DDD</label>
+              <input type="tel" id="whats" name="whatsapp" autocomplete="tel" placeholder="(11) 99999-9999" required>
+              <span class="erro">Informe o WhatsApp com DDD. É por ele que enviamos o convite.</span>
+            </div>
+          </div>
+        </fieldset>
+
+        <fieldset class="bloco">
+          <legend>Como você atua</legend>
+          <div class="dupla">
+            <div class="campo" data-f="tempo">
+              <label for="tempo">Tempo de formado</label>
+              <select id="tempo" name="tempo_formado" required>
+                <option value="">Escolha</option>
+                <option>Menos de 3 anos</option><option>3 a 7 anos</option><option>8 a 15 anos</option><option>Mais de 15 anos</option>
+              </select>
+              <span class="erro">Escolha o seu tempo de formado.</span>
+            </div>
+            <div class="campo" data-f="onde">
+              <label for="onde">Onde você atua</label>
+              <select id="onde" name="onde_atua" required>
+                <option value="">Escolha</option>
+                <option>Clínica própria</option><option>Clínica de terceiros</option><option>Domiciliar</option><option>Hospital</option><option>Outro</option>
+              </select>
+              <span class="erro">Escolha onde você atua.</span>
+            </div>
+          </div>
+          <div class="campo" data-f="area">
+            <label for="area">Em qual área você atua?</label>
+            <input type="text" id="area" name="area" placeholder="Ex.: ortopedia, coluna, geriatria" required>
+            <span class="erro">Informe a sua área de atuação.</span>
+          </div>
+          <div class="campo" data-f="irradiada" role="group" aria-labelledby="l-irr">
+            <span class="rot" id="l-irr">Você atende casos de dor irradiada?</span>
+            <div class="pilulas">
+              <label><input type="radio" name="dor_irradiada" value="Sim, com frequência"><span>Sim, com frequência</span></label>
+              <label><input type="radio" name="dor_irradiada" value="De vez em quando"><span>De vez em quando</span></label>
+              <label><input type="radio" name="dor_irradiada" value="Raramente"><span>Raramente</span></label>
+            </div>
+            <span class="erro">Escolha uma das opções.</span>
+          </div>
+        </fieldset>
+
+        <fieldset class="bloco">
+          <legend>Como você se sente hoje</legend>
+          <p class="sub" style="margin:-8px 0 22px;font-size:16px">De 1 (muito inseguro) a 10 (muito seguro).</p>
+          <div class="campo" data-f="s_aval" role="group" aria-labelledby="l-s1"><span class="rot" id="l-s1">Na avaliação do paciente</span><div class="pilulas"><label><input type="radio" name="seg_avaliacao" value="1"><span>1</span></label><label><input type="radio" name="seg_avaliacao" value="2"><span>2</span></label><label><input type="radio" name="seg_avaliacao" value="3"><span>3</span></label><label><input type="radio" name="seg_avaliacao" value="4"><span>4</span></label><label><input type="radio" name="seg_avaliacao" value="5"><span>5</span></label><label><input type="radio" name="seg_avaliacao" value="6"><span>6</span></label><label><input type="radio" name="seg_avaliacao" value="7"><span>7</span></label><label><input type="radio" name="seg_avaliacao" value="8"><span>8</span></label><label><input type="radio" name="seg_avaliacao" value="9"><span>9</span></label><label><input type="radio" name="seg_avaliacao" value="10"><span>10</span></label></div><span class="erro">Marque uma nota de 1 a 10.</span></div>
+          <div class="campo" data-f="s_test" role="group" aria-labelledby="l-s2"><span class="rot" id="l-s2">Na interpretação dos testes</span><div class="pilulas"><label><input type="radio" name="seg_testes" value="1"><span>1</span></label><label><input type="radio" name="seg_testes" value="2"><span>2</span></label><label><input type="radio" name="seg_testes" value="3"><span>3</span></label><label><input type="radio" name="seg_testes" value="4"><span>4</span></label><label><input type="radio" name="seg_testes" value="5"><span>5</span></label><label><input type="radio" name="seg_testes" value="6"><span>6</span></label><label><input type="radio" name="seg_testes" value="7"><span>7</span></label><label><input type="radio" name="seg_testes" value="8"><span>8</span></label><label><input type="radio" name="seg_testes" value="9"><span>9</span></label><label><input type="radio" name="seg_testes" value="10"><span>10</span></label></div><span class="erro">Marque uma nota de 1 a 10.</span></div>
+          <div class="campo" data-f="s_cond" role="group" aria-labelledby="l-s3"><span class="rot" id="l-s3">Na condução do caso</span><div class="pilulas"><label><input type="radio" name="seg_conducao" value="1"><span>1</span></label><label><input type="radio" name="seg_conducao" value="2"><span>2</span></label><label><input type="radio" name="seg_conducao" value="3"><span>3</span></label><label><input type="radio" name="seg_conducao" value="4"><span>4</span></label><label><input type="radio" name="seg_conducao" value="5"><span>5</span></label><label><input type="radio" name="seg_conducao" value="6"><span>6</span></label><label><input type="radio" name="seg_conducao" value="7"><span>7</span></label><label><input type="radio" name="seg_conducao" value="8"><span>8</span></label><label><input type="radio" name="seg_conducao" value="9"><span>9</span></label><label><input type="radio" name="seg_conducao" value="10"><span>10</span></label></div><span class="erro">Marque uma nota de 1 a 10.</span></div>
+        </fieldset>
+
+        <fieldset class="bloco">
+          <legend>O caso que você quer levar</legend>
+          <div class="campo" data-f="caso">
+            <label for="caso">Descreva um caso que te deixou em dúvida <span class="ajuda">Idade, queixa, o que você encontrou na avaliação, o que já fez e o que aconteceu. Sem nome nem dado que identifique o paciente.</span></label>
+            <textarea id="caso" name="caso" required minlength="60"></textarea>
+            <span class="erro">Descreva o caso com um pouco mais de detalhe, pelo menos 60 caracteres.</span>
+          </div>
+          <div class="campo" data-f="trava">
+            <label for="trava">O que mais te trava hoje na condução dos casos?</label>
+            <textarea id="trava" name="o_que_trava" style="min-height:96px" required></textarea>
+            <span class="erro">Conte em uma frase o que mais te trava.</span>
+          </div>
+        </fieldset>
+
+        <div class="campo" data-f="aceite">
+          <label class="check"><input type="checkbox" id="aceite" name="aceite" required><span>Entendo que a aplicação é analisada e que a reunião não está garantida. Autorizo o contato por WhatsApp e e-mail sobre esta aplicação.</span></label>
+          <span class="erro">Marque a caixa para enviar a aplicação.</span>
+        </div>
+
+        <input type="hidden" name="etapa_mais_fraca" id="etapaFraca">
+        <input type="hidden" name="nota_diagnostico" id="notaDiag">
+
+        <div class="rodape-form">
+          <button class="btn full" type="submit" id="enviar">Enviar aplicação</button>
+          <small>Seus dados são usados só para responder a esta aplicação.</small>
+        </div>
+      </form>
+
+      <div class="ok" id="ok" role="status" tabindex="-1">
+        <svg viewBox="0 0 76 76" aria-hidden="true"><defs><filter id="f2" x="-80%" y="-80%" width="260%" height="260%"><feGaussianBlur stdDeviation="3"/></filter></defs><circle cx="28" cy="38" r="22" fill="#7C93AB" filter="url(#f2)"/><circle cx="50" cy="38" r="22" fill="#EC5C32"/></svg>
+        <h2 class="h2">Aplicação recebida.</h2>
+        <p>A equipe vai ler o seu caso. Em breve você recebe uma resposta por WhatsApp ou e-mail, aceita ou não.</p>
+        <p>Se for selecionado, o convite traz o dia e o horário da reunião ao vivo. No final dela, se fizer sentido, apresentamos a mentoria FisioExpert. Sem compromisso.</p>
+      </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <img src="assets/logo-horizontal_cor_difusa.svg" alt="Gunther Löffler" height="30" style="height:30px;filter:brightness(0) invert(1);opacity:.85">
+    <p>O diagnóstico é uma conversa educativa sobre raciocínio clínico. Ele não substitui a avaliação do seu paciente nem oferece atendimento ao seu próprio quadro de saúde.</p>
+  </div>
+</footer>
+
+<script>
+/* As aplicações são recebidas pelo Netlify Forms (formulário "aplicacao") e chegam por e-mail
+   depois de ativar a notificação no painel do Netlify. Em localhost o envio é apenas simulado. */
+const LOCAL = ["localhost","127.0.0.1",""].includes(location.hostname);
+
+const $ = s => document.querySelector(s);
+const form = $("#form");
+
+/* vindo do diagnóstico de clareza: ?etapa=Condução&nota=14 */
+const q = new URLSearchParams(location.search);
+if(q.get("etapa")){
+  $("#etapaFraca").value = q.get("etapa");
+  $("#notaDiag").value = q.get("nota") || "";
+  const n=$("#etapaNota"); n.textContent = `Seu diagnóstico de clareza indicou ${q.get("etapa")} como ponto de partida. Levamos isso em conta na análise.`; n.classList.add("on");
+}
+
+/* validação com mensagem clara em cada campo */
+function checa(){
+  const d = new FormData(form); const falhas=[];
+  const marca=(f,ok)=>{ const el=document.querySelector(`[data-f="${f}"]`); el.classList.toggle("invalido",!ok); if(!ok) falhas.push(f); };
+  const txt=k=>(d.get(k)||"").toString().trim();
+  marca("nome", txt("nome").split(/\s+/).length>=2);
+  marca("email", /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(txt("email")));
+  marca("whats", txt("whatsapp").replace(/\D/g,"").length>=10);
+  marca("tempo", !!txt("tempo_formado")); marca("onde", !!txt("onde_atua")); marca("area", !!txt("area"));
+  marca("irradiada", !!d.get("dor_irradiada"));
+  marca("s_aval", !!d.get("seg_avaliacao")); marca("s_test", !!d.get("seg_testes")); marca("s_cond", !!d.get("seg_conducao"));
+  marca("caso", txt("caso").length>=60); marca("trava", !!txt("o_que_trava"));
+  marca("aceite", $("#aceite").checked);
+  return falhas;
+}
+form.addEventListener("input",e=>{ const c=e.target.closest(".invalido"); if(c) c.classList.remove("invalido"); });
+
+form.addEventListener("submit",async e=>{
+  e.preventDefault();
+  const falhas=checa(); const r=$("#resumoErro");
+  if(falhas.length){
+    r.textContent = falhas.length===1 ? "Falta 1 campo. Ele está destacado abaixo." : `Faltam ${falhas.length} campos. Eles estão destacados abaixo.`;
+    r.classList.add("on"); r.focus();
+    document.querySelector(`[data-f="${falhas[0]}"]`).scrollIntoView({block:"center",behavior:"smooth"});
+    return;
+  }
+  r.classList.remove("on");
+  const btn=$("#enviar"); btn.disabled=true; btn.textContent="Enviando...";
+  const dados=new URLSearchParams(new FormData(form));
+  try{
+    if(LOCAL){
+      console.warn("Ambiente local: aplicação simulada, nada foi enviado.",Object.fromEntries(dados));
+    }else{
+      const resp=await fetch("/diagnostico/formulario",{method:"POST",headers:{"Content-Type":"application/x-www-form-urlencoded"},body:dados.toString()});
+      if(!resp.ok) throw new Error(resp.status);
+    }
+    form.style.display="none"; const ok=$("#ok"); ok.classList.add("on"); ok.focus();
+    ok.scrollIntoView({block:"start",behavior:"smooth"});
+  }catch(err){
+    btn.disabled=false; btn.textContent="Enviar aplicação";
+    r.textContent="Não foi possível enviar agora. Confira a conexão e tente de novo. Se continuar, chame a equipe pelo WhatsApp.";
+    r.classList.add("on"); r.focus();
+  }
+});
+</script>
+</body>
+</html>
