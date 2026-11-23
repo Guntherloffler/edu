@@ -357,3 +357,9 @@ html,body{overflow-x:clip}
 
 /* faixas sem ícones: só o texto, com mais espaço entre as palavras */
 .rola{gap:70px;padding-left:70px}
+
+/* Depoimentos (prints) */
+.deps{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin-top:36px}
+.deps figure{margin:0}
+.deps img{display:block;width:100%;height:auto;border-radius:14px;border:1px solid #d3e3f1;box-shadow:0 10px 30px rgba(17,32,46,.16)}
+@media (max-width:700px){.deps{grid-template-columns:1fr}}
