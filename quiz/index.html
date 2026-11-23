@@ -1,0 +1,874 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Plantão de casos: em que você apoia a decisão? | Gunther Löffler</title>
+<meta name="description" content="Nove casos de dor irradiada. Em cada um, você decide e lê como o Gunther pensaria. No final, veja em que você apoia as suas decisões e qual é o seu próximo passo.">
+<meta name="theme-color" content="#11202E">
+<link rel="icon" href="assets/simbolo_cor_difusa.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500&display=swap">
+<style>
+@font-face{font-family:"Bricolage Grotesque";src:url("assets/BricolageGrotesque-opsz96-400.ttf");font-weight:400;font-display:swap}
+@font-face{font-family:"Bricolage Grotesque";src:url("assets/BricolageGrotesque-opsz96-800.ttf");font-weight:700 800;font-display:swap}
+
+:root{
+  --tinta:#11202E; --tinta-2:#162838; --tinta-3:#1D3347; --papel:#F7F7F4; --nevoa:#EDEFEC;
+  --foco:#EC5C32; --foco-esc:#C23A0A; --foco-cl:#F27F58;
+  --petroleo:#2D5F6E; --petroleo-c:#6FA3B3; --nevoa-az:#7C93AB;
+  --g700:#2B3743; --g500:#5E6B77; --g300:#AEB7BF; --g100:#DDE1E3;
+  --f-disp:"Bricolage Grotesque","Segoe UI",Arial,sans-serif;
+  --f-body:"Figtree","Segoe UI",Arial,sans-serif;
+  --f-mono:"IBM Plex Mono",Consolas,monospace;
+  --gut:clamp(18px,5vw,48px);
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;min-height:100vh;min-height:100dvh;background:var(--tinta);color:var(--papel);font:400 18px/1.55 var(--f-body);
+  background-image:radial-gradient(900px 520px at 85% -8%,rgba(45,95,110,.38),transparent 70%)}
+h1,h2,h3,p,ol,ul,figure{margin:0}
+ol,ul{padding:0;list-style:none}
+button,input,select{font:inherit;color:inherit}
+:focus-visible{outline:3px solid var(--foco);outline-offset:3px}
+.mono{font:500 12.5px/1.2 var(--f-mono);letter-spacing:.09em;text-transform:uppercase}
+[hidden]{display:none!important}
+
+/* ---------- estrutura ---------- */
+.topo{display:flex;align-items:center;justify-content:space-between;gap:16px;max-width:1080px;margin:0 auto;padding:clamp(16px,2.6vw,28px) var(--gut) 0}
+.topo img{height:32px;width:auto;display:block}
+.sair{background:none;border:0;padding:8px 0;font-size:15px;color:var(--g300);cursor:pointer;text-decoration:underline;text-underline-offset:3px}
+.sair[hidden]{display:none}
+main{max-width:1080px;margin:0 auto;padding:clamp(24px,4.5vw,56px) var(--gut) 72px}
+.tela[hidden]{display:none}
+.entra{animation:entra .45s cubic-bezier(.2,.7,.2,1) both}
+@keyframes entra{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){.entra{animation:none}*{transition:none!important}}
+
+/* ---------- botões ---------- */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:54px;padding:0 30px;border:0;border-radius:999px;
+  background:var(--foco);color:var(--tinta);font:700 17px var(--f-body);cursor:pointer;text-decoration:none;text-align:center;transition:background .2s,transform .2s}
+.btn:hover{background:var(--foco-cl)}
+.btn:active{transform:scale(.98)}
+.btn[disabled]{opacity:.55;cursor:not-allowed}
+.btn.sec{background:transparent;color:var(--papel);box-shadow:inset 0 0 0 2px rgba(247,247,244,.35)}
+.btn.sec:hover{background:transparent;box-shadow:inset 0 0 0 2px var(--papel)}
+.btn.claro{background:var(--tinta);color:var(--papel)}
+.btn.claro:hover{background:var(--g700)}
+.btn.sec-claro{background:transparent;color:var(--tinta);box-shadow:inset 0 0 0 2px var(--g300)}
+.btn.sec-claro:hover{background:transparent;box-shadow:inset 0 0 0 2px var(--tinta)}
+.acoes{display:flex;flex-wrap:wrap;gap:12px 14px;align-items:center}
+
+/* ---------- intro ---------- */
+.intro{display:grid;grid-template-columns:1.1fr .9fr;gap:clamp(28px,5vw,64px);align-items:center}
+.selo{display:inline-flex;align-items:center;gap:10px;color:var(--petroleo-c)}
+.selo::before{content:"";width:10px;height:10px;background:var(--foco);border-radius:2px}
+.titulo{font:800 clamp(36px,5.6vw,68px)/1.02 var(--f-disp);letter-spacing:-.03em;text-wrap:balance;margin-top:18px}
+.titulo em{font-style:normal;color:var(--foco)}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.emblema{width:min(100%,380px)}
+.fichas{display:block;width:78%;margin:0 auto -14px;position:relative;z-index:2;filter:drop-shadow(0 0 10px rgba(111,163,179,.45))}
+.balao{position:relative;display:flex;flex-direction:column;align-items:center;padding:30px 20px 20px;border:3px solid var(--petroleo-c);border-radius:26px;
+  box-shadow:0 0 22px rgba(111,163,179,.35),inset 0 0 22px rgba(111,163,179,.12)}
+.balao::after{content:"";position:absolute;left:50%;bottom:-14px;width:24px;height:24px;background:var(--tinta);border:3px solid var(--petroleo-c);border-width:0 3px 3px 0;border-radius:0 0 6px 0;transform:translateX(-50%) rotate(45deg)}
+.quiz-g{font:800 clamp(64px,10vw,104px)/.9 var(--f-disp);letter-spacing:.02em;text-transform:uppercase;color:transparent;-webkit-text-stroke:3px var(--foco);
+  text-shadow:0 0 18px rgba(236,92,50,.55)}
+.quiz-p{font:800 clamp(22px,3vw,30px)/1 var(--f-disp);letter-spacing:.14em;text-transform:uppercase;color:var(--papel);margin-top:10px}
+.intro .titulo{font-size:clamp(26px,3.2vw,40px);max-width:24ch;margin-top:44px;line-height:1.08}
+.intro .lead{font-size:clamp(17px,1.4vw,19px)}
+.intro .lead{margin-top:18px}
+.intro .chips{margin-top:24px}
+.intro .autor{margin-top:22px}
+.lead{font-size:clamp(18px,1.6vw,21px);color:var(--g100);margin-top:22px;max-width:50ch}
+.intro .acoes{margin-top:34px}
+.chips{display:flex;flex-wrap:wrap;gap:10px 22px;margin-top:30px;font-size:15px;color:var(--g300)}
+.chips span{display:inline-flex;align-items:center;gap:8px}
+.chips svg{width:18px;height:18px;flex:none;stroke:var(--petroleo-c)}
+.nota{font-size:14.5px;color:var(--nevoa-az);margin-top:22px;max-width:56ch}
+.foto{position:relative;border-radius:22px;overflow:hidden;background:var(--tinta-2);aspect-ratio:4/5}
+.foto img{width:100%;height:100%;object-fit:cover;object-position:68% 40%;display:block}
+.foto::after{content:"";position:absolute;inset:0;background:linear-gradient(to top,rgba(17,32,46,.88),rgba(17,32,46,0) 42%)}
+.foto figcaption{position:absolute;left:20px;right:20px;bottom:18px;z-index:2;color:var(--papel)}
+.foto figcaption b{display:block;font:800 22px/1.15 var(--f-disp);letter-spacing:-.02em;margin-top:6px}
+
+/* ---------- capa: vitrine do jogo ---------- */
+.autor{display:flex;align-items:center;gap:14px;margin-top:30px;font-size:14.5px;line-height:1.35;color:var(--g300)}
+.autor b{color:var(--papel);font-weight:600}
+.av{flex:none;width:52px;height:52px;border-radius:50%;overflow:hidden;background:var(--tinta-3);box-shadow:0 0 0 2px var(--foco)}
+.av img{width:100%;height:100%;object-fit:cover;display:block}
+.vitrine{min-width:0}
+.baralho{position:relative;padding:0 0 26px;margin-right:18px}
+.carta{border-radius:22px}
+.carta.c1{position:relative;z-index:3;padding:20px 22px 22px;box-shadow:0 30px 60px -20px rgba(0,0,0,.55);animation:flutua 6s ease-in-out infinite}
+.carta.c2,.carta.c3{position:absolute;left:0;right:0;top:0;bottom:26px;background:var(--nevoa)}
+.carta.c2{z-index:2;transform:translate(10px,12px) rotate(1.6deg);opacity:.78}
+.carta.c3{z-index:1;transform:translate(20px,24px) rotate(3.2deg);opacity:.5}
+@keyframes flutua{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
+.mini-trilha{display:flex;align-items:center;margin-bottom:16px}
+.mini-trilha li{flex:1;display:flex;align-items:center}
+.mini-trilha li:last-child{flex:none}
+.mini-trilha i{flex:none;width:10px;height:10px;border-radius:50%;background:var(--g100);box-shadow:inset 0 0 0 2px var(--g300)}
+.mini-trilha li::after{content:"";flex:1;height:2px;background:var(--g100);margin:0 3px}
+.mini-trilha li:last-child::after{display:none}
+.mini-trilha li.on i{background:var(--foco);box-shadow:0 0 0 3px rgba(236,92,50,.3)}
+.mini-q{font:700 clamp(18px,1.9vw,22px)/1.25 var(--f-disp);letter-spacing:-.01em;margin-top:16px;text-wrap:balance}
+.mini-ops{display:grid;gap:8px;margin-top:16px}
+.mo{display:flex;align-items:center;gap:12px;padding:11px 12px;border-radius:12px;background:var(--nevoa);box-shadow:inset 0 0 0 2px transparent}
+.mo .let{flex:none;display:grid;place-items:center;width:26px;height:26px;border-radius:7px;background:var(--papel);box-shadow:inset 0 0 0 2px var(--g300);font:500 12px var(--f-mono);color:var(--g700)}
+.mo .fio{display:block;height:9px;width:var(--w);border-radius:5px;background:var(--g300);filter:blur(2.2px);transition:filter .6s,background .6s}
+.mo{animation:foca 8s infinite}
+.mo:nth-child(1){animation-delay:0s}.mo:nth-child(2){animation-delay:2s}.mo:nth-child(3){animation-delay:4s}.mo:nth-child(4){animation-delay:6s}
+@keyframes foca{0%,3%{background:var(--nevoa);box-shadow:inset 0 0 0 2px transparent}8%,22%{background:#E3EEF1;box-shadow:inset 0 0 0 2px var(--petroleo)}28%,100%{background:var(--nevoa);box-shadow:inset 0 0 0 2px transparent}}
+.mo .fio{animation:nitido 8s infinite}
+.mo:nth-child(1) .fio{animation-delay:0s}.mo:nth-child(2) .fio{animation-delay:2s}.mo:nth-child(3) .fio{animation-delay:4s}.mo:nth-child(4) .fio{animation-delay:6s}
+@keyframes nitido{0%,3%{filter:blur(2.2px);background:var(--g300)}8%,22%{filter:blur(0);background:var(--petroleo)}28%,100%{filter:blur(2.2px);background:var(--g300)}}
+.mini-leitura{margin-top:16px;padding:14px 16px;border-radius:12px;background:var(--tinta);display:grid;gap:7px}
+.mini-leitura .mono{color:var(--petroleo-c);font-size:11px}
+.mini-leitura i{display:block;height:7px;border-radius:4px;background:var(--tinta-3)}
+.mini-leitura i:last-child{width:62%}
+.vit-leg{color:var(--petroleo-c);margin-top:12px;font-size:11.5px}
+.regua.mini{margin-top:12px;max-width:none;gap:6px;grid-template-columns:repeat(4,1fr)}
+@media (max-width:420px){.regua.mini li{font-size:12.5px}}
+.regua.mini li{padding-top:9px;font-size:13.5px}
+.regua.mini li b{font-size:11px}
+.regua.mini li:last-child{border-top-color:var(--foco);color:var(--papel)}
+.regua.mini li:last-child b{color:var(--foco)}
+@media (prefers-reduced-motion:reduce){.carta.c1,.mo,.mo .fio{animation:none}.mo .fio{filter:none}}
+
+/* ---------- trilha de decisão ---------- */
+.trilha{display:flex;align-items:center;margin-bottom:26px}
+.trilha li{flex:1;display:flex;align-items:center}
+.trilha li:last-child{flex:none}
+.trilha i{flex:none;width:14px;height:14px;border-radius:50%;background:var(--tinta-3);box-shadow:inset 0 0 0 2px var(--g500);transition:all .3s}
+.trilha li::after{content:"";flex:1;height:2px;background:var(--tinta-3);margin:0 4px}
+.trilha li:last-child::after{display:none}
+.trilha li.ok i{background:var(--foco);box-shadow:none}
+.trilha li.ok::after{background:var(--foco)}
+.trilha li.on i{background:var(--papel);box-shadow:0 0 0 4px rgba(236,92,50,.45)}
+
+/* ---------- prontuário (caso) ---------- */
+.pront{background:var(--papel);color:var(--tinta);border-radius:22px;padding:clamp(20px,3.4vw,40px);max-width:820px}
+.pront-top{display:flex;justify-content:space-between;align-items:center;gap:12px;padding-bottom:14px;border-bottom:1px dashed var(--g300);color:var(--g500)}
+.pilar-tag{color:var(--petroleo);background:rgba(45,95,110,.12);padding:6px 10px;border-radius:6px}
+.q-texto{font:700 clamp(22px,2.7vw,30px)/1.22 var(--f-disp);letter-spacing:-.015em;text-wrap:balance;margin-top:22px}
+.opcoes{display:grid;gap:10px;margin-top:24px}
+.op{display:flex;gap:14px;align-items:flex-start;text-align:left;width:100%;padding:15px 16px;border:0;border-radius:14px;
+  background:var(--nevoa);box-shadow:inset 0 0 0 2px transparent;font-size:17px;line-height:1.45;cursor:pointer;transition:background .2s,box-shadow .2s}
+.op .let{flex:none;display:grid;place-items:center;width:30px;height:30px;border-radius:8px;background:var(--papel);box-shadow:inset 0 0 0 2px var(--g300);font:500 13px var(--f-mono);color:var(--g700)}
+.op .tx{flex:1;padding-top:3px}
+.op:hover:not([disabled]){background:var(--g100)}
+.op[disabled]{cursor:default}
+.op.melhor{background:#E3EEF1;box-shadow:inset 0 0 0 2px var(--petroleo)}
+.op.melhor .let{background:var(--petroleo);color:var(--papel);box-shadow:none}
+.op.sua:not(.melhor){background:#FBEBE4;box-shadow:inset 0 0 0 2px var(--foco-esc)}
+.op.sua:not(.melhor) .let{background:var(--foco-esc);color:var(--papel);box-shadow:none}
+.op.apagada{opacity:.55}
+.etq{display:block;font:500 11.5px var(--f-mono);letter-spacing:.08em;text-transform:uppercase;margin-bottom:4px}
+.op.melhor .etq{color:var(--petroleo)}
+.op.sua:not(.melhor) .etq{color:var(--foco-esc)}
+.leitura{margin-top:22px;padding:18px 20px;border-radius:14px;background:var(--tinta);color:var(--papel)}
+.leitura[hidden]{display:none}
+.leitura .mono{color:var(--petroleo-c)}
+.leitura p{margin-top:8px;font-size:17px;color:var(--g100);max-width:60ch}
+.pront .acoes{margin-top:22px;justify-content:flex-end}
+.pront .acoes[hidden]{display:none}
+
+/* ---------- formulário ---------- */
+.gate{max-width:820px}
+.gate .titulo{font-size:clamp(32px,4.4vw,52px)}
+.form{margin-top:30px;background:var(--papel);color:var(--tinta);border-radius:22px;padding:clamp(20px,3.4vw,40px);display:grid;gap:18px}
+.campo{display:grid;gap:7px}
+.campo label,.campo .rot{font-weight:600;font-size:16px}
+.campo .opc{font-weight:400;color:var(--g500)}
+.campo input[type=text],.campo input[type=email],.campo input[type=tel],.campo select{width:100%;min-height:52px;padding:0 16px;border:0;border-radius:12px;background:var(--nevoa);box-shadow:inset 0 0 0 2px transparent;font-size:17px;color:var(--tinta)}
+.campo input:focus,.campo select:focus{outline:none;box-shadow:inset 0 0 0 2px var(--tinta);background:var(--papel)}
+.campo.erro input,.campo.erro select{box-shadow:inset 0 0 0 2px var(--foco-esc)}
+.msg{display:none;font-size:14.5px;color:var(--foco-esc)}
+.campo.erro .msg{display:block}
+.duas{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.aceite{display:flex;gap:12px;align-items:flex-start;font-size:15px;color:var(--g700)}
+.aceite input{flex:none;width:22px;height:22px;margin:2px 0 0;accent-color:var(--foco-esc)}
+.aceite.erro{color:var(--foco-esc)}
+.ajuda{font-size:14.5px;color:var(--g500)}
+.hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
+.form .acoes{margin-top:4px}
+
+/* ---------- resultado ---------- */
+.res-topo{max-width:820px}
+.regua{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin-top:34px;max-width:820px}
+.regua li{padding-top:12px;border-top:4px solid var(--tinta-3);font-size:14.5px;line-height:1.3;color:var(--nevoa-az)}
+.regua li b{display:block;font:500 12px var(--f-mono);letter-spacing:.08em;text-transform:uppercase;margin-bottom:5px}
+.regua li.on{border-top-color:var(--foco);color:var(--papel)}
+.regua li.on b{color:var(--foco)}
+.regua li.pass{border-top-color:var(--petroleo)}
+.res-card{background:var(--papel);color:var(--tinta);border-radius:22px;padding:clamp(20px,3.4vw,40px);margin-top:30px;max-width:820px}
+.res-card h3{font:800 clamp(22px,2.6vw,28px)/1.15 var(--f-disp);letter-spacing:-.02em}
+.res-card > p{color:var(--g700);margin-top:8px;max-width:58ch}
+.pil{padding:20px 0;border-bottom:1px solid var(--g100)}
+.pil:last-child{border-bottom:0;padding-bottom:0}
+.pil-h{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:baseline;gap:4px 14px}
+.pil-h h4{font:700 20px/1.2 var(--f-disp);margin:0}
+.pil-h span{font:500 13px var(--f-mono);letter-spacing:.06em;text-transform:uppercase;color:var(--g500)}
+.pil.fraco .pil-h span{color:var(--foco-esc)}
+.seg{display:flex;gap:5px;margin:12px 0 10px}
+.seg i{flex:1;height:12px;border-radius:3px;background:var(--g100);position:relative;overflow:hidden}
+.seg i b{position:absolute;inset:0 auto 0 0;background:var(--petroleo);border-radius:3px}
+.pil.fraco .seg i b{background:var(--foco)}
+.pil p{font-size:16px;color:var(--g700);max-width:58ch}
+.prox{margin-top:30px;max-width:820px;padding:clamp(22px,3.4vw,38px);border-radius:22px;background:var(--tinta-2);box-shadow:inset 0 0 0 1px var(--tinta-3)}
+.prox h3{font:800 clamp(24px,3vw,34px)/1.1 var(--f-disp);letter-spacing:-.025em;text-wrap:balance}
+.prox p{color:var(--g100);margin-top:12px;max-width:54ch}
+.prox .acoes{margin-top:24px}
+.video{margin-top:22px;border-radius:16px;overflow:hidden;background:#000;aspect-ratio:16/9;max-width:640px}
+.video[hidden],.op-res[hidden]{display:none}
+.video iframe,.video video{width:100%;height:100%;border:0;display:block}
+.op-res{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:24px}
+.opc{padding:20px;border-radius:16px;background:var(--tinta);box-shadow:inset 0 0 0 1px var(--tinta-3);display:flex;flex-direction:column;align-items:flex-start}
+.opc .mono{color:var(--foco)}
+.opc h4{font:800 20px/1.2 var(--f-disp);letter-spacing:-.015em;margin:10px 0 0}
+.opc p{font-size:15.5px;color:var(--g300);margin-top:8px;flex:1}
+.opc .acoes{margin-top:16px;gap:10px}
+.opc .btn{min-height:46px;padding:0 20px;font-size:15.5px}
+@media (max-width:820px){.op-res{grid-template-columns:1fr}.opc .btn{width:100%}}
+.rodape-res{margin-top:22px;max-width:820px;display:flex;flex-wrap:wrap;gap:10px 22px;align-items:center;font-size:14.5px;color:var(--nevoa-az)}
+.link{background:none;border:0;padding:8px 0;color:var(--g300);cursor:pointer;text-decoration:underline;text-underline-offset:3px;font-size:15px}
+
+@media (max-width:820px){
+  .intro{grid-template-columns:1fr}
+  .foto{aspect-ratio:16/11;order:-1}
+  .foto img{object-position:70% 36%}
+  .duas{grid-template-columns:1fr}
+  .regua{grid-template-columns:1fr 1fr}
+  .btn{width:100%}
+  .pront .acoes{justify-content:stretch}
+}
+</style>
+</head>
+<body>
+
+<header class="topo">
+  <img src="assets/logo-horizontal_negativo_difusa.svg" alt="Gunther Löffler" width="150" height="32">
+  <button class="sair" id="recomecar" type="button" hidden>Recomeçar</button>
+</header>
+
+<main id="conteudo" tabindex="-1">
+
+  <!-- INTRO -->
+  <section class="tela intro" id="tIntro">
+    <div>
+      <div class="emblema" aria-hidden="true">
+        <svg class="fichas" viewBox="0 0 300 96" fill="none" stroke-linecap="round" stroke-linejoin="round">
+          <g transform="rotate(-12 62 50)"><rect x="22" y="14" width="76" height="76" rx="18" stroke="#EC5C32" stroke-width="4"/><text x="60" y="68" text-anchor="middle" font-family="Bricolage Grotesque,Arial" font-weight="800" font-size="50" fill="#F7F7F4">?</text></g>
+          <circle cx="150" cy="48" r="42" stroke="#6FA3B3" stroke-width="4"/><path d="M128 50l16 16 28-32" stroke="#F7F7F4" stroke-width="8"/>
+          <g transform="rotate(10 238 50)"><rect x="200" y="14" width="76" height="76" rx="18" stroke="#7C93AB" stroke-width="4"/><text x="238" y="68" text-anchor="middle" font-family="Bricolage Grotesque,Arial" font-weight="800" font-size="50" fill="#F7F7F4">!</text></g>
+        </svg>
+        <div class="balao"><span class="quiz-g">Quiz</span><span class="quiz-p">do Fisio</span></div>
+      </div>
+      <h1 class="titulo"><span class="sr">Quiz do Fisio. </span>Descubra em que nível está a sua <em>prática clínica</em> nos casos complexos</h1>
+      <p class="lead">Nove casos de dor irradiada, um de cada vez. Em cada um você decide e lê como o Gunther pensaria. No final, vê onde apoia as suas decisões e qual é o próximo passo.</p>
+      <div class="acoes"><button class="btn" id="comecar" type="button">Abrir o primeiro caso</button></div>
+      <div class="chips">
+        <span><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>3 a 5 minutos</span>
+        <span><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M5 12l4 4 10-10"/></svg>Leitura comentada em cada caso</span>
+      </div>
+      <div class="autor"><span class="av"><img src="assets/gunther-avatar.jpg" alt="" width="240" height="240"></span><span>Casos e leituras de <b>Gunther Löffler</b><br>Fisioterapeuta e professor</span></div>
+      <p class="nota">Este teste avalia como você decide em cenários de dor irradiada. Ele não mede competência técnica nem substitui a avaliação de um paciente real.</p>
+    </div>
+    <div class="vitrine" aria-hidden="true">
+      <div class="baralho">
+        <div class="carta c3"></div>
+        <div class="carta c2"></div>
+        <div class="carta c1 pront">
+          <ol class="mini-trilha"><li class="on"><i></i></li><li><i></i></li><li><i></i></li><li><i></i></li><li><i></i></li><li><i></i></li><li><i></i></li><li><i></i></li><li><i></i></li></ol>
+          <div class="pront-top mono"><span>Caso 01 de 09</span><span class="pilar-tag">Clareza</span></div>
+          <p class="mini-q">Dor irradiada, e a imagem não explica o comportamento dos sintomas. Qual é a sua conduta?</p>
+          <div class="mini-ops">
+            <div class="mo"><span class="let">A</span><span class="fio" style="--w:92%"></span></div>
+            <div class="mo"><span class="let">B</span><span class="fio" style="--w:78%"></span></div>
+            <div class="mo"><span class="let">C</span><span class="fio" style="--w:86%"></span></div>
+            <div class="mo"><span class="let">D</span><span class="fio" style="--w:70%"></span></div>
+          </div>
+          <div class="mini-leitura"><span class="mono">Leitura do Gunther</span><i></i><i></i></div>
+        </div>
+      </div>
+      <p class="vit-leg mono">Você vai descobrir em qual destes está</p>
+      <ol class="regua mini">
+        <li><b>1</b>Técnica</li><li><b>2</b>Resposta</li><li><b>3</b>Critério</li><li><b>4</b>Estratégia</li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- CASO -->
+  <section class="tela" id="tCaso" hidden>
+    <ol class="trilha" id="trilha" aria-hidden="true"></ol>
+    <article class="pront">
+      <div class="pront-top mono"><span id="qRot"></span><span class="pilar-tag" id="qPilar"></span></div>
+      <h2 class="q-texto" id="qTexto"></h2>
+      <div class="opcoes" id="opcoes" role="group" aria-labelledby="qTexto"></div>
+      <div class="leitura" id="leitura" hidden aria-live="polite">
+        <span class="mono">Leitura do Gunther</span>
+        <p id="leituraTxt"></p>
+      </div>
+      <div class="acoes" id="acaoProx" hidden><button class="btn claro" id="proximo" type="button"></button></div>
+    </article>
+  </section>
+
+  <!-- CADASTRO -->
+  <section class="tela gate" id="tGate" hidden>
+    <span class="selo mono">Nove casos respondidos</span>
+    <h2 class="titulo">Seu mapa de decisão está pronto.</h2>
+    <p class="lead">Diga para quem é o resultado e veja agora onde você apoia as suas decisões, ponto a ponto.</p>
+
+    <form class="form" id="formLead" name="quiz-raciocinio" method="POST" action="/quiz/" data-netlify="true" netlify-honeypot="bot-field" novalidate>
+      <input type="hidden" name="form-name" value="quiz-raciocinio">
+      <p class="hp" aria-hidden="true"><label>Não preencha: <input name="bot-field" tabindex="-1" autocomplete="off"></label></p>
+
+      <div class="campo" data-c="nome">
+        <label for="fNome">Seu nome</label>
+        <input type="text" id="fNome" name="nome" autocomplete="name" placeholder="Como podemos te chamar" required>
+        <span class="msg">Digite seu nome.</span>
+      </div>
+      <div class="duas">
+        <div class="campo" data-c="email">
+          <label for="fEmail">Seu melhor e-mail</label>
+          <input type="email" id="fEmail" name="email" autocomplete="email" inputmode="email" placeholder="voce@email.com" required>
+          <span class="msg">Digite um e-mail válido.</span>
+        </div>
+        <div class="campo" data-c="whatsapp">
+          <label for="fZap">WhatsApp <span class="opc">(opcional)</span></label>
+          <input type="tel" id="fZap" name="whatsapp" autocomplete="tel" inputmode="tel" placeholder="(12) 90000-0000">
+          <span class="msg">Digite o número com DDD.</span>
+        </div>
+      </div>
+      <div class="campo" data-c="tempo">
+        <label for="fTempo">Há quanto tempo você atua como fisioterapeuta?</label>
+        <select id="fTempo" name="tempo_de_formacao" required>
+          <option value="">Escolha uma opção</option>
+          <option value="estudante">Ainda sou estudante</option>
+          <option value="ate-2-anos">Até 2 anos</option>
+          <option value="3-a-5-anos">De 3 a 5 anos</option>
+          <option value="6-a-10-anos">De 6 a 10 anos</option>
+          <option value="mais-de-10-anos">Mais de 10 anos</option>
+        </select>
+        <span class="msg">Escolha uma opção.</span>
+      </div>
+
+      <label class="aceite" id="aceiteBox"><input type="checkbox" id="fAceite" name="aceite_contato" value="sim" required>
+        <span>Aceito receber o resultado e conteúdos do Gunther Löffler por e-mail e WhatsApp. Posso pedir para sair quando quiser.</span></label>
+
+      <!-- Campos preenchidos pelo script: ficam na planilha do Netlify junto com os dados acima -->
+      <input type="hidden" name="lead_id"><input type="hidden" name="quiz_id"><input type="hidden" name="quiz_versao">
+      <input type="hidden" name="nota_total"><input type="hidden" name="nivel"><input type="hidden" name="nivel_nome">
+      <input type="hidden" name="nota_clareza"><input type="hidden" name="nota_classificacao"><input type="hidden" name="nota_conducao">
+      <input type="hidden" name="ponto_de_partida"><input type="hidden" name="escolhas"><input type="hidden" name="pontos_por_caso">
+      <input type="hidden" name="destino"><input type="hidden" name="duracao_segundos">
+      <input type="hidden" name="utm_source"><input type="hidden" name="utm_medium"><input type="hidden" name="utm_campaign">
+      <input type="hidden" name="utm_content"><input type="hidden" name="utm_term"><input type="hidden" name="origem_pagina">
+      <input type="hidden" name="enviado_em">
+
+      <p class="ajuda" id="erroForm" role="alert" style="color:var(--foco-esc)"></p>
+      <div class="acoes"><button class="btn" id="enviar" type="submit">Ver meu mapa de decisão</button></div>
+    </form>
+  </section>
+
+  <!-- RESULTADO -->
+  <section class="tela" id="tRes" hidden>
+    <div class="res-topo">
+      <span class="selo mono" id="rSelo"></span>
+      <h2 class="titulo" id="rTitulo"></h2>
+      <p class="lead" id="rLead"></p>
+    </div>
+    <ol class="regua" id="regua" aria-label="Escala de onde você apoia a decisão"></ol>
+
+    <div class="res-card">
+      <h3>O seu mapa de decisão</h3>
+      <p>Cada barra é um caso. Quanto mais cheia, mais segura foi a sua decisão naquele caso.</p>
+      <div id="rPilares"></div>
+    </div>
+
+    <div class="prox">
+      <h3 id="rCtaTitulo"></h3>
+      <p id="rCtaTexto"></p>
+      <div class="video" id="rVideo" hidden></div>
+      <div class="op-res" id="rOpcoes" hidden></div>
+      <div class="acoes">
+        <a class="btn" id="rCta" href="#"></a>
+        <a class="btn sec" id="rZap" href="#" target="_blank" rel="noopener">Conversar no WhatsApp</a>
+      </div>
+    </div>
+    <div class="rodape-res"><button class="link" id="refazer" type="button">Refazer o teste</button></div>
+  </section>
+
+</main>
+
+<script>
+/* =========================================================
+   CONFIGURAÇÃO — tudo o que muda sem mexer na lógica fica aqui
+   ========================================================= */
+const CONFIG = {
+  QUIZ_ID: "raciocinio-dor-irradiada",
+  VERSAO: "1.0",
+  FORM_NAME: "quiz-raciocinio",          // igual ao name do <form> (Netlify Forms)
+  WEBHOOK: "",                           // futuro: URL de um endpoint próprio (recebe o mesmo JSON)
+  WHATSAPP: "5512988761420",             // Fisioexpert, mentoria e cursos online
+  HOTMART_FNC: "https://pay.hotmart.com/F104733177O?off=54njwo3d&checkoutMode=10",  /* usar só quando o lançamento estiver aberto */
+  /* Fisio no Comando abre em lançamentos. Enquanto estiver fechado, os níveis 1 e 2 mostram as duas opções abaixo. */
+  WAITLIST_URL: "https://chat.whatsapp.com/F7NN9UzFZPlGv5Zf2JqbYy",   /* grupo de pré-venda do Fisio no Comando. Se ficar vazio, abre o WhatsApp com a mensagem pronta */
+  VIDEO_EMBED: "",        /* vídeo do Gunther explicando o CSC e o Fisio no Comando. Link de incorporação, ex.: https://www.youtube-nocookie.com/embed/ID */
+  VIDEO_MP4: "",          /* ou um arquivo de vídeo, ex.: assets/gunther-csc.mp4 (use um dos dois) */
+  /* Para onde cada nível segue. "tipo" vai para a planilha: serve para contar quem foi para onde. */
+  DESTINOS: {
+    1: {tipo:"opcoes",   produto:"fisio-no-comando"},
+    2: {tipo:"opcoes",   produto:"fisio-no-comando"},
+    3: {tipo:"pagina",   produto:"fisioexpert",      rotulo:"Conhecer o FisioExpert",              url:"/fisioexpert/"},
+    4: {tipo:"aplicacao",produto:"diagnostico-ao-vivo", rotulo:"Aplicar ao diagnóstico ao vivo",   url:"/diagnostico/aplicar"}
+  }
+};
+
+/* =========================================================
+   CASOS — 9 cenários, 3 pilares. Cada opção vale de 0 a 3.
+   "leitura" aparece depois da escolha.
+   ========================================================= */
+const PILARES = {
+  clareza:       {nome:"Clareza",       curto:"Ler o caso"},
+  classificacao: {nome:"Classificação", curto:"Classificar"},
+  conducao:      {nome:"Condução",      curto:"Conduzir"}
+};
+
+const CASOS = [
+ {p:"clareza",
+  q:"O paciente apresenta dor irradiada, mas os achados do exame de imagem não explicam a intensidade nem o comportamento dos sintomas. Como você conduz a avaliação?",
+  o:[["Considero que, sem um achado estrutural compatível, o envolvimento neural se torna menos provável.",0],
+     ["Investigo o comportamento dos sintomas, os movimentos que modificam o quadro e os sinais clínicos que podem indicar envolvimento neural.",3],
+     ["Inicio a condução com base na hipótese mais provável e utilizo a resposta clínica para confirmar a origem dos sintomas.",2],
+     ["Direciono a avaliação para fatores de sensibilização, já que a imagem não demonstrou uma lesão relevante.",1]],
+  l:"A imagem mostra estrutura. Ela não explica, sozinha, o comportamento do sintoma. Quando os achados não batem com a dor, o caminho é observar o que provoca, o que alivia e quais movimentos mudam o quadro, e só então decidir se há envolvimento neural."},
+
+ {p:"clareza",
+  q:"Durante a avaliação, um teste neurodinâmico reproduz a dor irradiada relatada pelo paciente. O que você faz antes de considerar esse achado relevante para a condução?",
+  o:[["Verifico se a intensidade provocada é semelhante à dor relatada no dia a dia.",0],
+     ["Comparo os lados, realizo diferenciações estruturais e verifico se o sintoma reproduzido é reconhecido pelo paciente.",3],
+     ["Relaciono o resultado com a localização da dor e inicio uma técnica neural em baixa dose para observar a resposta.",2],
+     ["Repito o teste algumas vezes para confirmar se a resposta permanece consistente.",1]],
+  l:"Um teste que provoca dor ainda não é um achado confiável. Comparar os lados, diferenciar estruturas e confirmar que o paciente reconhece aquele sintoma é o que dá valor ao resultado."},
+
+ {p:"clareza",
+  q:"O paciente já recebeu diferentes diagnósticos, realizou várias técnicas e apresentou apenas melhoras temporárias. Qual deve ser o seu primeiro objetivo?",
+  o:[["Encontrar uma técnica diferente das que já foram utilizadas anteriormente.",0],
+     ["Reconstruir o raciocínio do caso para identificar o mecanismo predominante e o que pode estar mantendo os sintomas.",3],
+     ["Identificar qual estrutura apresenta maior sensibilidade e iniciar a condução por ela.",2],
+     ["Reduzir inicialmente os sintomas para conseguir aprofundar a avaliação nas próximas sessões.",1]],
+  l:"Antes de procurar outra técnica, refaça o caso: qual mecanismo predomina e o que mantém os sintomas. Melhora que não se sustenta costuma indicar leitura incompleta, não técnica errada."},
+
+ {p:"classificacao",
+  q:"O paciente apresenta dor irradiada e teste neurodinâmico positivo, mas também possui sinais compatíveis com dor somática referida. Como isso influencia sua classificação?",
+  o:[["O teste positivo indica que o componente neural deve orientar inicialmente a condução.",1],
+     ["Considero um possível caso misto e identifico qual mecanismo predomina e qual mais influencia os sintomas naquele momento.",3],
+     ["Inicio pela estrutura que reproduz a maior intensidade de dor e reclassifico conforme a resposta.",2],
+     ["Após identificar que há um mecanismo misto, inicio sempre pela dor somática referida.",0]],
+  l:"Um teste positivo não encerra a classificação. No quadro misto, o que orienta a conduta é saber qual mecanismo predomina naquele momento e qual mais pesa nos sintomas."},
+
+ {p:"classificacao",
+  q:"Um paciente relata dor intensa durante um movimento específico, mas o sintoma desaparece rapidamente quando o movimento é interrompido. Como você interpreta a irritabilidade do caso?",
+  o:[["Considero alta, porque a intensidade da dor é o principal sinal de irritabilidade.",1],
+     ["Considero baixa, porque o sintoma desaparece rapidamente depois da retirada do estímulo.",2],
+     ["Analiso a intensidade, a facilidade de provocação, a quantidade de estímulo tolerada e o tempo de recuperação antes de classificar.",3],
+     ["Utilizo principalmente o tempo de evolução para definir se a irritabilidade é alta, média ou baixa.",0]],
+  l:"A intensidade da dor, sozinha, não define irritabilidade. Pesam também a facilidade de provocar, quanto estímulo o caso tolera e quanto tempo leva para se recuperar."},
+
+ {p:"conducao",
+  q:"O paciente estava evoluindo bem, mas retorna à sessão seguinte com aumento dos sintomas irradiados. Qual é a sua primeira decisão?",
+  o:[["Retomo a conduta da primeira sessão, porque ela havia produzido uma boa resposta anteriormente.",1],
+     ["Investigo a causa da piora: os possíveis gatilhos, a dor espontânea e o possível erro na dose.",3],
+     ["Reduzo a intensidade da condução e observo a resposta antes de realizar uma nova classificação.",2],
+     ["Troco a técnica utilizada, porque a piora indica que a abordagem deixou de funcionar.",0]],
+  l:"Antes de mexer na conduta, entenda a piora: gatilhos, dor espontânea e possível excesso de dose. Voltar à sessão anterior ou trocar a técnica sem investigar repete o problema."},
+
+ {p:"conducao",
+  q:"O paciente chega em crise, com dor irradiada intensa, sem posição clara de alívio e com sintomas facilmente provocáveis. Qual é a sua prioridade inicial?",
+  o:[["Iniciar deslizamentos neurais leves, sem ultrapassar a tolerância relatada pelo paciente.",0],
+     ["Colocar o membro em posição anti-tensão.",1],
+     ["Identificar os gatilhos, reduzir ameaças e escolher uma estratégia compatível com a irritabilidade e a baixa tolerância atual.",3],
+     ["Evitar qualquer estímulo neural até que a fase aguda tenha diminuído.",2]],
+  l:"Na crise, a prioridade é entender o que provoca e reduzir ameaças, escolhendo uma estratégia que respeite a irritabilidade do momento. A técnica vem depois dessa leitura."},
+
+ {p:"conducao",
+  q:"Durante a aplicação de uma técnica, os sintomas irradiados aumentam. Como você decide se deve manter, ajustar ou interromper o estímulo?",
+  o:[["Interrompo sempre que houver aumento da dor irradiada.",1],
+     ["Retomo a conduta da sessão anterior.",2],
+     ["Interrompo a técnica utilizada e reavalio para ajustar a conduta.",3],
+     ["Considero aceitável continuar quando o sintoma permanece dentro da tolerância relatada pelo paciente.",0]],
+  l:"Se o sintoma irradiado aumenta durante a técnica, o aumento é uma informação. Interromper e reavaliar para ajustar a conduta vale mais do que seguir porque o paciente ainda aguenta."},
+
+ {p:"conducao",
+  q:"Depois de algumas sessões, o paciente relata menos dor e tolera melhor a técnica aplicada. Como você decide se já é o momento de progredir?",
+  o:[["Progrido quando a intensidade da dor diminui de forma relevante.",1],
+     ["Progrido quando o paciente suporta maior amplitude sem aumentar os sintomas.",2],
+     ["Reavalio as referências e o grau de irritabilidade do paciente antes de evoluir.",3],
+     ["Mantenho a mesma condução até que o paciente esteja praticamente sem sintomas.",0]],
+  l:"Menos dor, por si só, não indica que é hora de progredir. Reavalie as referências e a irritabilidade antes de evoluir. Progredir por sensação deixa a evolução instável."}
+];
+
+/* =========================================================
+   RESULTADOS — onde a pessoa apoia a decisão (4 níveis, máx. 27)
+   ========================================================= */
+const NIVEIS = [
+ {n:1, max:9,  nome:"Decide pela técnica",
+  ponto:"Técnica",
+  lead:"Você tem repertório. O que falta é uma ordem para usá-lo. Hoje a técnica que você domina, o laudo ou a intensidade da dor tendem a puxar a decisão. Quando o caso foge do padrão, falta um fio condutor para o próximo passo.",
+  cta:["As vagas do Fisio no Comando estão esgotadas.","O Fisio no Comando é um evento ao vivo: o Gunther conduz com você um caso clássico da clínica e aplica o Método CSC (Clareza, Classificação e Condução) para trazer o domínio que você precisa na sua consulta. Quer que a gente te avise da próxima turma?"]},
+ {n:2, max:16, nome:"Decide pela resposta",
+  ponto:"Resposta",
+  lead:"Você já não trata no automático: busca sinais, testa hipóteses e ajusta pelo paciente. Mas boa parte das decisões ainda vem depois do erro. Você reclassifica quando o caso piora, em vez de antecipar pela classificação.",
+  cta:["As vagas do Fisio no Comando estão esgotadas.","O Fisio no Comando é um evento ao vivo: o Gunther conduz com você um caso clássico da clínica e aplica o Método CSC (Clareza, Classificação e Condução) para trazer o domínio que você precisa na sua consulta. Quer que a gente te avise da próxima turma?"]},
+ {n:3, max:22, nome:"Decide pelo critério",
+  ponto:"Critério",
+  lead:"Você avalia com propósito, classifica com critério e ajusta a conduta pela resposta do paciente. A base é sólida. O que ainda oscila são os detalhes dos casos mistos e irritáveis: dose, hierarquia e o momento de progredir.",
+  cta:["Refine o raciocínio com casos reais.","O FisioExpert é a mentoria do Gunther: oito semanas de casos reais, com critérios de dose e progressão discutidos ao vivo."]},
+ {n:4, max:27, nome:"Decide pela estratégia",
+  ponto:"Estratégia",
+  lead:"Você conduz casos complexos com critério e sabe explicar cada decisão. O próximo ganho é transformar esse raciocínio em um método que se repita em qualquer caso e que você consiga validar com outro olhar.",
+  cta:["Leve um caso seu para ser discutido ao vivo.","O diagnóstico ao vivo é uma reunião com o Gunther ou a equipe sobre um caso que te deixa em dúvida. As vagas são selecionadas, por isso a entrada é por aplicação."]}
+];
+
+const FEEDBACK_PILAR = {
+  clareza:{
+    low:["Frágil","O ponto de partida ainda depende do achado de imagem ou da técnica disponível. Sem uma leitura própria do comportamento dos sintomas, o caso complexo vira tentativa e erro."],
+    mid:["Em construção","Você busca sinais além da imagem, mas ainda decide pela hipótese mais provável antes de confirmá-la. Falta diferenciar o que reproduz o sintoma reconhecido pelo paciente."],
+    high:["Sólida","Você lê o caso pelo comportamento dos sintomas e pelo que os modifica, não pelo laudo. É essa clareza que permite reconstruir casos que já passaram por vários profissionais."]},
+  classificacao:{
+    low:["Frágil","A classificação ainda se apoia na intensidade da dor ou no tempo de evolução. Isso leva a superestimar casos simples, subestimar casos irritáveis e errar a dose nos dois."],
+    mid:["Em construção","Você reconhece casos mistos e reclassifica pela resposta, mas ainda decide depois do erro. Definir mecanismo predominante e irritabilidade antes da conduta encurta esse caminho."],
+    high:["Sólida","Você separa mecanismo predominante de mecanismo presente e lê a irritabilidade por vários critérios. É isso que sustenta decisões seguras em quadros mistos."]},
+  conducao:{
+    low:["Frágil","A conduta oscila entre evitar o estímulo e insistir na tolerância relatada. Sem critério de dose e de progressão, a melhora depende mais da sorte do que da decisão."],
+    mid:["Em construção","Você ajusta a dose e observa a resposta, mas os critérios ainda são pouco definidos. Progredir pela queda da dor ou pelas repetições deixa a evolução instável."],
+    high:["Sólida","Você decide manter, ajustar ou interromper com base na intensidade, na distribuição e na recuperação, e progride por reavaliação, não por sensação."]}
+};
+
+/* =========================================================
+   ESTADO E UTILITÁRIOS
+   ========================================================= */
+const $ = id => document.getElementById(id);
+const reduz = matchMedia("(prefers-reduced-motion: reduce)").matches;
+const KEY_RES = "fnc_quiz_raciocinio_v1";
+const KEY_OUT = "fnc_quiz_raciocinio_outbox";
+const KEY_UTM = "fnc_quiz_raciocinio_utm";
+const LETRAS = ["A","B","C","D"];
+const telas = {intro:$("tIntro"), caso:$("tCaso"), gate:$("tGate"), res:$("tRes")};
+
+let S = novo();
+function novo(){
+  return {i:0, ordem:CASOS.map(c=>shuffle(c.o.map((_,k)=>k))), esc:Array(CASOS.length).fill(null), travado:false, t0:null, leadId:null};
+}
+function shuffle(a){ for(let i=a.length-1;i>0;i--){ const j=Math.floor(Math.random()*(i+1)); [a[i],a[j]]=[a[j],a[i]]; } return a; }
+function gid(){ try{ return crypto.randomUUID(); }catch(_){ return "q-"+Date.now().toString(36)+Math.random().toString(36).slice(2,10); } }
+function ev(nome, extra){ try{ (window.dataLayer=window.dataLayer||[]).push(Object.assign({event:nome, quiz_id:CONFIG.QUIZ_ID}, extra||{})); }catch(_){} }
+function ls(op, k, v){ try{ if(op==="get") return localStorage.getItem(k); if(op==="set") localStorage.setItem(k,v); if(op==="del") localStorage.removeItem(k); }catch(_){ return null; } }
+
+function mostrar(nome){
+  Object.entries(telas).forEach(([k,t])=>t.hidden = k!==nome);
+  const t = telas[nome]; t.classList.remove("entra"); void t.offsetWidth; if(!reduz) t.classList.add("entra");
+  $("recomecar").hidden = nome==="intro";
+  $("conteudo").focus({preventScroll:true});
+  scrollTo({top:0, behavior:"auto"});
+}
+
+/* origem do visitante: guarda a primeira que aparecer na sessão */
+function origem(){
+  let u = {};
+  try{ u = JSON.parse(sessionStorage.getItem(KEY_UTM)||"{}"); }catch(_){}
+  if(!u.capturado){
+    const q = new URLSearchParams(location.search);
+    ["utm_source","utm_medium","utm_campaign","utm_content","utm_term"].forEach(k=>{ u[k] = (q.get(k)||"").slice(0,120); });
+    u.origem_pagina = (document.referrer||"").slice(0,300);
+    u.capturado = 1;
+    try{ sessionStorage.setItem(KEY_UTM, JSON.stringify(u)); }catch(_){}
+  }
+  return u;
+}
+
+/* ---------- pontuação ---------- */
+function calcula(){
+  const pts = S.esc.map((e,i)=> e===null ? 0 : CASOS[i].o[e][1]);
+  const por = {clareza:0, classificacao:0, conducao:0}, max = {clareza:0, classificacao:0, conducao:0};
+  CASOS.forEach((c,i)=>{ por[c.p]+=pts[i]; max[c.p]+=3; });
+  const total = pts.reduce((a,b)=>a+b,0);
+  const nivel = NIVEIS.find(n=>total<=n.max);
+  const pct = k => por[k]/max[k];
+  const ks = Object.keys(por);
+  const fraco = ks.reduce((a,b)=> pct(b)<pct(a)?b:a, ks[0]);
+  const semFraco = pct(fraco) >= .75;
+  return {pts, por, max, total, nivel, fraco: semFraco ? "" : fraco};
+}
+function faixa(p){ return p<.45 ? "low" : p>=.75 ? "high" : "mid"; }
+
+/* =========================================================
+   CASOS
+   ========================================================= */
+function trilha(){
+  $("trilha").innerHTML = CASOS.map((_,i)=>`<li class="${i<S.i?"ok":i===S.i?"on":""}"><i></i></li>`).join("");
+}
+
+function caso(){
+  const c = CASOS[S.i]; S.travado = false;
+  trilha();
+  $("qRot").textContent = `Caso ${String(S.i+1).padStart(2,"0")} de ${String(CASOS.length).padStart(2,"0")}`;
+  $("qPilar").textContent = PILARES[c.p].nome;
+  $("qTexto").textContent = c.q;
+  const box = $("opcoes"); box.innerHTML = "";
+  S.ordem[S.i].forEach((orig,pos)=>{
+    const b = document.createElement("button");
+    b.type = "button"; b.className = "op"; b.dataset.orig = orig;
+    b.innerHTML = `<span class="let">${LETRAS[pos]}</span><span class="tx"></span>`;
+    b.querySelector(".tx").textContent = c.o[orig][0];
+    b.addEventListener("click", ()=>escolhe(orig));
+    box.appendChild(b);
+  });
+  $("leitura").hidden = true; $("acaoProx").hidden = true;
+  $("proximo").textContent = S.i===CASOS.length-1 ? "Ver meu mapa de decisão" : "Próximo caso";
+}
+
+function escolhe(orig){
+  if(S.travado) return;
+  S.travado = true; S.esc[S.i] = orig;
+  const c = CASOS[S.i];
+  const melhor = c.o.reduce((m,o,k)=> o[1]>c.o[m][1] ? k : m, 0);
+  document.querySelectorAll("#opcoes .op").forEach(b=>{
+    const k = +b.dataset.orig; b.disabled = true;
+    const tx = b.querySelector(".tx"); const tag = (t)=>{ const s=document.createElement("span"); s.className="etq"; s.textContent=t; tx.prepend(s); };
+    if(k===melhor){ b.classList.add("melhor"); tag(k===orig ? "Sua escolha e a decisão mais segura" : "Decisão mais segura"); }
+    else if(k===orig){ b.classList.add("sua"); tag("Sua escolha"); }
+    else b.classList.add("apagada");
+  });
+  $("leituraTxt").textContent = c.l;
+  $("leitura").hidden = false; $("acaoProx").hidden = false;
+  ev("quiz_caso_respondido", {caso:S.i+1, pilar:c.p, pontos:c.o[orig][1]});
+  const alvo = $("leitura"); if(!reduz) alvo.scrollIntoView({behavior:"smooth", block:"nearest"});
+  $("proximo").focus({preventScroll:true});
+}
+
+$("proximo").onclick = ()=>{
+  if(S.i < CASOS.length-1){ S.i++; caso(); const t=telas.caso; t.classList.remove("entra"); void t.offsetWidth; if(!reduz) t.classList.add("entra"); scrollTo({top:0,behavior:"auto"}); $("conteudo").focus({preventScroll:true}); }
+  else { ev("quiz_completo", {nota:calcula().total}); mostrar("gate"); preencheOculto(); }
+};
+
+/* =========================================================
+   CADASTRO E ENVIO
+   ========================================================= */
+function preencheOculto(){
+  const r = calcula(), u = origem(), d = CONFIG.DESTINOS[r.nivel.n];
+  if(!S.leadId) S.leadId = gid();
+  const f = $("formLead");
+  const set = (n,v)=>{ f.elements[n].value = v; };
+  set("lead_id", S.leadId); set("quiz_id", CONFIG.QUIZ_ID); set("quiz_versao", CONFIG.VERSAO);
+  set("nota_total", r.total); set("nivel", r.nivel.n); set("nivel_nome", r.nivel.nome);
+  set("nota_clareza", r.por.clareza); set("nota_classificacao", r.por.classificacao); set("nota_conducao", r.por.conducao);
+  set("ponto_de_partida", r.fraco ? PILARES[r.fraco].nome : "sem ponto fraco");
+  set("escolhas", S.esc.map(e=>LETRAS[e]||"").join(","));   /* posição original da opção: A=1ª, B=2ª... */
+  set("pontos_por_caso", r.pts.join(","));
+  set("destino", d.produto);
+  set("duracao_segundos", S.t0 ? Math.round((Date.now()-S.t0)/1000) : "");
+  ["utm_source","utm_medium","utm_campaign","utm_content","utm_term","origem_pagina"].forEach(k=>set(k, u[k]||""));
+  set("enviado_em", new Date().toISOString());
+}
+
+function valida(){
+  const f = $("formLead"); let ok = true, primeiro = null;
+  const marca = (nome, bom, el)=>{
+    const c = document.querySelector(`.campo[data-c="${nome}"]`);
+    c.classList.toggle("erro", !bom);
+    el.setAttribute("aria-invalid", String(!bom));
+    if(!bom){ ok = false; primeiro = primeiro || el; }
+  };
+  marca("nome", f.nome.value.trim().length >= 2, f.nome);
+  marca("email", /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(f.email.value.trim()), f.email);
+  const z = f.whatsapp.value.replace(/\D/g,"");
+  marca("whatsapp", z==="" || (z.length>=10 && z.length<=13), f.whatsapp);
+  marca("tempo", f.tempo_de_formacao.value!=="", f.tempo_de_formacao);
+  const a = f.aceite_contato.checked; $("aceiteBox").classList.toggle("erro", !a);
+  if(!a){ ok = false; primeiro = primeiro || f.aceite_contato; }
+  $("erroForm").textContent = a ? "" : "Marque a caixa para continuar.";
+  if(primeiro) primeiro.focus();
+  return ok;
+}
+
+function payload(){
+  const f = $("formLead"), o = {};
+  new FormData(f).forEach((v,k)=>{ if(k!=="bot-field") o[k]=String(v); });
+  o.email = o.email.trim().toLowerCase(); o.nome = o.nome.trim();
+  o["form-name"] = CONFIG.FORM_NAME;
+  o.whatsapp = (o.whatsapp||"").replace(/\D/g,"");
+  return o;
+}
+
+/* Envio ao Netlify Forms. Se falhar (sem internet, por exemplo), o lead fica numa fila
+   no navegador e é reenviado na próxima visita. O funil nunca trava por causa do envio. */
+function enviaNetlify(o){
+  return fetch(location.pathname, {
+    method:"POST",
+    headers:{"Content-Type":"application/x-www-form-urlencoded"},
+    body:new URLSearchParams(o).toString()
+  }).then(r=>{ if(!r.ok) throw new Error("http_"+r.status); });
+}
+function enviaWebhook(o){
+  if(!CONFIG.WEBHOOK) return;
+  try{ fetch(CONFIG.WEBHOOK,{method:"POST",mode:"no-cors",keepalive:true,headers:{"Content-Type":"application/json"},body:JSON.stringify(o)}).catch(()=>{}); }catch(_){}
+}
+function fila(){ try{ return JSON.parse(ls("get",KEY_OUT)||"[]"); }catch(_){ return []; } }
+function descarrega(){
+  const q = fila(); if(!q.length) return;
+  ls("del",KEY_OUT);
+  q.forEach(o=> enviaNetlify(o).catch(()=>{ ls("set",KEY_OUT,JSON.stringify(fila().concat([o]))); }));
+}
+
+$("formLead").addEventListener("submit", e=>{
+  e.preventDefault();
+  if($("formLead").elements["bot-field"].value) return;       /* robô */
+  if(!valida()) return;
+  const btn = $("enviar"); btn.disabled = true; btn.textContent = "Montando o seu mapa…";
+  preencheOculto();
+  const o = payload();
+  ev("quiz_lead_enviado", {nivel:o.nivel, nota:o.nota_total});
+  enviaWebhook(o);
+  enviaNetlify(o).catch(err=>{
+    console.warn("[quiz] envio adiado:", err.message);
+    ls("set",KEY_OUT,JSON.stringify(fila().concat([o])));
+    ev("quiz_lead_erro", {motivo:err.message});
+  }).finally(()=>{
+    ls("set", KEY_RES, JSON.stringify({o, esc:S.esc, ordem:S.ordem}));
+    btn.disabled = false; btn.textContent = "Ver meu mapa de decisão";
+    resultado(o);
+  });
+});
+
+/* =========================================================
+   RESULTADO
+   ========================================================= */
+function linkDestino(d, o){
+  let url;
+  if(d.tipo==="hotmart"){
+    url = new URL(CONFIG.HOTMART_FNC);
+    url.searchParams.set("src","quiz-raciocinio");   /* origem da venda no relatório da Hotmart */
+    url.searchParams.set("sck", o.lead_id);          /* liga a compra ao lead, sem dados pessoais na URL */
+  } else {
+    url = new URL(d.url, location.origin);
+    url.searchParams.set("origem","quiz-raciocinio");
+    url.searchParams.set("lead", o.lead_id);
+    url.searchParams.set("nivel", o.nivel);
+    url.searchParams.set("nota", o.nota_total+"de27");
+    if(o.ponto_de_partida && o.ponto_de_partida!=="sem ponto fraco") url.searchParams.set("etapa", o.ponto_de_partida);
+  }
+  return url.toString();
+}
+
+/* Vídeo do Gunther (opcional): só aparece quando um dos dois campos de CONFIG estiver preenchido */
+function montaVideo(ativo){
+  const box = $("rVideo"); box.innerHTML = ""; box.hidden = true;
+  if(!ativo) return;
+  if(CONFIG.VIDEO_EMBED){
+    const f = document.createElement("iframe");
+    f.src = CONFIG.VIDEO_EMBED; f.title = "Gunther Löffler explica o sistema CSC"; f.loading = "lazy";
+    f.allow = "accelerometer; autoplay; encrypted-media; picture-in-picture"; f.allowFullscreen = true;
+    box.appendChild(f); box.hidden = false;
+  } else if(CONFIG.VIDEO_MP4){
+    const v = document.createElement("video");
+    v.src = CONFIG.VIDEO_MP4; v.controls = true; v.preload = "metadata"; v.playsInline = true;
+    box.appendChild(v); box.hidden = false;
+  }
+}
+
+/* Níveis 1 e 2: duas opções enquanto o Fisio no Comando não está aberto */
+function montaOpcoes(ativo, o, nv, r){
+  const box = $("rOpcoes"); box.innerHTML = ""; box.hidden = !ativo;
+  if(!ativo) return;
+  const msg = `Olá! Fiz o Quiz do Fisio, fiquei no nível "${nv.nome}" (${r.total} de 27) e quero ser avisado da próxima turma do Fisio no Comando.`;
+  const espera = CONFIG.WAITLIST_URL || `https://wa.me/${CONFIG.WHATSAPP}?text=${encodeURIComponent(msg)}`;
+  const q = `?origem=quiz-raciocinio&lead=${encodeURIComponent(o.lead_id)}&nivel=${nv.n}`;
+  const lista = [
+    {id:"grupo-pre-venda", tag:"Opção 1", t:"Quero ser avisado da próxima turma",
+     d:"Entre no grupo e saiba primeiro quando as novas vagas abrirem.",
+     b:"Quero entrar no grupo de espera", href:espera, externo:true},
+    {id:"casos-minicurso", tag:"Opção 2", t:"Enquanto isso, comece por um caso completo",
+     d:"Aprenda a conduzir esses casos até o fim, sem deixar dor residual.",
+     b:null, links:[["Fascite plantar","/fascite-plantar/"+q],["Síndrome do túnel do carpo","/sindrome-do-tunel-do-carpo/"+q]]}
+  ];
+  lista.forEach(it=>{
+    const c = document.createElement("div"); c.className = "opc";
+    const tag = document.createElement("span"); tag.className = "mono"; tag.textContent = it.tag;
+    const h = document.createElement("h4"); h.textContent = it.t;
+    const p = document.createElement("p"); p.textContent = it.d;
+    c.append(tag, h, p);
+    const links = it.links ? it.links : [[it.b, it.href]];
+    const ac = document.createElement("div"); ac.className = "acoes";
+    links.forEach(([txt,href],k)=>{
+      const a = document.createElement("a"); a.className = "btn" + (it.links ? " sec" : ""); a.textContent = txt; a.href = href;
+      if(it.externo){ a.target = "_blank"; a.rel = "noopener"; }
+      a.onclick = ()=> ev("quiz_opcao_clicada", {opcao:it.id, nivel:nv.n, destino:txt});
+      ac.appendChild(a);
+    });
+    c.appendChild(ac); box.appendChild(c);
+  });
+}
+
+function resultado(o){
+  const r = calcula();
+  const nv = r.nivel, d = CONFIG.DESTINOS[nv.n];
+  $("rSelo").textContent = `Nível ${nv.n} de 4 · ${r.total} de 27 pontos`;
+  $("rTitulo").textContent = nv.nome + ".";
+  $("rLead").textContent = nv.lead;
+
+  $("regua").innerHTML = NIVEIS.map(n=>`<li class="${n.n===nv.n?"on":n.n<nv.n?"pass":""}"><b>Nível ${n.n}</b>${n.ponto}</li>`).join("");
+
+  $("rPilares").innerHTML = Object.keys(PILARES).map(k=>{
+    const p = r.por[k]/r.max[k], fb = FEEDBACK_PILAR[k][faixa(p)];
+    const segs = CASOS.map((c,i)=> c.p===k ? `<i><b style="width:${(r.pts[i]/3*100).toFixed(0)}%"></b></i>` : "").join("");
+    const fr = r.fraco===k;
+    return `<div class="pil${fr?" fraco":""}"><div class="pil-h"><h4>${PILARES[k].nome}</h4><span>${fb[0]} · ${r.por[k]} de ${r.max[k]}${fr?" · ponto de partida":""}</span></div><div class="seg" aria-hidden="true">${segs}</div><p>${fb[1]}</p></div>`;
+  }).join("");
+
+  $("rCtaTitulo").textContent = nv.cta[0];
+  $("rCtaTexto").textContent = nv.cta[1];
+  const a = $("rCta"), comOpcoes = d.tipo==="opcoes";
+  a.hidden = comOpcoes;
+  if(!comOpcoes){
+    a.textContent = d.rotulo; a.href = linkDestino(d, o);
+    if(d.tipo!=="hotmart"){ a.removeAttribute("target"); } else { a.target="_blank"; a.rel="noopener"; }
+    a.onclick = ()=> ev("quiz_cta_clicado", {destino:d.produto, nivel:nv.n});
+  }
+  montaVideo(comOpcoes);
+  montaOpcoes(comOpcoes, o, nv, r);
+  const msg = `Olá! Fiz o teste "Em que você apoia a decisão?" e o meu resultado foi: ${nv.nome} (${r.total} de 27). Quero conversar sobre o próximo passo.`;
+  const z = $("rZap"); z.href = `https://wa.me/${CONFIG.WHATSAPP}?text=${encodeURIComponent(msg)}`;
+  z.onclick = ()=> ev("quiz_whatsapp_clicado", {nivel:nv.n});
+  mostrar("res");
+  ev("quiz_resultado_visto", {nivel:nv.n, nota:r.total});
+}
+
+/* =========================================================
+   EVENTOS GERAIS
+   ========================================================= */
+function reinicia(apagar){
+  if(apagar) ls("del", KEY_RES);
+  S = novo(); mostrar("intro");
+}
+$("comecar").onclick = ()=>{ S = novo(); S.t0 = Date.now(); origem(); ev("quiz_iniciado"); mostrar("caso"); caso(); };
+$("recomecar").onclick = ()=>reinicia(true);
+$("refazer").onclick = ()=>reinicia(true);
+
+/* quem volta com o resultado salvo vê o resultado direto */
+(function inicio(){
+  origem(); descarrega();
+  const salvo = ls("get", KEY_RES);
+  if(salvo){
+    try{
+      const s = JSON.parse(salvo);
+      if(s && s.o && Array.isArray(s.esc) && s.esc.length===CASOS.length){ S.esc = s.esc; S.ordem = s.ordem||S.ordem; S.leadId = s.o.lead_id; resultado(s.o); return; }
+    }catch(_){}
+    ls("del", KEY_RES);
+  }
+})();
+</script>
+</body>
+</html>
