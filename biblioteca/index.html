@@ -1,0 +1,476 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Biblioteca de casos clínicos · Gunther Löffler</title>
+<meta name="description" content="Veja o caso clínico inteiro, do início ao fim, e entenda por que o Gunther Löffler decide como decide.">
+<meta name="theme-color" content="#0F2730">
+<meta property="og:title" content="Biblioteca de casos clínicos · Gunther Löffler">
+<meta property="og:description" content="Veja o caso clínico inteiro, do início ao fim, e entenda por que o Gunther Löffler decide como decide.">
+<meta property="og:image" content="https://edu.guntherloffler.com.br/biblioteca/img/gunther-retrato.jpg">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="preload" href="fonts/youngserif.woff2" as="font" type="font/woff2" crossorigin>
+<script>document.documentElement.classList.add('js')</script>
+<style>
+@font-face{font-family:"Figtree";src:url(fonts/figtree.woff2) format("woff2");font-weight:300 900;font-display:swap}
+@font-face{font-family:"Young Serif";src:url(fonts/youngserif.woff2) format("woff2");font-weight:400;font-display:swap}
+:root{
+  --tinta:#0F2730; --tinta-2:#17353F; --petroleo:#14505C;
+  --papel:#F2F4F0; --papel-2:#E4E9E3; --grafite:#4B5C63; --mute:#B6C4C8;
+  --est:#4A6A7E; --fia:#D9A23A; --ala:#EC5C32; --ala-pp:#B93A18;
+  --serif:"Young Serif",Georgia,serif; --sans:"Figtree",system-ui,sans-serif;
+  --gut:clamp(20px,5vw,72px);
+  --mx:70%; --my:30%;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--tinta);color:var(--papel);font-family:var(--sans);font-size:18px;line-height:1.55;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+img,svg{display:block;max-width:100%}
+a{color:inherit}
+h1,h2,h3{font-family:var(--serif);font-weight:400;margin:0;letter-spacing:-.015em;text-wrap:balance}
+p{margin:0 0 1em}
+:focus-visible{outline:3px solid var(--fia);outline-offset:3px}
+.wrap{max-width:1240px;margin-inline:auto;padding-inline:var(--gut)}
+.sec{position:relative;padding-block:clamp(80px,12vw,168px)}
+h2{font-size:clamp(34px,5vw,64px);line-height:1.05}
+.lede{font-size:clamp(18px,1.7vw,22px);color:var(--mute);max-width:52ch}
+
+/* ===== REVEAL (entrada das seções) ===== */
+.js [data-r]{opacity:0;transition:opacity .9s cubic-bezier(.2,.7,.2,1),transform .9s cubic-bezier(.2,.7,.2,1),filter 1.1s cubic-bezier(.2,.7,.2,1),clip-path 1.1s cubic-bezier(.2,.7,.2,1);transition-delay:var(--d,0s);will-change:opacity,transform}
+.js [data-r="focus"]{filter:blur(16px);transform:translateY(22px) scale(.98)}
+.js [data-r="rise"]{transform:translateY(48px)}
+.js [data-r="left"]{transform:translateX(-64px)}
+.js [data-r="right"]{transform:translateX(64px)}
+.js [data-r="zoom"]{transform:scale(.88)}
+.js [data-r="wipe"],.js [data-r="wipeup"]{opacity:1}
+.js [data-r="wipe"]>img,.js [data-r="wipeup"]>img{clip-path:inset(0 100% 0 0);transition:clip-path 1.3s cubic-bezier(.2,.7,.2,1) var(--d,0s),transform 1.6s cubic-bezier(.2,.7,.2,1) var(--d,0s)}
+.js [data-r="wipeup"]>img{clip-path:inset(100% 0 0 0);transform:scale(1.14)}
+.js [data-r="wipe"].in>img,.js [data-r="wipeup"].in>img{clip-path:inset(0 0 0 0);transform:none}
+.js [data-r].in{opacity:1;filter:none;transform:none}
+
+/* ===== LUZ ===== */
+.beam{position:absolute;pointer-events:none;mix-blend-mode:screen;filter:blur(40px)}
+.beam--a{width:46vw;height:140%;left:-8vw;top:-20%;background:linear-gradient(100deg,transparent 0,rgba(217,162,58,.22) 45%,rgba(236,92,50,.14) 60%,transparent 100%);transform:rotate(14deg);animation:varrer 14s ease-in-out infinite alternate}
+.beam--b{width:30vw;height:130%;right:6vw;top:-15%;background:linear-gradient(100deg,transparent,rgba(111,163,179,.20) 50%,transparent);transform:rotate(14deg);animation:varrer 18s ease-in-out -6s infinite alternate}
+@keyframes varrer{from{translate:-6vw 0;opacity:.55}to{translate:12vw 0;opacity:1}}
+.spot{position:absolute;inset:0;pointer-events:none;background:radial-gradient(520px circle at var(--mx) var(--my),rgba(255,226,170,.20),rgba(236,92,50,.07) 40%,transparent 70%);mix-blend-mode:screen}
+.grain{position:absolute;inset:0;pointer-events:none;opacity:.07;background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2'/></filter><rect width='160' height='160' filter='url(%23n)'/></svg>")}
+
+/* ===== BOTÃO ===== */
+.btn{position:relative;display:inline-flex;align-items:center;gap:14px;padding:20px 34px;border-radius:999px;font-weight:700;font-size:19px;text-decoration:none;color:var(--tinta);background:linear-gradient(100deg,#FAB08C 0%,#F2804F 48%,#E2531F 100%);box-shadow:0 0 0 0 rgba(242,128,79,.5),0 18px 50px -12px rgba(226,83,31,.6);overflow:hidden;isolation:isolate;transition:transform .25s,box-shadow .25s;animation:pulso 3.2s ease-out infinite}
+.btn::after{content:"";position:absolute;inset:-2px;z-index:-1;background:linear-gradient(105deg,transparent 35%,rgba(255,255,255,.65) 50%,transparent 65%);transform:translateX(-120%);animation:brilho 3.8s ease-in-out 1.2s infinite}
+.btn:hover{transform:translateY(-3px) scale(1.02)}
+.btn svg{width:22px;height:22px;flex:none}
+@keyframes brilho{0%{transform:translateX(-120%)}45%,100%{transform:translateX(120%)}}
+@keyframes pulso{0%{box-shadow:0 0 0 0 rgba(242,128,79,.45),0 18px 50px -12px rgba(226,83,31,.6)}70%,100%{box-shadow:0 0 0 22px rgba(242,128,79,0),0 18px 50px -12px rgba(226,83,31,.6)}}
+.btn--sm{padding:12px 22px;font-size:16px;animation:none}
+.micro{font-size:15px;color:var(--mute);margin-top:16px}
+
+/* ===== TOPO ===== */
+.top{position:fixed;z-index:50;inset:0 0 auto 0;display:flex;justify-content:space-between;align-items:center;padding:14px var(--gut);transition:background .4s,backdrop-filter .4s}
+.top.sol{background:rgba(15,39,48,.78);backdrop-filter:blur(14px)}
+.top img{height:46px;width:auto}
+
+/* ===== HERO ===== */
+.hero{position:relative;min-height:100svh;display:flex;align-items:center;padding-block:132px 72px;overflow:hidden;background:
+  radial-gradient(90% 70% at 85% 10%,#1B6272 0%,transparent 60%),
+  radial-gradient(70% 60% at 0% 100%,#3A2A1A 0%,transparent 60%),
+  linear-gradient(160deg,#0B1D25 0%,#0F2730 45%,#14505C 130%)}
+.hero__in{position:relative;z-index:2;display:grid;gap:clamp(40px,6vw,88px);grid-template-columns:1fr;align-items:center}
+@media(min-width:960px){.hero__in{grid-template-columns:1.12fr .88fr}}
+.hero h1{font-size:clamp(42px,6.6vw,96px);line-height:.98;letter-spacing:-.025em;max-width:12ch}
+.hero .lede{margin:28px 0 36px}
+.foco{animation:focar 2.2s cubic-bezier(.3,.1,.2,1) .2s both}
+@keyframes focar{from{filter:blur(20px);opacity:.4}55%{filter:blur(6px);opacity:.9}to{filter:blur(0);opacity:1}}
+.hero__foto{position:relative;justify-self:center;width:min(100%,460px)}
+.hero__foto{padding:0 0 6% 0}
+.hero__foto .moldura{position:relative;aspect-ratio:4/5;border-radius:28px;overflow:hidden;box-shadow:0 0 0 1px rgba(255,255,255,.16),0 40px 120px -30px rgba(242,128,79,.5),0 0 90px -10px rgba(111,163,179,.3)}
+.hero__foto .moldura img{width:100%;height:110%;object-fit:cover;object-position:54% 30%;will-change:transform}
+.hero__foto .moldura::after{content:"";position:absolute;inset:0;background:linear-gradient(200deg,rgba(255,214,170,.28),transparent 42%),linear-gradient(0deg,rgba(15,39,48,.5),transparent 38%);mix-blend-mode:soft-light}
+.detalhe{position:absolute;right:-7%;bottom:-2%;width:42%;aspect-ratio:1;border-radius:50%;overflow:hidden;border:5px solid var(--tinta);box-shadow:0 0 0 2px rgba(250,176,140,.7),0 24px 60px -10px rgba(0,0,0,.6),0 0 60px -6px rgba(242,128,79,.55)}
+.detalhe img{width:100%;height:100%;object-fit:cover;object-position:62% 60%}
+.ficha-fl{position:absolute;left:-10%;bottom:12%;width:min(230px,52%);background:rgba(242,244,240,.96);color:var(--tinta);border-radius:6px;padding:16px 18px;font-size:14.5px;line-height:1.35;box-shadow:0 24px 60px -10px rgba(0,0,0,.55);will-change:transform}
+.ficha-fl b{display:block;font-family:var(--serif);font-weight:400;font-size:19px;line-height:1.1;margin-bottom:8px}
+.ficha-fl div{display:flex;gap:10px;align-items:center;border-top:1px solid var(--papel-2);padding:7px 0}
+.ficha-fl i{width:10px;height:10px;border-radius:50%;background:var(--ala);flex:none}
+.rolar{position:absolute;z-index:2;left:50%;bottom:22px;translate:-50% 0;width:1px;height:48px;background:linear-gradient(var(--fia),transparent);animation:desce 2.2s ease-in-out infinite}
+@keyframes desce{0%{transform:scaleY(0);transform-origin:top}50%{transform:scaleY(1);transform-origin:top}51%{transform-origin:bottom}100%{transform:scaleY(0);transform-origin:bottom}}
+
+/* ===== DOR ===== */
+.dor{background:linear-gradient(180deg,#0F2730 0%,#102E38 60%,#0F2730 100%);overflow:hidden}
+.dor h2{max-width:16ch;margin-bottom:clamp(40px,6vw,80px)}
+.frases{display:grid;gap:0}
+.frase{font-family:var(--serif);font-size:clamp(26px,4vw,52px);line-height:1.12;padding:clamp(22px,3vw,36px) 0;border-top:1px solid rgba(255,255,255,.14);color:var(--papel)}
+.frase:last-child{border-bottom:1px solid rgba(255,255,255,.14)}
+.virada{margin-top:clamp(48px,7vw,96px);font-family:var(--serif);font-size:clamp(34px,5.6vw,76px);line-height:1.04;letter-spacing:-.02em;max-width:15ch;background:linear-gradient(95deg,#FAB08C 0%,#E2531F 80%);-webkit-background-clip:text;background-clip:text;color:transparent}
+
+/* ===== PRÁTICA (galeria) ===== */
+.pratica{background:linear-gradient(170deg,#102E38 0%,#0F2730 40%,#1B3A33 100%);overflow:hidden}
+.pratica__cab{display:grid;gap:24px;margin-bottom:clamp(40px,6vw,88px)}
+.pratica h2{max-width:17ch}
+.pratica__cab{text-align:center;justify-items:center}
+.pratica__cab h2{margin-inline:auto}
+.pratica__cab .lede{margin-inline:auto}
+.galeria{display:grid;gap:14px;grid-template-columns:repeat(2,1fr)}
+.foto{position:relative;margin:0;border-radius:18px;overflow:hidden;background:var(--tinta-2);aspect-ratio:1;box-shadow:0 0 0 1px rgba(255,255,255,.13),0 30px 70px -28px rgba(0,0,0,.75)}
+.foto img{width:100%;height:100%;object-fit:cover}
+.foto::after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgba(15,39,48,.5),transparent 42%),linear-gradient(210deg,rgba(242,128,79,.22),transparent 50%);pointer-events:none}
+/* mira de foco nos cantos */
+.br{position:absolute;z-index:2;inset:46px;opacity:0;pointer-events:none;transition:inset 1.1s cubic-bezier(.2,.7,.2,1) .5s,opacity .8s .5s;
+  --c:rgba(255,236,222,.95);
+  background:
+   linear-gradient(var(--c),var(--c)) 0 0/22px 2px no-repeat,linear-gradient(var(--c),var(--c)) 0 0/2px 22px no-repeat,
+   linear-gradient(var(--c),var(--c)) 100% 0/22px 2px no-repeat,linear-gradient(var(--c),var(--c)) 100% 0/2px 22px no-repeat,
+   linear-gradient(var(--c),var(--c)) 0 100%/22px 2px no-repeat,linear-gradient(var(--c),var(--c)) 0 100%/2px 22px no-repeat,
+   linear-gradient(var(--c),var(--c)) 100% 100%/22px 2px no-repeat,linear-gradient(var(--c),var(--c)) 100% 100%/2px 22px no-repeat}
+.foto.in .br,.no-js .br{inset:16px;opacity:1}
+.g3{grid-column:1/-1;order:-1;aspect-ratio:4/5}
+.g3 img{object-position:50% 40%}
+.g1 img{object-position:50% 45%}.g2 img{object-position:50% 68%}.g4 img{object-position:50% 58%}.g5 img{object-position:50% 52%}
+@media(min-width:900px){
+  .galeria{grid-template-columns:1fr 1.22fr 1fr;grid-template-rows:1fr 1fr;gap:18px;height:clamp(560px,62vw,800px)}
+  .foto{aspect-ratio:auto;height:100%}
+  .g3{grid-column:2;grid-row:1/span 2;order:0}
+  .g1{grid-column:1;grid-row:1}.g2{grid-column:1;grid-row:2}.g4{grid-column:3;grid-row:1}.g5{grid-column:3;grid-row:2}
+}
+
+/* ===== LINHA DO CASO (rolagem) ===== */
+.linha{height:480vh;background:linear-gradient(180deg,#1B3A33 0%,#0F2730 18%,#0B1D25 100%)}
+.linha__sticky{position:sticky;top:0;height:100svh;display:flex;align-items:center;overflow:hidden}
+.linha__in{display:grid;gap:28px;grid-template-columns:1fr;width:100%}
+@media(min-width:900px){.linha__in{grid-template-columns:1fr 1fr;gap:clamp(40px,6vw,96px);align-items:center}}
+.linha h2{font-size:clamp(30px,4vw,52px);margin-bottom:clamp(20px,3vw,40px);max-width:14ch}
+.etapas{position:relative;list-style:none;margin:0;padding:0 0 0 44px}
+.etapas::before{content:"";position:absolute;left:9px;top:12px;bottom:12px;width:2px;background:rgba(255,255,255,.16)}
+.etapas .fio{position:absolute;left:9px;top:12px;width:2px;height:calc((100% - 24px)*var(--p,0));background:linear-gradient(var(--fia),var(--ala));box-shadow:0 0 14px 2px rgba(236,92,50,.7)}
+.et{position:relative;padding:8px 0;opacity:.32;transition:opacity .5s}
+.et::before{content:"";position:absolute;left:-44px;top:14px;width:20px;height:20px;border-radius:50%;border:2px solid rgba(255,255,255,.5);background:var(--tinta);transition:all .5s}
+.et.on{opacity:1}
+.et.on::before{background:var(--ala);border-color:var(--ala);box-shadow:0 0 0 6px rgba(236,92,50,.22),0 0 26px 4px rgba(236,92,50,.65)}
+.et h3{font-size:clamp(22px,2.6vw,32px)}
+.et p{margin:2px 0 0;font-size:16.5px;color:var(--mute);max-height:0;overflow:hidden;transition:max-height .6s ease}
+.et.on p{max-height:120px}
+.visor{position:relative;aspect-ratio:4/5;max-height:62svh;justify-self:center;width:min(100%,460px);border-radius:16px;overflow:hidden;box-shadow:0 0 0 1px rgba(255,255,255,.12),0 40px 100px -30px rgba(0,0,0,.7)}
+.visor img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;filter:blur(18px);transform:scale(1.08);transition:opacity .8s,filter .9s,transform 1.4s}
+.visor img.on{opacity:1;filter:none;transform:none}
+.visor::after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgba(15,39,48,.7),transparent 40%),radial-gradient(60% 40% at 80% 0%,rgba(255,214,150,.32),transparent 70%);pointer-events:none}
+.visor .rot{position:absolute;z-index:2;left:20px;bottom:18px;font-family:var(--serif);font-size:28px}
+@media(max-width:899px){.visor{aspect-ratio:16/10;max-height:34svh;width:100%}.linha h2{margin-bottom:14px}.et p{font-size:15.5px}}
+
+/* ===== ORGANIZAÇÃO ===== */
+.org{background:linear-gradient(180deg,#0B1D25 0%,#0F2730 100%);overflow:hidden}
+.org__g{display:grid;gap:clamp(40px,6vw,88px);grid-template-columns:1fr}
+@media(min-width:960px){.org__g{grid-template-columns:1fr 1fr;align-items:center}}
+.org h2{margin-bottom:24px;max-width:15ch}
+.fam{display:grid;gap:0;margin-top:32px}
+.fam div{display:grid;grid-template-columns:18px 1fr;gap:16px;padding:18px 0;border-top:1px solid rgba(255,255,255,.14)}
+.fam div:last-child{border-bottom:1px solid rgba(255,255,255,.14)}
+.fam i{width:18px;height:18px;border-radius:4px;margin-top:5px}
+.fam b{display:block;font-family:var(--serif);font-weight:400;font-size:24px;line-height:1.1}
+.fam span{color:var(--mute);font-size:16.5px}
+.ficha{position:relative;color:var(--tinta);border-radius:10px;padding:clamp(22px,3vw,34px);border:3px solid transparent;background:linear-gradient(var(--papel),var(--papel)) padding-box,conic-gradient(from var(--ang,0deg),var(--est),var(--fia),var(--ala),var(--est)) border-box;animation:gira 7s linear infinite;box-shadow:0 50px 100px -30px rgba(0,0,0,.7),0 0 70px -10px rgba(236,92,50,.35)}
+@property --ang{syntax:"<angle>";inherits:false;initial-value:0deg}
+@keyframes gira{to{--ang:360deg}}
+.ficha header{display:flex;justify-content:space-between;gap:14px;align-items:flex-start;border-bottom:2px solid var(--tinta);padding-bottom:16px}
+.ficha h3{font-size:clamp(24px,2.6vw,32px)}
+.ficha .fams{display:flex;gap:6px;flex:none;padding-top:8px}
+.ficha .fams i{width:14px;height:34px;border-radius:3px}
+.ficha .l{display:grid;grid-template-columns:140px 1fr;gap:14px;padding:13px 0;border-bottom:1px solid var(--papel-2);font-size:16.5px}
+.ficha .l:last-of-type{border-bottom:0}
+.ficha dt{color:var(--grafite);font-size:14.5px}
+.ficha dd{margin:0;font-weight:500}
+.ficha dd.x{color:var(--grafite);font-weight:400;display:flex;gap:10px;align-items:center}
+.ficha dd.x::before{content:"";width:9px;height:9px;border-radius:50%;background:var(--ala);flex:none}
+.ficha small{display:block;margin-top:12px;color:var(--grafite);font-size:13.5px}
+@media(max-width:520px){.ficha .l{grid-template-columns:1fr;gap:2px}}
+
+/* ===== PARA QUEM ===== */
+.quem{background:linear-gradient(180deg,#0F2730,#12404A 130%);overflow:hidden}
+.quem__g{display:grid;gap:clamp(28px,4vw,56px);grid-template-columns:1fr}
+@media(min-width:900px){.quem__g{grid-template-columns:1fr 1fr}}
+.quem h2{margin-bottom:clamp(32px,5vw,64px);max-width:14ch}
+.col h3{font-size:26px;margin-bottom:18px}
+.col ul{list-style:none;margin:0;padding:0;display:grid;gap:0}
+.col li{padding:16px 0 16px 34px;border-top:1px solid rgba(255,255,255,.14);position:relative;font-size:18px}
+.col li::before{content:"";position:absolute;left:0;top:25px;width:14px;height:14px;border-radius:50%;background:var(--fia)}
+.col--nao li{color:var(--mute)}
+.col--nao li::before{background:transparent;border:2px solid var(--mute)}
+
+/* ===== GUNTHER ===== */
+.gun{background:linear-gradient(180deg,#12404A -30%,#0B1D25 100%);overflow:hidden}
+.gun__g{display:grid;gap:clamp(36px,6vw,96px);grid-template-columns:1fr;align-items:center}
+@media(min-width:900px){.gun__g{grid-template-columns:.8fr 1.2fr}}
+.arte{position:relative;aspect-ratio:4/5;width:min(100%,540px);justify-self:center;isolation:isolate}
+.arte .sol{position:absolute;z-index:-3;left:50%;top:44%;width:112%;aspect-ratio:1;translate:-50% -50%;border-radius:50%;background:radial-gradient(circle,rgba(250,176,140,.62) 0%,rgba(242,128,79,.38) 32%,rgba(226,83,31,.16) 55%,transparent 70%);filter:blur(6px);animation:respira 6s ease-in-out infinite}
+@keyframes respira{50%{scale:1.07;opacity:.82}}
+.arte .anel{position:absolute;z-index:-2;left:50%;top:44%;border-radius:50%;translate:-50% -50%;border:1.5px solid rgba(250,176,140,.38)}
+.arte .anel.a1{width:78%;aspect-ratio:1}
+.arte .anel.a2{width:100%;aspect-ratio:1;border-style:dashed;border-color:rgba(250,176,140,.22);animation:roda 60s linear infinite}
+.arte .lomb{position:absolute;z-index:-1;bottom:6%;width:21%;border-radius:8px 8px 0 0;transform:translateY(40px);opacity:0;transition:transform 1.3s cubic-bezier(.2,.7,.2,1) var(--d),opacity 1s var(--d);box-shadow:inset -12px 0 24px -10px rgba(0,0,0,.28)}
+.arte .lomb::before{content:"";position:absolute;left:50%;top:7%;width:22%;aspect-ratio:1;margin-left:-11%;border-radius:50%;background:var(--tinta)}
+.arte.in .lomb{transform:none;opacity:1}
+.arte .l1{left:1%;height:66%;background:var(--est);--d:.5s}.arte .l1::before{background:var(--papel)}
+.arte .l2{left:22%;height:82%;background:var(--fia);--d:.7s}
+.arte .l3{right:1%;height:72%;background:var(--ala);--d:.9s}
+.arte .chao{position:absolute;z-index:1;left:-6%;right:-6%;bottom:6%;height:6px;border-radius:3px;background:linear-gradient(90deg,transparent,#FAB08C 18%,#E2531F 82%,transparent);box-shadow:0 0 28px 2px rgba(242,128,79,.7)}
+.arte .gun-img{position:absolute;z-index:0;left:50%;bottom:6%;width:96%;translate:-50% 0;filter:drop-shadow(0 0 1px rgba(255,214,190,.9)) drop-shadow(0 18px 40px rgba(0,0,0,.45)) drop-shadow(0 0 34px rgba(250,176,140,.28))}
+.arte .raio{position:absolute;z-index:-2;left:50%;top:-8%;width:70%;height:90%;translate:-50% 0;background:linear-gradient(180deg,rgba(255,226,200,.28),transparent 80%);clip-path:polygon(40% 0,60% 0,100% 100%,0 100%);filter:blur(10px);mix-blend-mode:screen;animation:varrer 10s ease-in-out infinite alternate}
+.arte .nome{position:absolute;z-index:2;left:0;right:0;bottom:-2%;text-align:center;font-family:var(--serif);font-size:20px;letter-spacing:.01em;color:var(--papel)}
+.gun blockquote{margin:0 0 32px;font-family:var(--serif);font-size:clamp(28px,4vw,50px);line-height:1.1;letter-spacing:-.015em}
+.gun cite{display:block;font-style:normal;color:var(--mute);font-size:17px;max-width:48ch}
+.gun cite b{display:block;color:var(--papel);font-size:20px;font-weight:600}
+
+/* ===== CTA FINAL ===== */
+.fim{position:relative;text-align:center;overflow:hidden;background:
+  radial-gradient(70% 90% at 50% 120%,rgba(236,92,50,.55),transparent 70%),
+  radial-gradient(60% 60% at 50% 0%,rgba(20,80,92,.8),transparent 70%),#0B1D25}
+.fim h2{margin-inline:auto;max-width:16ch;margin-bottom:24px}
+.fim .lede{margin:0 auto 40px}
+.fim .wrap{position:relative;z-index:2}
+.halo{position:absolute;left:50%;top:60%;width:min(900px,120vw);aspect-ratio:1;translate:-50% -50%;background:conic-gradient(from 0deg,transparent,rgba(217,162,58,.22),transparent 30%,rgba(236,92,50,.2),transparent 60%,rgba(111,163,179,.18),transparent);border-radius:50%;filter:blur(50px);animation:roda 24s linear infinite;pointer-events:none}
+@keyframes roda{to{rotate:360deg}}
+footer{background:#08161C;color:#8FA3A9;font-size:14.5px;padding-block:36px}
+footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+
+/* barra fixa no celular */
+.fixa{position:fixed;z-index:60;left:0;right:0;bottom:0;padding:12px var(--gut) calc(12px + env(safe-area-inset-bottom));background:linear-gradient(0deg,rgba(11,29,37,.96),rgba(11,29,37,.7));backdrop-filter:blur(10px);transform:translateY(110%);transition:transform .5s}
+.fixa.on{transform:none}
+.fixa .btn{width:100%;justify-content:center;animation:none;padding:16px}
+@media(min-width:900px){.fixa{display:none}}
+
+@media(prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .js [data-r]{opacity:1;filter:none;transform:none;clip-path:none;transition:none}
+  .foco,.beam,.btn,.btn::after,.halo,.ficha,.rolar{animation:none}
+  .spot{display:none}
+}
+</style>
+</head>
+<body>
+
+<header class="top" id="topo">
+  <a href="#" aria-label="Biblioteca de casos clínicos"><img src="img/logo-escuro.svg" alt="Biblioteca de casos clínicos" width="120" height="46"></a>
+  <a class="btn btn--sm" href="https://pay.hotmart.com/J106359488U?off=pjn1l1w2" target="_blank" rel="noopener">Quero acessar</a>
+</header>
+
+<main>
+
+<!-- HERO -->
+<section class="hero" id="hero">
+  <div class="beam beam--a"></div><div class="beam beam--b"></div>
+  <div class="spot"></div><div class="grain"></div>
+  <div class="wrap hero__in">
+    <div>
+      <h1 class="foco">Veja o caso inteiro. Entenda por que o Gunther decide assim.</h1>
+      <p class="lede" data-r="rise" style="--d:.9s">Na Biblioteca de casos clínicos, o Gunther Löffler destrincha cada caso do início ao fim e explica o raciocínio por trás de cada decisão.</p>
+      <div data-r="rise" style="--d:1.1s">
+        <a class="btn" href="https://pay.hotmart.com/J106359488U?off=pjn1l1w2" target="_blank" rel="noopener">Quero acessar a biblioteca
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
+        <p class="micro">Pagamento seguro pela Hotmart.</p>
+      </div>
+    </div>
+    <div class="hero__foto" data-r="zoom" style="--d:.5s">
+      <div class="moldura"><img src="img/atendimento-05.jpg" alt="Gunther Löffler avaliando o punho e a mão de uma paciente" data-par="-.05"></div>
+      <div class="detalhe" aria-hidden="true"><img src="img/atendimento-28.jpg" alt=""></div>
+      <div class="ficha-fl" data-par=".05" aria-hidden="true">
+        <b>Ficha do caso</b>
+        <div><i></i>Queixa</div><div><i></i>Fenótipo</div><div><i></i>Irritabilidade</div><div><i></i>Decisão</div>
+      </div>
+    </div>
+  </div>
+  <div class="rolar" aria-hidden="true"></div>
+</section>
+
+<!-- DOR -->
+<section class="sec dor">
+  <div class="beam beam--b" style="opacity:.5;top:10%"></div>
+  <div class="wrap">
+    <h2 data-r="focus">Você estuda, atende todo dia, e alguns casos não andam.</h2>
+    <div class="frases">
+      <p class="frase" data-r="left">O paciente melhora por três dias e volta tudo.</p>
+      <p class="frase" data-r="right" style="--d:.1s">Você testa uma técnica, depois outra, e perde o controle do caso.</p>
+      <p class="frase" data-r="left" style="--d:.2s">Você sabe o que fazer. Falta saber por que fazer agora.</p>
+    </div>
+    <p class="virada" data-r="focus">O problema não é a técnica. É a condução.</p>
+  </div>
+</section>
+
+<!-- PRÁTICA -->
+<section class="sec pratica">
+  <div class="wrap">
+    <div class="pratica__cab">
+      <h2 data-r="focus">Um caso por vez, do início ao fim.</h2>
+      <p class="lede" data-r="rise" style="--d:.15s">Cada aula parte de um paciente. O Gunther mostra a avaliação, interpreta os sinais, classifica o caso e explica a decisão de condução, no mesmo raciocínio que usa no consultório.</p>
+    </div>
+    <div class="galeria">
+      <figure class="foto g3" data-r="wipeup"><img src="img/atendimento-03.jpg" alt="Gunther avaliando o ombro e a cervical de uma paciente sentada" loading="lazy"><span class="br"></span></figure>
+      <figure class="foto g1" data-r="wipeup" style="--d:.15s"><img src="img/atendimento-12.jpg" alt="Gunther examinando a mão de uma paciente" loading="lazy"><span class="br"></span></figure>
+      <figure class="foto g2" data-r="wipeup" style="--d:.3s"><img src="img/atendimento-17.jpg" alt="Gunther avaliando o tornozelo de um paciente na maca" loading="lazy"><span class="br"></span></figure>
+      <figure class="foto g4" data-r="wipeup" style="--d:.2s"><img src="img/atendimento-24.jpg" alt="Gunther testando reflexo no joelho de uma paciente" loading="lazy"><span class="br"></span></figure>
+      <figure class="foto g5" data-r="wipeup" style="--d:.35s"><img src="img/atendimento-27.jpg" alt="Gunther avaliando o antebraço de uma paciente com martelo de reflexos" loading="lazy"><span class="br"></span></figure>
+    </div>
+  </div>
+</section>
+
+<!-- LINHA DO CASO -->
+<section class="linha" id="linha" aria-label="Como cada caso é conduzido">
+  <div class="linha__sticky">
+    <div class="wrap linha__in">
+      <div>
+        <h2>Todo caso segue o mesmo caminho.</h2>
+        <ol class="etapas" id="etapas">
+          <span class="fio" id="fio"></span>
+          <li class="et on"><h3>Queixa</h3><p>O paciente chega embaçado. Você ouve a história como o Gunther ouve.</p></li>
+          <li class="et"><h3>Clareza</h3><p>O que o caso realmente é. Sinais que passavam despercebidos ficam nítidos.</p></li>
+          <li class="et"><h3>Classificação</h3><p>Fenótipo predominante e irritabilidade definem o que pode ser feito.</p></li>
+          <li class="et"><h3>Condução</h3><p>A decisão e o porquê: o que fazer primeiro e o que esperar da resposta.</p></li>
+          <li class="et"><h3>Alta</h3><p>Como fechar o caso e o que revisar para não perder o controle.</p></li>
+        </ol>
+      </div>
+      <div class="visor" aria-hidden="true">
+        <img class="on" src="img/atendimento-13.jpg" alt="">
+        <img src="img/atendimento-05.jpg" alt="">
+        <img src="img/atendimento-28.jpg" alt="">
+        <img src="img/atendimento-29.jpg" alt="">
+        <img src="img/atendimento-33.jpg" alt="">
+        <div class="rot" id="rot">Queixa</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ORGANIZAÇÃO -->
+<section class="sec org">
+  <div class="beam beam--a" style="opacity:.45;top:30%"></div>
+  <div class="wrap org__g">
+    <div>
+      <h2 data-r="focus">Casos organizados por tipo de dor.</h2>
+      <p class="lede" data-r="rise">Cada caso tem uma ficha e uma cor. Você encontra o que precisa e acompanha o raciocínio no mesmo formato, aula após aula.</p>
+      <div class="fam" data-r="rise" style="--d:.1s">
+        <div><i style="background:var(--est)"></i><p style="margin:0"><b>Estrutura</b><span>Tecido, carga e mecânica.</span></p></div>
+        <div><i style="background:var(--fia)"></i><p style="margin:0"><b>Fiação</b><span>Nervo, trajeto e neurodinâmica.</span></p></div>
+        <div><i style="background:var(--ala)"></i><p style="margin:0"><b>Alarme</b><span>Sensibilização e dor sem lesão aparente.</span></p></div>
+      </div>
+    </div>
+    <article class="ficha" data-r="zoom" style="--d:.2s" aria-label="Exemplo de ficha de caso">
+      <header><h3>Ficha do caso</h3><span class="fams" aria-hidden="true"><i style="background:var(--est)"></i><i style="background:var(--fia)"></i><i style="background:var(--ala)"></i></span></header>
+      <dl style="margin:0">
+        <div class="l"><dt>Queixa</dt><dd>O que o paciente relata</dd></div>
+        <div class="l"><dt>Fenótipo</dt><dd>Qual dor predomina no caso</dd></div>
+        <div class="l"><dt>Irritabilidade</dt><dd>O quanto o quadro tolera</dd></div>
+        <div class="l"><dt>Decisão</dt><dd class="x">O que fazer primeiro e por quê</dd></div>
+        <div class="l"><dt>Desfecho</dt><dd>Como o caso evoluiu</dd></div>
+      </dl>
+      <small>Todo caso da biblioteca tem uma ficha assim.</small>
+    </article>
+  </div>
+</section>
+
+<!-- PARA QUEM -->
+<section class="sec quem">
+  <div class="wrap">
+    <h2 data-r="focus">Para quem é a biblioteca.</h2>
+    <div class="quem__g">
+      <div class="col" data-r="left">
+        <h3>É para você que</h3>
+        <ul>
+          <li>Já atende e quer mais segurança em dor irradiada e casos complexos.</li>
+          <li>Quer ver a prática acontecendo, não só a teoria.</li>
+          <li>Prefere objetividade: o que decidir, na ordem certa e com o porquê.</li>
+        </ul>
+      </div>
+      <div class="col col--nao" data-r="right" style="--d:.1s">
+        <h3>Não é para você que</h3>
+        <ul>
+          <li>Procura protocolo pronto para aplicar sem raciocinar.</li>
+          <li>Espera resultado instantâneo ou atalho.</li>
+          <li>Quer só mais uma técnica para a lista.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GUNTHER -->
+<section class="sec gun">
+  <div class="wrap gun__g">
+    <div class="arte" data-r="zoom">
+      <span class="sol"></span><span class="raio"></span><span class="anel a1"></span><span class="anel a2"></span>
+      <span class="lomb l1"></span><span class="lomb l2"></span><span class="lomb l3"></span>
+      <img class="gun-img" src="img/gunther-recortado.png" alt="Gunther Löffler" loading="lazy">
+      <span class="chao"></span>
+    </div>
+    <div>
+      <blockquote data-r="focus">“Eu também já fui o fisioterapeuta inseguro que não conseguia resolver os casos.”</blockquote>
+      <cite data-r="rise" style="--d:.2s"><b>Gunther Löffler</b>Fisioterapeuta e criador do método CSC, Clínica Sob Controle. Transformou insegurança clínica em clareza e hoje ensina outros fisioterapeutas a conduzir casos complexos com raciocínio.</cite>
+    </div>
+  </div>
+</section>
+
+<!-- CTA FINAL -->
+<section class="sec fim" id="comprar">
+  <div class="halo"></div><div class="grain"></div>
+  <div class="wrap">
+    <h2 data-r="focus">Entre na biblioteca e veja como ele pensa.</h2>
+    <p class="lede" data-r="rise" style="--d:.1s">Casos difíceis deixam de assustar quando existe clareza clínica.</p>
+    <div data-r="zoom" style="--d:.2s">
+      <a class="btn" href="https://pay.hotmart.com/J106359488U?off=pjn1l1w2" target="_blank" rel="noopener">Quero acessar a biblioteca
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </a>
+      <p class="micro">Você será direcionado para o pagamento seguro da Hotmart.</p>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap"><span>Biblioteca de casos clínicos · por Gunther Löffler</span><span>© 2026 Gunther Löffler</span></div>
+</footer>
+
+<div class="fixa" id="fixa"><a class="btn" href="https://pay.hotmart.com/J106359488U?off=pjn1l1w2" target="_blank" rel="noopener">Quero acessar a biblioteca</a></div>
+
+<script>
+(function(){
+  var reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  // entrada das seções
+  var els=document.querySelectorAll('[data-r]');
+  if('IntersectionObserver' in window&&!reduce){
+    var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:.15,rootMargin:'0px 0px -6% 0px'});
+    els.forEach(function(el){io.observe(el)});
+  }else{els.forEach(function(el){el.classList.add('in')})}
+
+  // luz que segue o cursor
+  var hero=document.getElementById('hero');
+  if(!reduce){
+    hero.addEventListener('pointermove',function(e){var r=hero.getBoundingClientRect();hero.style.setProperty('--mx',(e.clientX-r.left)+'px');hero.style.setProperty('--my',(e.clientY-r.top)+'px')});
+    var t=0;(function drift(){if(!matchMedia('(hover:hover)').matches){t+=.006;hero.style.setProperty('--mx',(50+30*Math.cos(t))+'%');hero.style.setProperty('--my',(35+20*Math.sin(t*1.3))+'%')}requestAnimationFrame(drift)})();
+  }
+
+  // paralaxe, topo, barra fixa, linha do caso
+  var par=[].slice.call(document.querySelectorAll('[data-par]'));
+  var topo=document.getElementById('topo'),fixa=document.getElementById('fixa'),fim=document.getElementById('comprar');
+  var linha=document.getElementById('linha'),ets=[].slice.call(document.querySelectorAll('.et')),imgs=[].slice.call(document.querySelectorAll('.visor img')),fio=document.getElementById('fio'),rot=document.getElementById('rot');
+  var nomes=['Queixa','Clareza','Classificação','Condução','Alta'],atual=0,tick=false;
+  function frame(){
+    tick=false;var vh=innerHeight,y=scrollY;
+    topo.classList.toggle('sol',y>40);
+    var fr=fim.getBoundingClientRect();
+    fixa.classList.toggle('on',y>vh*.8&&fr.top>vh*.5);
+    if(!reduce)par.forEach(function(el){var r=el.getBoundingClientRect();if(r.bottom<0||r.top>vh)return;var c=r.top+r.height/2-vh/2;el.style.transform='translate3d(0,'+(c*parseFloat(el.dataset.par)).toFixed(1)+'px,0)'});
+    var lr=linha.getBoundingClientRect(),total=lr.height-vh,p=Math.min(1,Math.max(0,-lr.top/total));
+    var idx=Math.min(4,Math.floor(p*5));
+    fio.style.setProperty('--p',((idx)/4).toFixed(3));
+    document.getElementById('etapas').style.setProperty('--p',(idx/4).toFixed(3));
+    if(idx!==atual){atual=idx;ets.forEach(function(e,i){e.classList.toggle('on',i<=idx&&i===idx)});imgs.forEach(function(m,i){m.classList.toggle('on',i===idx)});rot.textContent=nomes[idx]}
+  }
+  function req(){if(!tick){tick=true;requestAnimationFrame(frame)}}
+  addEventListener('scroll',req,{passive:true});addEventListener('resize',req);frame();
+})();
+</script>
+</body>
+</html>

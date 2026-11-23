@@ -1,0 +1,276 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Cursos Presenciais · Gunther Löffler</title>
+<meta name="description" content="Próximos cursos presenciais de Gunther Löffler em Campinas-SP. Datas, local e inscrição pelo WhatsApp.">
+<meta name="theme-color" content="#11202E">
+<meta property="og:title" content="Cursos Presenciais · Gunther Löffler">
+<meta property="og:description" content="Próximos cursos presenciais do Gunther em Campinas-SP. Veja as datas e garanta sua vaga pelo WhatsApp.">
+<meta property="og:image" content="https://edu.guntherloffler.com.br/assets/site3.jpg">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="../favicon-gunther.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=Figtree:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#F7F7F4;--surface:#FFFFFF;--ink:#11202E;--muted:#5E6B77;--line:#DDE1E3;--accent:#F4936F;--navy:#11202E;--teal:#2D5F6E;
+  --font-display:'Bricolage Grotesque','Segoe UI',Arial,sans-serif;
+  --font-body:'Figtree','Segoe UI',Arial,sans-serif;
+  --gl:max(16px,env(safe-area-inset-left,0px));--gr:max(16px,env(safe-area-inset-right,0px));
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){--bg:#0C1823;--surface:#15293A;--ink:#F7F7F4;--muted:#9FB0BC;--line:#243B4C;color-scheme:dark}
+}
+:root[data-theme="dark"]{--bg:#0C1823;--surface:#15293A;--ink:#F7F7F4;--muted:#9FB0BC;--line:#243B4C;color-scheme:dark}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--font-body);font-size:16px;line-height:1.5;overflow-x:hidden}
+img{max-width:100%}
+a{color:inherit;text-decoration:none}
+a:focus-visible,summary:focus-visible{outline:3px solid var(--accent);outline-offset:3px}
+main{max-width:520px;margin-inline:auto;padding:0 var(--gr) 40px var(--gl)}
+
+/* Abertura */
+.top{position:relative;margin-left:calc(-1*var(--gl));margin-right:calc(-1*var(--gr));aspect-ratio:4/4.3;overflow:hidden;background:var(--navy)}
+.top img{width:100%;height:100%;object-fit:cover;object-position:62% 0%;display:block;transform-origin:50% 0%;animation:settle 2.2s cubic-bezier(.2,.7,.2,1) both}
+@keyframes settle{from{transform:scale(1.1)}to{transform:scale(1)}}
+.top::after{content:"";position:absolute;inset:0;background:linear-gradient(to top,var(--bg) 0%,var(--bg) 10%,color-mix(in srgb,var(--bg) 60%,transparent) 28%,transparent 62%),linear-gradient(to bottom,rgba(17,32,46,.5),transparent 28%)}
+.back{position:absolute;z-index:2;left:var(--gl);top:max(16px,env(safe-area-inset-top,0px));display:inline-flex;align-items:center;gap:8px;padding:8px 14px 8px 10px;border-radius:999px;background:rgba(17,32,46,.45);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);border:1px solid rgba(247,247,244,.28);color:#F7F7F4;font-size:14px;font-weight:600}
+.back svg{width:14px;height:14px;stroke:currentColor;fill:none;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+.head{position:absolute;z-index:2;left:var(--gl);right:var(--gr);bottom:4px;animation:rise .9s .3s cubic-bezier(.2,.7,.2,1) both}
+@keyframes rise{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
+h1{font-family:var(--font-display);font-weight:800;font-size:clamp(34px,10.5vw,50px);line-height:.98;letter-spacing:-.035em;margin:0;text-wrap:balance}
+.lead{margin:12px 0 0;color:var(--muted);max-width:36ch}
+
+h2{font-family:var(--font-display);font-weight:700;font-size:24px;line-height:1.1;letter-spacing:-.02em;margin:40px 0 14px}
+
+/* Meses */
+.meses{display:flex;gap:8px;overflow-x:auto;margin:22px calc(-1*var(--gr)) 0 calc(-1*var(--gl));padding:2px var(--gr) 4px var(--gl);scrollbar-width:none}
+.meses::-webkit-scrollbar{display:none}
+.meses a{flex:none;display:inline-flex;align-items:center;gap:8px;padding:9px 16px;border-radius:999px;border:1px solid var(--line);background:var(--surface);font-weight:600;font-size:15px}
+.meses a b{display:grid;place-items:center;min-width:22px;height:22px;padding:0 6px;border-radius:999px;background:var(--accent);color:#11202E;font-size:13px}
+.mes{margin-top:30px;scroll-margin-top:16px}
+.mes h2{margin:0 0 14px;display:flex;align-items:baseline;justify-content:space-between;gap:12px}
+.mes h2 small{font-family:var(--font-body);font-weight:600;font-size:14px;color:var(--muted);letter-spacing:0}
+.mes .cards{display:grid;gap:14px}
+
+/* Turma do Gunther (destaque) */
+.turma{border-radius:22px;background:var(--navy);color:#F7F7F4;overflow:hidden}
+.turma .row{display:flex;gap:18px;padding:22px 22px 8px}
+.date{flex:none;width:96px;border-radius:18px;background:var(--accent);color:#11202E;text-align:center;padding:14px 8px 15px;align-self:flex-start}
+.date b{display:block;white-space:nowrap;font-family:var(--font-display);font-weight:800;font-size:31px;line-height:1;letter-spacing:-.035em}
+.date span{display:block;font-size:17px;font-weight:700;margin-top:7px;line-height:1}
+.date i{display:block;font-style:normal;font-size:13px;font-weight:600;margin-top:4px;opacity:.75;line-height:1}
+.turma h3{font-family:var(--font-display);font-weight:700;font-size:21px;line-height:1.1;letter-spacing:-.02em;margin:0}
+.por{display:inline-block;margin:0 0 8px;font-size:13px;font-weight:700;color:#11202E;background:var(--accent);border-radius:999px;padding:3px 11px}
+.facts{list-style:none;margin:10px 0 0;padding:0;display:grid;gap:5px;font-size:15px;color:#D4DCE1}
+.facts li{display:flex;gap:9px;align-items:flex-start}
+.facts svg{flex:none;width:17px;height:17px;margin-top:2px;stroke:var(--accent);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.desc{padding:6px 22px 0;color:#D4DCE1;font-size:15px;margin:0}
+.prog{margin:14px 22px 0;border-top:1px solid rgba(247,247,244,.18)}
+.prog summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;align-items:center;padding:14px 0;font-weight:600;font-size:15px}
+.prog summary::-webkit-details-marker{display:none}
+.prog summary::after{content:"";width:10px;height:10px;border-right:2.2px solid var(--accent);border-bottom:2.2px solid var(--accent);transform:rotate(45deg) translateY(-3px);transition:transform .3s}
+.prog[open] summary::after{transform:rotate(-135deg) translateY(-3px)}
+.prog .dia{padding:0 0 14px}
+.prog h4{margin:0 0 8px;font-size:14px;font-weight:700;color:var(--accent);display:flex;justify-content:space-between}
+.prog h4 span{color:#9FB0BC;font-weight:600}
+.prog ul{margin:0;padding:0;list-style:none;display:grid;gap:7px;font-size:15px;color:#D4DCE1}
+.prog li{display:flex;gap:10px}
+.prog li::before{content:"";flex:none;width:6px;height:6px;border-radius:50%;background:var(--accent);margin-top:9px}
+.turma .foot{padding:16px 22px 22px;display:flex;flex-wrap:wrap;gap:12px;align-items:center}
+.cta{display:inline-flex;align-items:center;gap:9px;background:var(--accent);color:#11202E;font-weight:700;font-size:16px;padding:14px 24px;border-radius:999px;position:relative;overflow:hidden}
+.cta::after{content:"";position:absolute;inset:0;background:linear-gradient(100deg,transparent 30%,rgba(255,255,255,.55) 50%,transparent 70%);transform:translateX(-120%);animation:sheen 3.8s 1.8s ease-in-out infinite}
+@keyframes sheen{0%,60%{transform:translateX(-120%)}100%{transform:translateX(120%)}}
+.cta svg{width:18px;height:18px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.note{font-size:13px;color:#9FB0BC}
+.cta.ghost{background:transparent;color:#F7F7F4;border:1.5px solid rgba(247,247,244,.45);padding:12.5px 22px}
+.cta.ghost::after{display:none}
+.pix{margin:0 22px 22px;padding:16px 0 0;border-top:1px solid rgba(247,247,244,.18)}
+.pix p{margin:0 0 10px;font-size:14px;color:#D4DCE1}
+.pix p b{color:var(--accent)}
+.pix .chave{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.pix code{flex:1 1 180px;min-width:0;overflow-wrap:anywhere;font-family:inherit;font-weight:600;font-size:15px;background:rgba(247,247,244,.08);border-radius:12px;padding:11px 14px}
+.pix button{font:inherit;font-weight:700;font-size:14px;cursor:pointer;color:#11202E;background:var(--accent);border:0;border-radius:999px;padding:11px 18px}
+.pix button:focus-visible{outline:3px solid #F7F7F4;outline-offset:3px}
+
+/* Turma de professor convidado (mais discreta) */
+.conv{border-radius:18px;background:var(--surface);border:1px solid var(--line);padding:18px 18px 18px;display:flex;gap:16px}
+.conv{gap:16px}
+.conv .date{background:transparent;border:1.5px solid var(--accent);color:var(--ink);padding:13px 8px 14px}
+.conv .date i{color:var(--muted);opacity:1}
+.conv h3{font-family:var(--font-display);font-weight:700;font-size:18px;line-height:1.12;letter-spacing:-.015em;margin:0}
+.conv .quem{margin:0 0 6px;font-size:13px;font-weight:600;color:var(--muted)}
+.conv .facts{color:var(--muted);font-size:14px}
+.conv .facts svg{stroke:var(--teal);width:16px;height:16px}
+.conv .desc{padding:8px 0 0;color:var(--muted);font-size:14px}
+.conv .mais{display:inline-flex;align-items:center;gap:8px;margin-top:12px;font-weight:700;font-size:14px;padding:9px 16px;border-radius:999px;border:1.5px solid var(--ink)}
+.conv .mais svg{width:16px;height:16px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+
+/* Dúvidas */
+.faq{border-top:1px solid var(--line)}
+.faq details{border-bottom:1px solid var(--line)}
+.faq summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:16px;padding:18px 2px;font-weight:600;font-size:16px}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"";flex:none;width:11px;height:11px;border-right:2.2px solid var(--accent);border-bottom:2.2px solid var(--accent);transform:rotate(45deg) translateY(-3px);transition:transform .3s}
+.faq details[open] summary::after{transform:rotate(-135deg) translateY(-3px)}
+.faq p{margin:0;padding:0 2px 18px;color:var(--muted);font-size:15px;max-width:60ch}
+.sac{margin-top:26px;border-radius:22px;background:var(--surface);border:1px solid var(--line);padding:22px}
+.sac p{margin:0 0 14px}
+.sac .cta{font-size:15px;padding:12px 20px}
+.vazio{border:1px dashed var(--line);border-radius:22px;padding:24px;color:var(--muted)}
+.vazio p{margin:0 0 14px}
+footer{margin-top:34px;text-align:center;color:var(--muted);font-size:13px}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.top img,.head{animation:none}.cta::after{animation:none}.faq summary::after,.prog summary::after{transition:none}}
+</style>
+</head>
+<body>
+<main>
+  <header class="top">
+    <img src="../assets/site3.jpg" alt="" width="1200" height="1290" fetchpriority="high">
+    <a class="back" href="../"><svg viewBox="0 0 14 14" aria-hidden="true"><path d="M12 7H2M6 3 2 7l4 4"/></svg>Voltar</a>
+    <div class="head">
+      <h1>Cursos Presenciais</h1>
+      <p class="lead">Os próximos cursos presenciais do Gunther, com datas, local e inscrição pelo WhatsApp.</p>
+    </div>
+  </header>
+
+  <nav class="meses" id="meses" aria-label="Meses com cursos"></nav>
+  <div id="lista"></div>
+
+  <h2>Dúvidas frequentes</h2>
+  <div class="faq" id="faq"></div>
+  <div class="sac">
+    <p><b>Não encontrou o que procurava?</b><br><span style="color:var(--muted)">Fale direto com a equipe pelo WhatsApp.</span></p>
+    <a class="cta" id="sacBtn" href="#" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 11.5a8 8 0 0 1-11.9 7L4 20l1.5-4A8 8 0 1 1 20 11.5z"/></svg>Tirar dúvidas</a>
+  </div>
+
+  <footer>Gunther Löffler</footer>
+</main>
+
+<script>
+/* ====== EDITE AQUI ======
+   Para incluir um curso, copie um bloco e preencha. Ele some da lista sozinho depois da data "fim".
+   professor: deixe 'Gunther Löffler' para curso do Gunther (cartão em destaque).
+              Qualquer outro nome vira curso de professor convidado (cartão discreto). */
+var WHATS='5519997245801';
+var GUNTHER='Gunther Löffler';
+var TURMAS=[
+  {
+    curso:'Tratamento Neural baseado na Neurodinâmica',
+    professor:'Gunther Löffler',
+    inicio:'2026-12-11', fim:'2026-12-13',
+    cidade:'Campinas-SP', local:'CPV Unicamp',
+    descricao:'Aprofunde a avaliação, o raciocínio clínico e a aplicação de estratégias terapêuticas em casos que desafiam o fisioterapeuta no consultório.',
+    vagas:'Vagas limitadas',
+    /* Pagamento: o que estiver vazio não aparece na página. */
+    cartao:'',   /* link de pagamento no cartão (até 10x) */
+    pix:''       /* chave Pix */
+  }
+];
+var FAQ=[
+  ['Onde acontecem os cursos?','Em Campinas-SP. O local de cada turma aparece no cartão do curso.'],
+  ['Como garanto minha vaga?','Pague no cartão ou pelo Pix, no cartão do curso, ou fale com a equipe pelo WhatsApp para confirmar a inscrição.'],
+  ['Quais são as formas de pagamento?','Cartão de crédito em até 10x, ou Pix. O Pix pode ser à vista ou programado em parcelas até a data do evento.'],
+  ['O curso tem parte prática?','Sim. O curso é com prática, e por isso as vagas são limitadas.'],
+  ['Vocês emitem nota fiscal?','Sim, emitimos nota fiscal.'],
+  ['Recebo certificado?','Sim. Emitimos certificado impresso.'],
+  ['Quem pode participar?','Os cursos são voltados a fisioterapeutas. Se tiver dúvida sobre o seu caso, pergunte pelo WhatsApp.']
+];
+/* ====== FIM ====== */
+
+(function(){
+  var MES=['jan','fev','mar','abr','mai','jun','jul','ago','set','out','nov','dez'];
+  var MESL=['Janeiro','Fevereiro','Março','Abril','Maio','Junho','Julho','Agosto','Setembro','Outubro','Novembro','Dezembro'];
+  function d(s){var p=s.split('-');return new Date(+p[0],+p[1]-1,+p[2]);}
+  function wa(t){return 'https://wa.me/'+WHATS+'?text='+encodeURIComponent(t);}
+  function esc(s){return String(s).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];});}
+  function lower(s){return s.toLowerCase();}
+  function periodo(t){
+    var a=d(t.inicio),b=d(t.fim),m=lower(MESL[a.getMonth()]);
+    if(t.inicio===t.fim) return a.getDate()+' de '+m+' de '+a.getFullYear();
+    if(a.getMonth()===b.getMonth()) return a.getDate()+(b.getDate()-a.getDate()===1?' e ':' a ')+b.getDate()+' de '+m+' de '+a.getFullYear();
+    return a.getDate()+' de '+m+' a '+b.getDate()+' de '+lower(MESL[b.getMonth()])+' de '+b.getFullYear();
+  }
+  var ic={
+    cal:'<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="5" width="17" height="15" rx="3"/><path d="M8 3v4M16 3v4M3.5 10h17"/></svg>',
+    pin:'<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-6.5-5.6-6.5-11a6.5 6.5 0 0 1 13 0c0 5.4-6.5 11-6.5 11z"/><circle cx="12" cy="10" r="2.3"/></svg>',
+    clock:'<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8.5"/><path d="M12 7.5V12l3 2"/></svg>',
+    wa:'<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 11.5a8 8 0 0 1-11.9 7L4 20l1.5-4A8 8 0 1 1 20 11.5z"/></svg>',
+    card:'<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5.5" width="18" height="13" rx="3"/><path d="M3 10h18M7 15h4"/></svg>'
+  };
+  function dateBox(t){
+    var a=d(t.inicio),b=d(t.fim);
+    var dia=t.inicio===t.fim?a.getDate():a.getDate()+'–'+b.getDate();
+    return '<div class="date"><b>'+dia+'</b><span>'+MES[a.getMonth()]+'</span><i>'+a.getFullYear()+'</i></div>';
+  }
+  function facts(t){
+    return '<ul class="facts"><li>'+ic.cal+'<span>'+periodo(t)+'</span></li>'+
+      '<li>'+ic.pin+'<span>'+esc(t.local)+', '+esc(t.cidade)+'</span></li>'+
+      (t.horario?'<li>'+ic.clock+'<span>'+esc(t.horario)+'</span></li>':'')+'</ul>';
+  }
+  function cardGunther(t){
+    var msg='Olá! Vim pela página de cursos do Gunther e quero garantir minha vaga no curso "'+t.curso+'" ('+periodo(t)+', '+t.cidade+').';
+    var prog=t.programa?'<details class="prog"><summary>Ver programação</summary>'+t.programa.map(function(p){
+      return '<div class="dia"><h4>'+esc(p.dia)+'<span>'+esc(p.data)+'</span></h4><ul>'+p.itens.map(function(i){return '<li>'+esc(i)+'</li>';}).join('')+'</ul></div>';
+    }).join('')+'</details>':'';
+    return '<article class="turma"><div class="row">'+dateBox(t)+'<div><span class="por">Curso do Gunther</span><h3>'+esc(t.curso)+'</h3>'+facts(t)+'</div></div>'+
+      (t.descricao?'<p class="desc">'+esc(t.descricao)+'</p>':'')+prog+
+      '<div class="foot">'+
+      (t.cartao?'<a class="cta" data-link="pagar-cartao" href="'+esc(t.cartao)+'" target="_blank" rel="noopener">'+ic.card+'Pagar no cartão em até 10x</a>'+
+        '<a class="cta ghost" data-link="inscricao" href="'+wa(msg)+'" target="_blank" rel="noopener">'+ic.wa+'Falar no WhatsApp</a>':
+        '<a class="cta" data-link="inscricao" href="'+wa(msg)+'" target="_blank" rel="noopener">'+ic.wa+'Garantir minha vaga</a>')+
+      (t.vagas?'<span class="note">'+esc(t.vagas)+'</span>':'')+'</div>'+
+      (t.pix?'<div class="pix"><p><b>Pix</b> à vista ou parcelado até o dia do evento</p><div class="chave"><code id="pixChave">'+esc(t.pix)+'</code>'+
+        '<button type="button" id="pixCopiar" data-chave="'+esc(t.pix)+'">Copiar chave</button></div></div>':'')+
+      '</article>';
+  }
+  function cardConvidado(t){
+    var msg='Olá! Vim pela página de cursos do Gunther e quero informações sobre o curso "'+t.curso+'" ('+periodo(t)+', '+t.cidade+').';
+    return '<article class="conv">'+dateBox(t)+'<div><p class="quem">Com '+esc(t.professor)+'</p><h3>'+esc(t.curso)+'</h3>'+facts(t)+
+      (t.descricao?'<p class="desc">'+esc(t.descricao)+'</p>':'')+
+      '<a class="mais" data-link="info-convidado" href="'+wa(msg)+'" target="_blank" rel="noopener">'+ic.wa+'Mais informações</a></div></article>';
+  }
+
+  var hoje=new Date(); hoje.setHours(0,0,0,0);
+  var ativas=TURMAS.filter(function(t){return d(t.fim)>=hoje;}).sort(function(a,b){return d(a.inicio)-d(b.inicio);});
+  var el=document.getElementById('lista'), nav=document.getElementById('meses');
+
+  if(ativas.length){
+    var grupos=[],idx={};
+    ativas.forEach(function(t){
+      var a=d(t.inicio),k=a.getFullYear()+'-'+a.getMonth();
+      if(!(k in idx)){idx[k]=grupos.length;grupos.push({k:k,m:a.getMonth(),y:a.getFullYear(),itens:[]});}
+      grupos[idx[k]].itens.push(t);
+    });
+    nav.innerHTML=grupos.map(function(g){
+      return '<a href="#m-'+g.k+'">'+MESL[g.m]+' '+g.y+'<b>'+g.itens.length+'</b></a>';
+    }).join('');
+    el.innerHTML=grupos.map(function(g){
+      return '<section class="mes" id="m-'+g.k+'"><h2>'+MESL[g.m]+' '+g.y+'<small>'+g.itens.length+(g.itens.length>1?' cursos':' curso')+'</small></h2><div class="cards">'+
+        g.itens.map(function(t){return t.professor===GUNTHER?cardGunther(t):cardConvidado(t);}).join('')+'</div></section>';
+    }).join('');
+  } else {
+    nav.hidden=true;
+    el.innerHTML='<div class="vazio" style="margin-top:26px"><p>Nenhum curso aberto agora. Entre na lista de espera e receba o aviso da próxima data.</p><a class="cta" href="'+wa('Olá! Vim pela página de cursos do Gunther e quero entrar na lista de espera dos próximos cursos.')+'" target="_blank" rel="noopener">'+ic.wa+'Entrar na lista de espera</a></div>';
+  }
+
+  document.getElementById('faq').innerHTML=FAQ.map(function(q){
+    return '<details><summary>'+esc(q[0])+'</summary><p>'+esc(q[1])+'</p></details>';
+  }).join('');
+  var bc=document.getElementById('pixCopiar');
+  if(bc) bc.addEventListener('click',function(){
+    var v=bc.getAttribute('data-chave');
+    function ok(){bc.textContent='Chave copiada';setTimeout(function(){bc.textContent='Copiar chave';},2200);}
+    function sel(){var r=document.createRange();r.selectNodeContents(document.getElementById('pixChave'));var s=getSelection();s.removeAllRanges();s.addRange(r);bc.textContent='Selecionada, copie';}
+    if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(v).then(ok,sel);}else{sel();}
+  });
+  document.getElementById('sacBtn').href=wa('Olá! Vim pela página de cursos do Gunther e tenho uma dúvida.');
+})();
+</script>
+</body>
+</html>
