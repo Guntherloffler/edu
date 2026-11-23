@@ -88,6 +88,15 @@ h2{font-family:var(--font-display);font-weight:700;font-size:24px;line-height:1.
 @keyframes sheen{0%,60%{transform:translateX(-120%)}100%{transform:translateX(120%)}}
 .cta svg{width:18px;height:18px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
 .note{font-size:13px;color:#9FB0BC}
+.cta.ghost{background:transparent;color:#F7F7F4;border:1.5px solid rgba(247,247,244,.45);padding:12.5px 22px}
+.cta.ghost::after{display:none}
+.pix{margin:0 22px 22px;padding:16px 0 0;border-top:1px solid rgba(247,247,244,.18)}
+.pix p{margin:0 0 10px;font-size:14px;color:#D4DCE1}
+.pix p b{color:var(--accent)}
+.pix .chave{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.pix code{flex:1 1 180px;min-width:0;overflow-wrap:anywhere;font-family:inherit;font-weight:600;font-size:15px;background:rgba(247,247,244,.08);border-radius:12px;padding:11px 14px}
+.pix button{font:inherit;font-weight:700;font-size:14px;cursor:pointer;color:#11202E;background:var(--accent);border:0;border-radius:999px;padding:11px 18px}
+.pix button:focus-visible{outline:3px solid #F7F7F4;outline-offset:3px}
 
 /* Turma de professor convidado (mais discreta) */
 .conv{border-radius:18px;background:var(--surface);border:1px solid var(--line);padding:18px 18px 18px;display:flex;gap:16px}
@@ -156,15 +165,21 @@ var TURMAS=[
     professor:'Gunther Löffler',
     inicio:'2026-12-11', fim:'2026-12-13',
     cidade:'Campinas-SP', local:'CPV Unicamp',
-    descricao:'Aprofunde a avaliação, o raciocínio clínico e a aplicação de estratégias terapêuticas em casos que desafiam o fisioterapeuta no consultório.'
+    descricao:'Aprofunde a avaliação, o raciocínio clínico e a aplicação de estratégias terapêuticas em casos que desafiam o fisioterapeuta no consultório.',
+    vagas:'Vagas limitadas',
+    /* Pagamento: o que estiver vazio não aparece na página. */
+    cartao:'',   /* link de pagamento no cartão (até 10x) */
+    pix:''       /* chave Pix */
   }
 ];
 var FAQ=[
   ['Onde acontecem os cursos?','Em Campinas-SP. O local de cada turma aparece no cartão do curso.'],
-  ['Como garanto minha vaga?','Toque em "Garantir minha vaga". Você fala direto com a equipe pelo WhatsApp e confirma a inscrição.'],
-  ['Como funciona o pagamento?','A inscrição e o pagamento são combinados pelo WhatsApp, com a equipe.'],
-  ['Quem pode participar?','Os cursos são voltados a fisioterapeutas. Se tiver dúvida sobre o seu caso, pergunte pelo WhatsApp.'],
-  ['Recebo certificado?','Pergunte pelo WhatsApp. A equipe informa a carga horária e a certificação de cada turma.']
+  ['Como garanto minha vaga?','Pague no cartão ou pelo Pix, no cartão do curso, ou fale com a equipe pelo WhatsApp para confirmar a inscrição.'],
+  ['Quais são as formas de pagamento?','Cartão de crédito em até 10x, ou Pix. O Pix pode ser à vista ou programado em parcelas até a data do evento.'],
+  ['O curso tem parte prática?','Sim. O curso é com prática, e por isso as vagas são limitadas.'],
+  ['Vocês emitem nota fiscal?','Sim, emitimos nota fiscal.'],
+  ['Recebo certificado?','Sim. Emitimos certificado impresso.'],
+  ['Quem pode participar?','Os cursos são voltados a fisioterapeutas. Se tiver dúvida sobre o seu caso, pergunte pelo WhatsApp.']
 ];
 /* ====== FIM ====== */
 
@@ -185,7 +200,8 @@ var FAQ=[
     cal:'<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="5" width="17" height="15" rx="3"/><path d="M8 3v4M16 3v4M3.5 10h17"/></svg>',
     pin:'<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-6.5-5.6-6.5-11a6.5 6.5 0 0 1 13 0c0 5.4-6.5 11-6.5 11z"/><circle cx="12" cy="10" r="2.3"/></svg>',
     clock:'<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8.5"/><path d="M12 7.5V12l3 2"/></svg>',
-    wa:'<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 11.5a8 8 0 0 1-11.9 7L4 20l1.5-4A8 8 0 1 1 20 11.5z"/></svg>'
+    wa:'<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 11.5a8 8 0 0 1-11.9 7L4 20l1.5-4A8 8 0 1 1 20 11.5z"/></svg>',
+    card:'<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5.5" width="18" height="13" rx="3"/><path d="M3 10h18M7 15h4"/></svg>'
   };
   function dateBox(t){
     var a=d(t.inicio),b=d(t.fim);
@@ -204,8 +220,14 @@ var FAQ=[
     }).join('')+'</details>':'';
     return '<article class="turma"><div class="row">'+dateBox(t)+'<div><span class="por">Curso do Gunther</span><h3>'+esc(t.curso)+'</h3>'+facts(t)+'</div></div>'+
       (t.descricao?'<p class="desc">'+esc(t.descricao)+'</p>':'')+prog+
-      '<div class="foot"><a class="cta" data-link="inscricao" href="'+wa(msg)+'" target="_blank" rel="noopener">'+ic.wa+'Garantir minha vaga</a>'+
-      (t.vagas?'<span class="note">'+esc(t.vagas)+'</span>':'')+'</div></article>';
+      '<div class="foot">'+
+      (t.cartao?'<a class="cta" data-link="pagar-cartao" href="'+esc(t.cartao)+'" target="_blank" rel="noopener">'+ic.card+'Pagar no cartão em até 10x</a>'+
+        '<a class="cta ghost" data-link="inscricao" href="'+wa(msg)+'" target="_blank" rel="noopener">'+ic.wa+'Falar no WhatsApp</a>':
+        '<a class="cta" data-link="inscricao" href="'+wa(msg)+'" target="_blank" rel="noopener">'+ic.wa+'Garantir minha vaga</a>')+
+      (t.vagas?'<span class="note">'+esc(t.vagas)+'</span>':'')+'</div>'+
+      (t.pix?'<div class="pix"><p><b>Pix</b> à vista ou parcelado até o dia do evento</p><div class="chave"><code id="pixChave">'+esc(t.pix)+'</code>'+
+        '<button type="button" id="pixCopiar" data-chave="'+esc(t.pix)+'">Copiar chave</button></div></div>':'')+
+      '</article>';
   }
   function cardConvidado(t){
     var msg='Olá! Vim pela página de cursos do Gunther e quero informações sobre o curso "'+t.curso+'" ('+periodo(t)+', '+t.cidade+').';
@@ -240,6 +262,13 @@ var FAQ=[
   document.getElementById('faq').innerHTML=FAQ.map(function(q){
     return '<details><summary>'+esc(q[0])+'</summary><p>'+esc(q[1])+'</p></details>';
   }).join('');
+  var bc=document.getElementById('pixCopiar');
+  if(bc) bc.addEventListener('click',function(){
+    var v=bc.getAttribute('data-chave');
+    function ok(){bc.textContent='Chave copiada';setTimeout(function(){bc.textContent='Copiar chave';},2200);}
+    function sel(){var r=document.createRange();r.selectNodeContents(document.getElementById('pixChave'));var s=getSelection();s.removeAllRanges();s.addRange(r);bc.textContent='Selecionada, copie';}
+    if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(v).then(ok,sel);}else{sel();}
+  });
   document.getElementById('sacBtn').href=wa('Olá! Vim pela página de cursos do Gunther e tenho uma dúvida.');
 })();
 </script>
