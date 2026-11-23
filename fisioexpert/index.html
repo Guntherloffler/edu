@@ -344,6 +344,18 @@ main>.escuro:nth-of-type(even){background:radial-gradient(820px 460px at 6% 6%,r
 .foto .fio{margin:.7rem 0 0}
 @media (max-width:900px){.foto{max-width:21rem}}
 @media (max-width:900px){.hero-g{grid-template-columns:1fr}.foto{justify-self:start;max-width:20rem}.hero h1{overflow-wrap:break-word}}
+.vids{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem;margin-top:3rem}
+.vid{position:relative;display:block;aspect-ratio:16/9;border-radius:6px;overflow:hidden;background:#240912;box-shadow:0 14px 40px rgba(20,4,10,.45);border:0;padding:0;cursor:pointer;width:100%}
+.vid img,.vid iframe{position:absolute;inset:0;width:100%;height:100%;border:0;display:block;object-fit:cover}
+.vid img{transition:transform .6s cubic-bezier(.2,.7,.2,1),opacity .3s;opacity:.92}
+.vid::after{content:"";position:absolute;inset:0;background:linear-gradient(to top,rgba(36,9,18,.55),transparent 55%)}
+.vid .pl{position:absolute;z-index:2;left:50%;top:50%;width:68px;height:68px;margin:-34px 0 0 -34px;border-radius:50%;background:var(--mielina);display:grid;place-items:center;box-shadow:0 0 0 8px rgba(235,203,90,.25);transition:transform .3s}
+.vid .pl svg{width:26px;height:26px;fill:var(--musculo);margin-left:4px}
+.vid.on::after{display:none}
+.vid:hover img{transform:scale(1.04);opacity:1}.vid:hover .pl{transform:scale(1.08)}
+.vid:focus-visible{outline:3px solid var(--mielina);outline-offset:4px}
+@media (max-width:900px){.vids{grid-template-columns:1fr;gap:1rem}}
+@media (prefers-reduced-motion:reduce){.vid img,.vid .pl{transition:none}}
 </style>
 </head>
 <body>
@@ -373,7 +385,7 @@ main>.escuro:nth-of-type(even){background:radial-gradient(820px 460px at 6% 6%,r
       <p class="lead">O método CSC, desenvolvido por Gunther Löffler, dá clareza ao caso, classifica e conduz com segurança os casos que desafiam até quem tem anos de consultório.</p>
       <div class="go">
         <a class="btn btn-y" href="#oferta" data-buy>Quero entrar no FisioExpert</a>
-        <p class="micro"><b>12x de R$ 258</b> ou R$ 2.497 à vista. Acesso por 12 meses e 7 dias de garantia.</p>
+        <p class="micro">Acesso por 12 meses e 7 dias de garantia.</p>
       </div>
     </div>
     <figure class="foto">
@@ -435,6 +447,18 @@ main>.escuro:nth-of-type(even){background:radial-gradient(820px 460px at 6% 6%,r
     </div>
     <p class="metodo-nota">A neurodinâmica entra como ferramenta dentro dessa sequência. Você aprende a técnica e, principalmente, <b style="color:var(--mielina);font-weight:600">quando ela faz sentido</b>.</p>
     <p style="margin-top:2.4rem"><a class="btn btn-y" href="#oferta" data-buy>Quero entrar no FisioExpert</a></p>
+  </div>
+</section>
+
+<!-- 6B. DEPOIMENTOS EM VÍDEO -->
+<section class="sec fundo" id="videos">
+  <div class="wrap">
+    <h2 class="h2 largo">Fisioterapeutas contam o que mudou na prática.</h2>
+    <div class="vids">
+      <a class="vid" href="https://youtu.be/Dq_UclzuixM" data-yt="Dq_UclzuixM" target="_blank" rel="noopener" aria-label="Assistir ao depoimento em vídeo 1"><img src="https://i.ytimg.com/vi/Dq_UclzuixM/hqdefault.jpg" alt="" loading="lazy"><span class="pl"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5v15l13-7.5z"/></svg></span></a>
+      <a class="vid" href="https://youtu.be/TdDwwyzOD_M" data-yt="TdDwwyzOD_M" target="_blank" rel="noopener" aria-label="Assistir ao depoimento em vídeo 2"><img src="https://i.ytimg.com/vi/TdDwwyzOD_M/hqdefault.jpg" alt="" loading="lazy"><span class="pl"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5v15l13-7.5z"/></svg></span></a>
+      <a class="vid" href="https://youtu.be/MbL7Gbz8tPE" data-yt="MbL7Gbz8tPE" target="_blank" rel="noopener" aria-label="Assistir ao depoimento em vídeo 3"><img src="https://i.ytimg.com/vi/MbL7Gbz8tPE/hqdefault.jpg" alt="" loading="lazy"><span class="pl"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5v15l13-7.5z"/></svg></span></a>
+    </div>
   </div>
 </section>
 
@@ -635,6 +659,15 @@ main>.escuro:nth-of-type(even){background:radial-gradient(820px 460px at 6% 6%,r
   var root = document.documentElement;
   var reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
 
+  document.querySelectorAll('.vid[data-yt]').forEach(function(a){
+    a.addEventListener('click',function(e){
+      e.preventDefault();
+      var f=document.createElement('iframe');
+      f.src='https://www.youtube-nocookie.com/embed/'+a.getAttribute('data-yt')+'?autoplay=1&rel=0&modestbranding=1&playsinline=1';
+      f.title='Depoimento em vídeo';f.allow='autoplay; encrypted-media; picture-in-picture; fullscreen';f.allowFullscreen=true;
+      a.innerHTML='';a.appendChild(f);a.classList.add('on');a.removeAttribute('href');
+    });
+  });
   document.querySelectorAll('[data-buy]').forEach(function(a){
     if (CHECKOUT_URL && (a.id === 'buy')) { a.href = CHECKOUT_URL; a.target = '_blank'; a.rel = 'noopener'; }
   });
