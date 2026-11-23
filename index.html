@@ -2,13 +2,316 @@
 <html lang="pt-BR">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Gunther Löffler · Educação</title>
-<meta http-equiv="refresh" content="0; url=/fisioexpert/">
-<link rel="canonical" href="/fisioexpert/">
-<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="description" content="Gunther Löffler, fisioterapeuta especialista em dor irradiada e neurodinâmica. Cursos presenciais, Fisioexpert, mentoria, casos clínicos e atendimentos.">
+<meta name="theme-color" content="#11202E">
+<meta property="og:title" content="Gunther Löffler">
+<meta property="og:description" content="Fisioterapeuta especialista em dor irradiada e neurodinâmica.">
+<meta property="og:image" content="https://edu.guntherloffler.com.br/assets/site5.jpg">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://edu.guntherloffler.com.br/">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="favicon-gunther.svg" type="image/svg+xml">
+<style>body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
+<title>Gunther Löffler</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=Figtree:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* Layout: abertura com foto de página inteira que se dissolve no fundo; em seguida cartões guiados por imagem,
+   do mais presencial ao mais leve: cursos, formação, mentoria, casos + atendimento lado a lado, teste. */
+:root{
+  --bg:#F7F7F4;
+  --surface:#FFFFFF;
+  --ink:#11202E;
+  --muted:#5E6B77;
+  --line:#DDE1E3;
+  --accent:#F4936F;
+  --navy:#11202E;
+  --paper:#F7F7F4;
+  --font-display:'Bricolage Grotesque','Segoe UI',Arial,sans-serif;
+  --font-body:'Figtree','Segoe UI',Arial,sans-serif;
+  --gl:max(16px,env(safe-area-inset-left,0px));
+  --gr:max(16px,env(safe-area-inset-right,0px));
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){--bg:#0C1823;--surface:#15293A;--ink:#F7F7F4;--muted:#9FB0BC;--line:#243B4C;color-scheme:dark}
+}
+:root[data-theme="dark"]{--bg:#0C1823;--surface:#15293A;--ink:#F7F7F4;--muted:#9FB0BC;--line:#243B4C;color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:var(--font-body);font-size:16px;line-height:1.45;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+a:focus-visible{outline:3px solid var(--accent);outline-offset:3px}
+main{max-width:520px;margin-inline:auto;padding-left:var(--gl);padding-right:var(--gr);padding-bottom:36px}
+
+/* Abertura */
+.hero{position:relative;margin-left:calc(-1*var(--gl));margin-right:calc(-1*var(--gr));aspect-ratio:4/5;overflow:hidden;background:#8d9298}
+.hero .ph{position:absolute;inset:0}
+.hero img{width:100%;height:100%;object-fit:cover;object-position:50% 0%;display:block;transform-origin:50% 0%;animation:settle 2.4s cubic-bezier(.2,.7,.2,1) both}
+@keyframes settle{from{transform:scale(1.12)}to{transform:scale(1)}}
+.hero::after{content:"";position:absolute;inset:0;z-index:1;
+  background:linear-gradient(to top,var(--bg) 0%,var(--bg) 14%,color-mix(in srgb,var(--bg) 70%,transparent) 30%,transparent 58%),
+             linear-gradient(to bottom,rgba(17,32,46,.35),transparent 22%)}
+.mark{position:absolute;z-index:3;left:var(--gl);top:max(18px,env(safe-area-inset-top,0px));height:34px;width:auto}
+.mark .ring{fill:#F7F7F4}
+.dot-l{animation:glow 2.8s ease-in-out infinite}
+@keyframes glow{0%,100%{opacity:.3}50%{opacity:.95}}
+.who{position:absolute;z-index:2;left:var(--gl);right:var(--gr);bottom:6px;animation:rise .9s .35s cubic-bezier(.2,.7,.2,1) both}
+h1{font-family:var(--font-display);font-weight:800;font-size:clamp(38px,11.5vw,56px);line-height:.95;letter-spacing:-.035em;margin:0;text-wrap:balance}
+.logo-nome{display:block;width:clamp(250px,78vw,360px);height:auto}
+.role{margin:12px 0 0;font-size:16px;color:var(--muted);max-width:32ch}
+.metodo{display:inline-flex;align-items:center;gap:10px;margin:0 0 14px;padding:6px 14px 6px 6px;border-radius:999px;background:color-mix(in srgb,var(--bg) 72%,transparent);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);border:1px solid var(--line);font-size:13px;color:var(--muted)}
+.metodo b{background:var(--accent);color:#11202E;font-weight:700;padding:4px 11px;border-radius:999px;font-size:13px}
+@keyframes rise{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
+
+/* Faixa de termos */
+.ticker{margin:18px calc(-1*var(--gr)) 0 calc(-1*var(--gl));border-block:1px solid var(--line);overflow:hidden;white-space:nowrap;
+  -webkit-mask-image:linear-gradient(to right,transparent,#000 7%,#000 93%,transparent);mask-image:linear-gradient(to right,transparent,#000 7%,#000 93%,transparent)}
+.ticker .track{display:inline-flex;animation:slide 30s linear infinite;will-change:transform}
+.ticker span{display:inline-flex;align-items:center;gap:22px;padding:13px 0 13px 22px;font-family:var(--font-display);font-weight:600;font-size:17px;letter-spacing:-.01em;color:var(--muted)}
+.ticker svg{width:12px;height:12px;flex:none}
+.ticker circle{fill:var(--accent)}
+@keyframes slide{to{transform:translateX(-50%)}}
+
+/* Cartões */
+.list{display:flex;flex-direction:column;gap:14px;margin-top:26px}
+.pair{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.card{position:relative;display:flex;flex-direction:column;justify-content:flex-end;overflow:hidden;border-radius:22px;background:var(--navy);color:#F7F7F4;isolation:isolate;
+  transition:transform .35s cubic-bezier(.2,.7,.2,1),box-shadow .35s}
+.card:hover{transform:translateY(-3px);box-shadow:0 18px 40px -18px rgba(17,32,46,.55)}
+.card:active{transform:scale(.985)}
+/* Fotos com rosto ficam presas ao topo do cartão (nada de cortar a cabeça); só as sem rosto têm paralaxe (data-par). */
+.card .par{position:absolute;inset:0;z-index:-2}
+.card .par[data-par]{top:-9%;bottom:auto;height:118%;transform:translate3d(0,var(--shift,0px),0);will-change:transform}
+.card .par img{width:100%;height:100%;object-fit:cover;object-position:var(--pos,50% 0%);display:block;transform-origin:50% 0%;transition:transform 1.4s cubic-bezier(.2,.7,.2,1)}
+.js .rv .par img{transform:scale(1.1)}
+.js .rv.in .par img{transform:scale(1)}
+.js .rv.in:hover .par img{transform:scale(1.04);transition-duration:.9s}
+.card::before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(to top,rgba(10,22,33,.92) 4%,rgba(10,22,33,.5) 46%,rgba(10,22,33,.06) 78%)}
+.body{padding:22px}
+.card h2{font-family:var(--font-display);font-weight:700;font-size:23px;line-height:1.05;letter-spacing:-.02em;margin:0;text-wrap:balance}
+.card .d{margin:8px 0 0;font-size:15px;color:#D4DCE1;max-width:34ch}
+.go{display:flex;align-items:flex-end;justify-content:space-between;gap:14px}
+.chip{flex:none;width:38px;height:38px;border-radius:50%;background:rgba(247,247,244,.14);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);border:1px solid rgba(247,247,244,.28);display:grid;place-items:center;transition:background .25s,transform .25s}
+.chip svg{width:15px;height:15px;stroke:#F7F7F4;fill:none;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+.card:hover .chip{background:var(--accent);transform:rotate(-45deg)}
+.card:hover .chip svg{stroke:#11202E}
+
+.big{min-height:360px}
+.big h2{font-size:clamp(30px,9vw,38px);font-weight:800;line-height:1}
+.mid{min-height:250px}
+.cta{display:inline-flex;align-items:center;gap:8px;margin-top:16px;background:var(--accent);color:#11202E;font-weight:700;font-size:15px;padding:12px 20px;border-radius:999px;position:relative;overflow:hidden}
+.cta::after{content:"";position:absolute;inset:0;background:linear-gradient(100deg,transparent 30%,rgba(255,255,255,.55) 50%,transparent 70%);transform:translateX(-120%);animation:sheen 3.8s 1.8s ease-in-out infinite}
+@keyframes sheen{0%,60%{transform:translateX(-120%)}100%{transform:translateX(120%)}}
+.live{align-self:flex-start;display:inline-flex;align-items:center;gap:8px;font-size:13px;font-weight:600;padding:6px 12px;border-radius:999px;background:rgba(247,247,244,.14);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);border:1px solid rgba(247,247,244,.28);margin-bottom:14px}
+.live i{width:8px;height:8px;border-radius:50%;background:var(--accent);position:relative}
+.live.fixo i::after{display:none}
+.live i::after{content:"";position:absolute;inset:-5px;border-radius:50%;border:2px solid var(--accent);animation:ping 1.8s ease-out infinite}
+@keyframes ping{0%{transform:scale(.4);opacity:1}100%{transform:scale(1.6);opacity:0}}
+
+/* Lado a lado */
+.sq{min-height:250px}
+.sq h2{font-size:19px}
+.sq .body{padding:18px}
+.sq .ico{width:40px;height:40px;border-radius:12px;display:grid;place-items:center;background:var(--accent);margin-bottom:14px}
+.sq .ico svg{width:20px;height:20px;stroke:#11202E;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+
+/* Teste */
+.test{background:var(--navy);min-height:0;justify-content:flex-start}
+.test::before{display:none}
+.test .shot{position:relative;aspect-ratio:16/9.4;overflow:hidden}
+.test .shot img{width:100%;height:100%;object-fit:cover;object-position:42% 0%;display:block;transform-origin:50% 0%;transition:transform 1.4s cubic-bezier(.2,.7,.2,1)}
+.js .rv .shot img{transform:scale(1.08)}
+.js .rv.in .shot img{transform:scale(1)}
+.test .shot::after{content:"";position:absolute;inset:auto 0 0 0;height:55%;background:linear-gradient(to top,#11202E,rgba(17,32,46,0))}
+.test .body{padding:0 24px 24px;margin-top:-34px;position:relative;z-index:1}
+
+/* Biblioteca: fichas de caso empilhadas */
+.lib{background:linear-gradient(160deg,#1D434F 0%,#11202E 70%)}
+.lib::before{display:none}
+.sheets{position:absolute;right:-8px;top:14px;width:118px;height:112px}
+.sheets i{position:absolute;left:0;top:0;width:96px;height:100px;border-radius:12px;background:#F7F7F4;box-shadow:0 8px 18px -8px rgba(0,0,0,.5);transform-origin:80% 100%;transition:transform .5s cubic-bezier(.2,.7,.2,1)}
+.sheets i::before{content:"";position:absolute;left:12px;right:12px;top:30px;height:44px;background:repeating-linear-gradient(to bottom,#C9D2D8 0 3px,transparent 3px 11px);border-radius:2px}
+.sheets .s3{transform:rotate(-14deg);background:#9CBAC5}
+.sheets .s2{transform:rotate(-5deg);background:#D3E0E5}
+.sheets .s1{transform:rotate(5deg)}
+.sheets b{position:absolute;left:12px;top:12px;width:34px;height:10px;border-radius:5px;background:var(--accent)}
+.lib:hover .s3{transform:rotate(-24deg) translateX(-8px)}
+.lib:hover .s2{transform:rotate(-10deg) translateX(-2px)}
+.lib:hover .s1{transform:rotate(9deg) translateX(6px)}
+.badge{display:inline-block;border:1.5px solid var(--accent);color:var(--accent);border-radius:999px;padding:3px 11px;font-size:13px;font-weight:600;margin-bottom:12px}
+.test .d{max-width:24ch}
+.levels{display:flex;gap:5px;align-items:flex-end;height:30px;margin-top:16px}
+.levels i{width:22px;border-radius:3px;background:#2A4152;height:var(--h);transform-origin:bottom;transform:scaleY(.25);transition:transform .6s cubic-bezier(.2,.7,.2,1),background .4s}
+.levels i:nth-child(1){--h:35%}.levels i:nth-child(2){--h:58%}.levels i:nth-child(3){--h:80%}.levels i:nth-child(4){--h:100%}
+.test.seen .levels i{transform:scaleY(1);background:#5E7D8E}
+.test.seen .levels i:nth-child(1){transition-delay:.1s}.test.seen .levels i:nth-child(2){transition-delay:.25s}.test.seen .levels i:nth-child(3){transition-delay:.4s}
+.test.seen .levels i:nth-child(4){transition-delay:.55s;background:var(--accent)}
+
+/* Blocos: botões rápidos e banners de formação */
+.bloco{margin-top:28px}
+.tit{font-family:var(--font-display);font-weight:700;font-size:15px;letter-spacing:-.005em;color:var(--muted);margin:0 0 12px}
+.btns{display:flex;flex-direction:column;gap:10px}
+.bt{display:flex;align-items:center;gap:14px;width:100%;padding:13px 16px;border-radius:16px;background:var(--surface);border:1px solid var(--line);color:var(--ink);font:inherit;text-align:left;cursor:pointer;transition:transform .3s cubic-bezier(.2,.7,.2,1),border-color .25s,box-shadow .3s}
+.bt:hover{transform:translateY(-2px);border-color:var(--accent);box-shadow:0 12px 26px -16px rgba(17,32,46,.4)}
+.bt:active{transform:scale(.985)}
+.bt .ico{flex:none;width:38px;height:38px;border-radius:11px;display:grid;place-items:center;background:color-mix(in srgb,var(--accent) 22%,transparent)}
+.bt .ico svg{width:20px;height:20px;stroke:var(--ink);fill:none;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round}
+.bt .tx{flex:1;min-width:0;line-height:1.2}
+.bt .tx b{display:block;font-family:var(--font-display);font-weight:700;font-size:17px;letter-spacing:-.015em}
+.bt .tx small{display:block;margin-top:3px;font-size:13.5px;color:var(--muted)}
+.bt .ar{flex:none;display:grid;place-items:center;width:30px;height:30px;border-radius:50%;color:var(--muted);transition:transform .25s,background .25s,color .25s}
+.bt:hover .ar{background:var(--accent);color:#11202E;transform:rotate(-45deg)}
+.bt .mais{position:relative}
+.bt .mais::before,.bt .mais::after{content:"";position:absolute;left:50%;top:50%;width:12px;height:2px;margin:-1px 0 0 -6px;border-radius:1px;background:currentColor;transition:transform .25s}
+.bt .mais::after{transform:rotate(90deg)}
+.bt:hover .mais{transform:none}
+.bt[aria-expanded="true"] .mais::after{transform:rotate(0)}
+.clin .painel{margin-top:8px;padding:16px 18px;border-radius:16px;background:var(--surface);border:1px solid var(--line)}
+.clin .painel p{margin:0;font-size:15.5px;color:var(--muted)}
+.clin .painel b{color:var(--ink);font-weight:600}
+.clin .wa{display:inline-flex;align-items:center;gap:9px;margin-top:14px;padding:11px 18px;border-radius:999px;background:var(--navy);color:#F7F7F4;font-weight:600;font-size:15px}
+.clin .wa svg{width:18px;height:18px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.mid2{min-height:300px}
+.list{margin-top:0}
+
+/* Entrada ao rolar: começa visível, só desloca um pouco */
+.js .rv{transform:translateY(26px);transition:transform .8s cubic-bezier(.2,.7,.2,1)}
+.js .rv.in{transform:none}
+
+footer{margin-top:34px;text-align:center;color:var(--muted);font-size:13px}
+
+@media (prefers-reduced-motion:reduce){
+  .hero img,.who{animation:none}.dot-l{animation:none;opacity:.7}.ticker .track{animation:none}.cta::after,.live i::after{animation:none}.bt,.bt .ar{transition:none}
+  .card,.card .par img,.chip,.levels i{transition:none}.js .rv{transform:none;transition:none}.levels i{transform:none}
+}
+</style>
+
 </head>
-<body style="margin:0;background:#3A1020;color:#DFE6E8;font-family:sans-serif;padding:24px">
-<p><a href="/fisioexpert/" style="color:#EBCB5A">Ir para o Fisioexpert</a></p>
+<body>
+<main>
+  <header class="hero" id="hero">
+    <div class="ph"><img src="assets/site5.jpg" alt="Gunther Löffler em pé na clínica, camisa branca e óculos" width="1200" height="1500" fetchpriority="high"></div>
+    <svg class="mark" viewBox="10.5 4 43 59.5" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <defs><filter id="blur" x="-80%" y="-80%" width="260%" height="260%"><feGaussianBlur stdDeviation="2.4"/></filter></defs>
+      <path class="ring" d="M12.5 42a19.5 19.5 0 1 0 39 0a19.5 19.5 0 1 0 -39 0zM21.5 42a10.5 10.5 0 1 0 21 0a10.5 10.5 0 1 0 -21 0z" fill-rule="evenodd"/>
+      <circle class="dot-l" cx="19" cy="12" r="6" fill="#F4936F" filter="url(#blur)"/>
+      <circle cx="45" cy="12" r="6" fill="#F4936F"/>
+    </svg>
+    <div class="who">
+      <p class="metodo"><b>Método CSC</b><span>Clínica Sob Controle</span></p>
+      <h1><img class="logo-nome" src="assets/logo-nome.svg" alt="Gunther Löffler" width="643" height="84"></h1>
+      <p class="role">Fisioterapeuta, especialista em dor irradiada e neurodinâmica.</p>
+    </div>
+  </header>
+
+  <div class="ticker" aria-hidden="true"><div class="track" id="track"></div></div>
+
+  <!-- TROQUE OS href="#" PELOS LINKS REAIS -->
+  <section class="bloco" aria-labelledby="t-formacoes">
+    <h2 class="tit" id="t-formacoes">Formações do Gunther</h2>
+    <div class="list">
+    <a class="card big rv" href="#" data-link="cursos-presenciais">
+      <div class="par"><img src="assets/site3.jpg" alt="" loading="lazy" style="--pos:62% 0%"></div>
+      <div class="body">
+        <span class="live"><i></i>Aulas ao vivo</span>
+        <h2>Cursos Presenciais</h2>
+        <p class="d">Treinamento prático com o Gunther, do raciocínio à conduta.</p>
+        <span class="cta">Ver cursos
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 7h10M8 3l4 4-4 4"/></svg>
+        </span>
+      </div>
+    </a>
+
+    <a class="card big mid2 rv" href="/fisioexpert/" data-link="fisioexpert" style="min-height:330px">
+      <div class="par"><img src="assets/site6.jpg" alt="" loading="lazy" style="--pos:40% 0%"></div>
+      <div class="body">
+        <span class="live fixo"><i></i>Formação online</span>
+        <h2>Fisioexpert</h2>
+        <p class="d">Formação completa em casos de dor irradiada e neurodinâmica.</p>
+        <div class="go" style="margin-top:14px"><span class="cta" style="margin-top:0">Quero conhecer
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 7h10M8 3l4 4-4 4"/></svg></span></div>
+      </div>
+    </a>
+
+    <a class="card big mid2 rv" href="/diagnostico/aplicar" data-link="mentoria">
+      <div class="par"><img src="assets/site4.jpg" alt="" loading="lazy" style="--pos:70% 0%"></div>
+      <div class="body">
+        <h2>Mentoria Gunther Löffler</h2>
+        <p class="d">Acompanhamento direto nos seus casos.</p>
+        <div class="go" style="margin-top:14px"><span class="cta" style="margin-top:0">Aplicar para a mentoria
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 7h10M8 3l4 4-4 4"/></svg></span></div>
+      </div>
+    </a>
+    </div>
+  </section>
+
+
+  <section class="bloco" aria-labelledby="t-comece">
+    <h2 class="tit" id="t-comece">Mais do Gunther</h2>
+    <div class="btns">
+      <a class="bt rv" href="#" data-link="minicurso-fascite-plantar"><span class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="m10 8.5 5 3.5-5 3.5z"/></svg></span><span class="tx"><b>Minicurso Fascite Plantar</b></span><span class="ar"><svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 7h10M8 3l4 4-4 4"/></svg></span></a>
+      <a class="bt rv" href="#" data-link="minicurso-tunel-do-carpo"><span class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="m10 8.5 5 3.5-5 3.5z"/></svg></span><span class="tx"><b>Minicurso Síndrome do Túnel do Carpo</b></span><span class="ar"><svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 7h10M8 3l4 4-4 4"/></svg></span></a>
+      <a class="bt rv" href="#" data-link="casos"><span class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h6a2 2 0 0 1 2 2v12a2 2 0 0 0-2-2H4zM20 5h-6a2 2 0 0 0-2 2v12a2 2 0 0 1 2-2h6z"/></svg></span><span class="tx"><b>Biblioteca de Casos Clínicos</b></span><span class="ar"><svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 7h10M8 3l4 4-4 4"/></svg></span></a>
+      <a class="bt rv" href="#" data-link="quiz"><span class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5 9 16.5 19 6.5"/><path d="M5 5h6M5 19h14"/></svg></span><span class="tx"><b>Quiz gratuito para fisioterapeutas</b></span><span class="ar"><svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 7h10M8 3l4 4-4 4"/></svg></span></a>
+      <div class="clin rv" id="clin">
+        <button class="bt" type="button" id="clinBtn" aria-expanded="false" aria-controls="clinPanel" data-link="clinica">
+          <span class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-6.5-5.6-6.5-11a6.5 6.5 0 0 1 13 0c0 5.4-6.5 11-6.5 11z"/><circle cx="12" cy="10" r="2.3"/></svg></span><span class="tx"><b>Clínica Physio Zentrum</b><small>Atendimento clínico</small></span><span class="ar mais" aria-hidden="true"></span>
+        </button>
+        <div class="painel" id="clinPanel" role="region" aria-label="Atendimento clínico" hidden>
+          <p>O Gunther atende na clínica própria, a Physio Zentrum. Consulta <b>online</b> e <b>presencial</b>.</p>
+          <a class="wa" href="https://wa.me/5519998519191?text=Ol%C3%A1!%20Vim%20pelo%20link%20da%20bio%20do%20Gunther%20e%20quero%20agendar%20uma%20consulta." data-link="whatsapp-atendimento" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 11.5a8 8 0 0 1-11.9 7L4 20l1.5-4A8 8 0 1 1 20 11.5z"/></svg>Falar pelo WhatsApp</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>Gunther Löffler</footer>
+</main>
+
+<script>
+(function(){
+  var reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  document.documentElement.classList.add('js');
+
+  /* Faixa de termos */
+  var words=['Dor irradiada','Neurodinâmica','Raciocínio clínico','Casos complexos'];
+  var ring='<svg viewBox="0 0 12 12"><circle cx="6" cy="6" r="3.5"/></svg>';
+  var one=words.map(function(w){return '<span>'+w+ring+'</span>';}).join('');
+  document.getElementById('track').innerHTML=one+one+one+one;
+
+  /* Paralaxe: imagens deslizam mais devagar que a página */
+  var pars=[].slice.call(document.querySelectorAll('[data-par]'));
+  function update(){
+    if(reduce) return;
+    var vh=innerHeight;
+    pars.forEach(function(el){
+      var r=el.parentNode.getBoundingClientRect();
+      if(r.bottom<-100||r.top>vh+100) return;
+      var c=(r.top+r.height/2-vh/2)/vh;
+      el.style.setProperty('--shift',(c*-parseFloat(el.dataset.par))+'px');
+    });
+  }
+  var tick=false;
+  addEventListener('scroll',function(){ if(tick)return; tick=true; requestAnimationFrame(function(){tick=false;update();}); },{passive:true});
+  addEventListener('resize',update); update();
+
+  /* Entrada ao rolar */
+  var rv=[].slice.call(document.querySelectorAll('.rv'));
+  if('IntersectionObserver' in window && !reduce){
+    var io=new IntersectionObserver(function(es){ es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } }); },{threshold:.08});
+    rv.forEach(function(el){io.observe(el);});
+  } else rv.forEach(function(el){el.classList.add('in');});
+
+  /* Clínica: abre e fecha o painel com o WhatsApp */
+  var cb=document.getElementById('clinBtn'),cp=document.getElementById('clinPanel');
+  cb.addEventListener('click',function(){
+    var open=cb.getAttribute('aria-expanded')==='true';
+    cb.setAttribute('aria-expanded',open?'false':'true');
+    cp.hidden=open;
+  });
+})();
+</script>
 </body>
 </html>
