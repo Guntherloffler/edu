@@ -179,11 +179,6 @@ h1{font-family:var(--font-display);font-weight:800;font-size:clamp(38px,11.5vw,5
 .bt .mais::after{transform:rotate(90deg)}
 .bt:hover .mais{transform:none}
 .bt[aria-expanded="true"] .mais::after{transform:rotate(0)}
-.clin .painel{margin-top:8px;padding:16px 18px;border-radius:16px;background:var(--surface);border:1px solid var(--line)}
-.clin .painel p{margin:0;font-size:15.5px;color:var(--muted)}
-.clin .painel b{color:var(--ink);font-weight:600}
-.clin .wa{display:inline-flex;align-items:center;gap:9px;margin-top:14px;padding:11px 18px;border-radius:999px;background:var(--navy);color:#F7F7F4;font-weight:600;font-size:15px}
-.clin .wa svg{width:18px;height:18px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
 .mid2{min-height:300px}
 .list{margin-top:0}
 
@@ -271,20 +266,11 @@ footer{margin-top:34px;text-align:center;color:var(--muted);font-size:13px}
 
 
   <section class="bloco" aria-labelledby="t-comece">
-    <h2 class="tit" id="t-comece">Mais do Gunther</h2>
+    <h2 class="tit" id="t-comece">Outras formações</h2>
     <div class="btns">
       <a class="bt rv" href="/fascite-plantar/" data-link="minicurso-fascite-plantar"><span class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="m10 8.5 5 3.5-5 3.5z"/></svg></span><span class="tx"><b>Fascite Plantar</b></span><span class="ar"><svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 7h10M8 3l4 4-4 4"/></svg></span></a>
       <a class="bt rv" href="/sindrome-do-tunel-do-carpo/" data-link="minicurso-tunel-do-carpo"><span class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="m10 8.5 5 3.5-5 3.5z"/></svg></span><span class="tx"><b>Síndrome do Túnel do Carpo</b></span><span class="ar"><svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 7h10M8 3l4 4-4 4"/></svg></span></a>
       <a class="bt rv" href="/biblioteca/" data-link="casos"><span class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h6a2 2 0 0 1 2 2v12a2 2 0 0 0-2-2H4zM20 5h-6a2 2 0 0 0-2 2v12a2 2 0 0 1 2-2h6z"/></svg></span><span class="tx"><b>Biblioteca de Casos Clínicos</b></span><span class="ar"><svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 7h10M8 3l4 4-4 4"/></svg></span></a>
-      <div class="clin rv" id="clin">
-        <button class="bt" type="button" id="clinBtn" aria-expanded="false" aria-controls="clinPanel" data-link="clinica">
-          <span class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-6.5-5.6-6.5-11a6.5 6.5 0 0 1 13 0c0 5.4-6.5 11-6.5 11z"/><circle cx="12" cy="10" r="2.3"/></svg></span><span class="tx"><b>Clínica Physio Zentrum</b><small>Atendimento clínico</small></span><span class="ar mais" aria-hidden="true"></span>
-        </button>
-        <div class="painel" id="clinPanel" role="region" aria-label="Atendimento clínico" hidden>
-          <p>O Gunther atende na clínica própria, a Physio Zentrum. Consulta <b>online</b> e <b>presencial</b>.</p>
-          <a class="wa" href="https://wa.me/5519998519191?text=Ol%C3%A1!%20Vim%20pelo%20link%20da%20bio%20do%20Gunther%20e%20quero%20agendar%20uma%20consulta." data-link="whatsapp-atendimento" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 11.5a8 8 0 0 1-11.9 7L4 20l1.5-4A8 8 0 1 1 20 11.5z"/></svg>Falar pelo WhatsApp</a>
-        </div>
-      </div>
     </div>
   </section>
 
@@ -324,14 +310,6 @@ footer{margin-top:34px;text-align:center;color:var(--muted);font-size:13px}
     var io=new IntersectionObserver(function(es){ es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } }); },{threshold:.08});
     rv.forEach(function(el){io.observe(el);});
   } else rv.forEach(function(el){el.classList.add('in');});
-
-  /* Clínica: abre e fecha o painel com o WhatsApp */
-  var cb=document.getElementById('clinBtn'),cp=document.getElementById('clinPanel');
-  cb.addEventListener('click',function(){
-    var open=cb.getAttribute('aria-expanded')==='true';
-    cb.setAttribute('aria-expanded',open?'false':'true');
-    cp.hidden=open;
-  });
 })();
 </script>
 </body>
