@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Aplicação para o diagnóstico gratuito | Gunther Löffler</title>
-<meta name="description" content="Aplique para receber, em reunião ao vivo com Gunther Löffler ou a equipe, o diagnóstico de um caso que te deixa em dúvida. As vagas são selecionadas.">
+<meta name="description" content="Aplique para receber, em reunião ao vivo com Gunther Löffler ou a equipe, o diagnóstico gratuito de um caso que te deixa em dúvida. As vagas são selecionadas.">
 <link rel="icon" href="assets/simbolo_cor_difusa.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -187,7 +187,7 @@ footer p{max-width:62ch}
 <main>
 <section class="intro">
   <div class="wrap">
-    <h1 class="h1">Aplique para o seu diagnóstico.</h1>
+    <h1 class="h1">Aplique para o seu diagnóstico gratuito.</h1>
     <p class="lead">Conte quem você é, como atende e descreva um caso que te deixa em dúvida. Leva cerca de 5 minutos.</p>
     <ul class="avisos">
       <li><b>Nem toda aplicação é aceita.</b> A equipe lê cada uma e escolhe os casos em que a reunião vai fazer diferença.</li>
@@ -259,6 +259,14 @@ footer p{max-width:62ch}
               <span class="erro">Escolha onde você atua.</span>
             </div>
           </div>
+          <div class="campo" data-f="fat">
+            <label for="fat">Faturamento mensal com a fisioterapia</label>
+            <select id="fat" name="faturamento_mensal" required>
+              <option value="">Escolha</option>
+              <option>Ainda não tenho faturamento com a fisioterapia</option><option>Até R$ 5 mil</option><option>De R$ 5 mil a R$ 10 mil</option><option>De R$ 10 mil a R$ 20 mil</option><option>De R$ 20 mil a R$ 40 mil</option><option>Acima de R$ 40 mil</option><option>Prefiro não informar</option>
+            </select>
+            <span class="erro">Escolha uma faixa de faturamento. Se preferir, marque "Prefiro não informar".</span>
+          </div>
           <div class="campo" data-f="area">
             <label for="area">Em qual área você atua?</label>
             <input type="text" id="area" name="area" placeholder="Ex.: ortopedia, coluna, geriatria" required>
@@ -290,11 +298,6 @@ footer p{max-width:62ch}
             <textarea id="caso" name="caso" required minlength="60"></textarea>
             <span class="erro">Descreva o caso com um pouco mais de detalhe, pelo menos 60 caracteres.</span>
           </div>
-          <div class="campo" data-f="trava">
-            <label for="trava">O que mais te trava hoje na condução dos casos?</label>
-            <textarea id="trava" name="o_que_trava" style="min-height:96px" required></textarea>
-            <span class="erro">Conte em uma frase o que mais te trava.</span>
-          </div>
         </fieldset>
 
         <div class="campo" data-f="aceite">
@@ -324,7 +327,7 @@ footer p{max-width:62ch}
 <footer>
   <div class="wrap">
     <img src="assets/logo-horizontal_cor_difusa.svg" alt="Gunther Löffler" height="30" style="height:30px;filter:brightness(0) invert(1);opacity:.85">
-    <p>O diagnóstico é uma conversa educativa sobre raciocínio clínico. Ele não substitui a avaliação do seu paciente nem oferece atendimento ao seu próprio quadro de saúde.</p>
+    <p>O diagnóstico gratuito é uma conversa educativa sobre raciocínio clínico. Ele não substitui a avaliação do seu paciente nem oferece atendimento ao seu próprio quadro de saúde.</p>
   </div>
 </footer>
 
@@ -341,7 +344,7 @@ const q = new URLSearchParams(location.search);
 if(q.get("etapa")){
   $("#etapaFraca").value = q.get("etapa");
   $("#notaDiag").value = q.get("nota") || "";
-  const n=$("#etapaNota"); n.textContent = `Seu diagnóstico de clareza indicou ${q.get("etapa")} como ponto de partida. Levamos isso em conta na análise.`; n.classList.add("on");
+  const n=$("#etapaNota"); n.textContent = `Seu resultado no quiz indicou ${q.get("etapa")} como ponto de partida. Levamos isso em conta na análise.`; n.classList.add("on");
 }
 
 /* validação com mensagem clara em cada campo */
@@ -352,10 +355,10 @@ function checa(){
   marca("nome", txt("nome").split(/\s+/).length>=2);
   marca("email", /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(txt("email")));
   marca("whats", txt("whatsapp").replace(/\D/g,"").length>=10);
-  marca("tempo", !!txt("tempo_formado")); marca("onde", !!txt("onde_atua")); marca("area", !!txt("area"));
+  marca("tempo", !!txt("tempo_formado")); marca("onde", !!txt("onde_atua")); marca("area", !!txt("area")); marca("fat", !!txt("faturamento_mensal"));
   marca("irradiada", !!d.get("dor_irradiada"));
   marca("s_aval", !!d.get("seg_avaliacao")); marca("s_test", !!d.get("seg_testes")); marca("s_cond", !!d.get("seg_conducao"));
-  marca("caso", txt("caso").length>=60); marca("trava", !!txt("o_que_trava"));
+  marca("caso", txt("caso").length>=60);
   marca("aceite", $("#aceite").checked);
   return falhas;
 }
