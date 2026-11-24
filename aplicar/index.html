@@ -5,13 +5,13 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Aplicação para o diagnóstico gratuito | Gunther Löffler</title>
 <meta name="description" content="Aplique para receber, em reunião ao vivo com Gunther Löffler ou a equipe, o diagnóstico gratuito de um caso que te deixa em dúvida. As vagas são selecionadas.">
-<link rel="icon" href="assets/simbolo_cor_difusa.svg" type="image/svg+xml">
+<link rel="icon" href="/mentoria/assets/simbolo_cor_difusa.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700&display=swap">
 <style>
-@font-face{font-family:"Bricolage Grotesque";src:url("assets/BricolageGrotesque-opsz96-400.ttf");font-weight:400;font-display:swap}
-@font-face{font-family:"Bricolage Grotesque";src:url("assets/BricolageGrotesque-opsz96-800.ttf");font-weight:700 800;font-display:swap}
+@font-face{font-family:"Bricolage Grotesque";src:url("/mentoria/assets/BricolageGrotesque-opsz96-400.ttf");font-weight:400;font-display:swap}
+@font-face{font-family:"Bricolage Grotesque";src:url("/mentoria/assets/BricolageGrotesque-opsz96-800.ttf");font-weight:700 800;font-display:swap}
 :root{
   --tinta:#11202E; --papel:#F7F7F4; --nevoa:#EDEFEC;
   --foco:#EC5C32; --foco-esc:#C23A0A; --petroleo:#2D5F6E; --petroleo-c:#6FA3B3; --nevoa-az:#7C93AB;
@@ -179,8 +179,8 @@ footer p{max-width:62ch}
 
 <header class="topo">
   <div class="wrap">
-    <a href="aplicar.html" aria-label="Voltar para a apresentação"><img src="assets/logo-horizontal_cor_difusa.svg" alt="Gunther Löffler" width="160" height="34"></a>
-    <a class="voltar" href="aplicar.html">Voltar</a>
+    <a href="/mentoria/" aria-label="Voltar para a apresentação"><img src="/mentoria/assets/logo-horizontal_cor_difusa.svg" alt="Gunther Löffler" width="160" height="34"></a>
+    <a class="voltar" href="/mentoria/">Voltar</a>
   </div>
 </header>
 
@@ -212,7 +212,7 @@ footer p{max-width:62ch}
 
 <section class="form-sec" id="aplicar">
   <div class="wrap">
-    <form id="form" name="aplicacao" method="POST" action="/diagnostico/formulario" data-netlify="true" netlify-honeypot="bot-field" novalidate>
+    <form id="form" name="aplicacao" method="POST" action="/aplicar/" data-netlify="true" netlify-honeypot="bot-field" novalidate>
         <input type="hidden" name="form-name" value="aplicacao">
         <p class="sr" aria-hidden="true"><label>Não preencha este campo <input name="bot-field" tabindex="-1" autocomplete="off"></label></p>
         <div class="resumo-erro" id="resumoErro" role="alert" tabindex="-1"></div>
@@ -326,7 +326,7 @@ footer p{max-width:62ch}
 
 <footer>
   <div class="wrap">
-    <img src="assets/logo-horizontal_cor_difusa.svg" alt="Gunther Löffler" height="30" style="height:30px;filter:brightness(0) invert(1);opacity:.85">
+    <img src="/mentoria/assets/logo-horizontal_cor_difusa.svg" alt="Gunther Löffler" height="30" style="height:30px;filter:brightness(0) invert(1);opacity:.85">
     <p>O diagnóstico gratuito é uma conversa educativa sobre raciocínio clínico. Ele não substitui a avaliação do seu paciente nem oferece atendimento ao seu próprio quadro de saúde.</p>
   </div>
 </footer>
@@ -380,7 +380,7 @@ form.addEventListener("submit",async e=>{
     if(LOCAL){
       console.warn("Ambiente local: aplicação simulada, nada foi enviado.",Object.fromEntries(dados));
     }else{
-      const resp=await fetch("/diagnostico/formulario",{method:"POST",headers:{"Content-Type":"application/x-www-form-urlencoded"},body:dados.toString()});
+      const resp=await fetch("/aplicar/",{method:"POST",headers:{"Content-Type":"application/x-www-form-urlencoded"},body:dados.toString()});
       if(!resp.ok) throw new Error(resp.status);
     }
     form.style.display="none"; const ok=$("#ok"); ok.classList.add("on"); ok.focus();

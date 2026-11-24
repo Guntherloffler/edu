@@ -1,2 +1,12 @@
-/diagnostico  /diagnostico/aplicar  301
-/diagnostico/  /diagnostico/aplicar  301
+/bio  /  301
+/bio/  /  301
+/diagnostico  /mentoria/  301
+/diagnostico/  /mentoria/  301
+/diagnostico/aplicar  /mentoria/  301
+/diagnostico/aplicar/  /mentoria/  301
+/diagnostico/formulario  /aplicar/  301
+/diagnostico/formulario/  /aplicar/  301
+/fascite-plantar  /fasciteplantar/  301
+/fascite-plantar/  /fasciteplantar/  301
+/sindrome-do-tunel-do-carpo  /tunelcarpo/  301
+/sindrome-do-tunel-do-carpo/  /tunelcarpo/  301
